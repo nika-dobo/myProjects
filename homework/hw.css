@@ -1,0 +1,89 @@
+* {
+  color: white;
+  margin: 0px;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+.full-heigth {
+  height: 100%;
+  background: #ffffff;
+}
+.main{
+    display: flex;
+    justify-content: center;
+}
+.info{
+    width: 375px;
+    height: 275px;  
+    background: url(./img/sou.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.info2{
+    width: 375px;
+    height: 275px;  
+    background: url(./img/TBILISI❤️.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.info3{
+    width: 375px;
+    height: 275px;  
+    background: url(./img/new.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.info4{
+    width: 375px;
+    height: 275px;  
+    background: url(./img/Paris\,\ Franta.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.info5{
+    width: 375px;
+    height: 275px;  
+    background: url(./img/tok.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.info6{
+    width: 375px;
+    height: 275px;  
+    background: url(./img/dub.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
