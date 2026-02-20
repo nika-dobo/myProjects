@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sololearn</title>
+    <link rel="stylesheet" href="/style/sl.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="shekitxva" id="shekitxva"></div>
+        <form class="archeva" id="archeva"></form>
+        <button id="shemdegi">Next Question</button>
+        <div class="progresi" id="progresi2"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What does HTML stand for?",
+                options: ["Hyper Text Markup Language", "High Text Machine Language", "Hyper Tabular Markup Language", "None of these"],
+                answer: "Hyper Text Markup Language"
+            },
+            {
+                question: "What does CSS stand for?",
+                options: ["Computer Style Sheets", "Creative Style Sheets", "Cascading Style Sheets", "Colorful Style Sheets"],
+                answer: "Cascading Style Sheets"
+            },
+            {
+                question: "Which HTML tag is used to define an internal style sheet?",
+                options: ["script", "style", "css", "link"],
+                answer: "style"
+            },
+            {
+                question: "Which property is used to change the background color?",
+                options: ["color", "bgcolor", "background-color", "backgroundImage"],
+                answer: "background-color"
+            }
+        ];
+
+        let current = 0;
+
+        function shekitxvebi() {
+            const q = questions[current];
+            document.getElementById('shekitxva').innerText = q.question;
+            const optionsForm = document.getElementById('archeva');
+            optionsForm.innerHTML = '';
+
+            q.options.forEach(opt => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="radio" name="option" value="${opt}"> ${opt}`;
+                optionsForm.appendChild(label);
+            });
+
+            document.getElementById('progresi2').innerText = `Question ${current + 1} of ${questions.length}`;
+        }
+
+        document.getElementById('shemdegi').addEventListener('click', () => {
+            const selected = document.querySelector('input[name="option"]:checked');
+            if (!selected) {
+                alert("Please select an option!");
+                return;
+            }
+
+            current++;
+            if (current < questions.length) {
+                shekitxvebi();
+            } else {
+                document.querySelector('.container').innerHTML = `<h2>Quiz Completed!</h2>`;
+            }
+        });
+
+        shekitxvebi();  
+    </script>
+
+
+    <script src="sl.js"></script>
+</body>
+
+</html>

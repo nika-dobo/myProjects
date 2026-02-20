@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kata List</title>
+    <link rel="stylesheet" href="/style/cd.css" />
+</head>
+
+<body>
+
+
+    <div class="box">
+        <ul id="katalist" class="challengelist"></ul>
+        <p id="progresi">Progress: 0/4 completed</p>
+
+    </div>
+
+
+
+
+    <script>
+        fetch("/api/challenges")
+            .then((res) => res.json())
+            .then((data) => {
+                const listEl = document.getElementById("katalist");
+                const completed = JSON.parse(localStorage.getItem("completedKatas")) || [];
+                data.forEach((c) => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<a href="challenge.html?id=${c.id}">${c.title}</a>`;
+                    if (completed.includes(c.id)) {
+                        li.style.textDecoration = "line-through";
+                    }
+                    listEl.appendChild(li);
+                });
+                document.getElementById(
+                    "progresi"
+                ).textContent = `Progress: ${completed.length}/${data.length} completed`;
+            });
+
+    </script>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

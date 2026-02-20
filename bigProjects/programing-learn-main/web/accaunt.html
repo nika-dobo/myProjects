@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_circle" />
+</head>
+
+<body class="webs">
+    <header class="web-head">
+        <div class="navigation">
+            <a href="#"><img src="/img/logo.png" alt="" width="70px"></a>
+            <nav>
+                <a href="/main.html">Main</a>
+                <a href="/web/Introduction.html">Introduction</a>
+                <a href="/web/about.html">About</a>
+                <a href="/web/sing_up.html" id="signUpLink">Sing Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="accaunt">
+
+        <section>
+            <div class="main">
+                <button id="logout-btn">Log out</button>
+                <img src="/img/🚀 ChatGPT Tasks_ OpenAI's game-changing feature that transforms your AI assistant into a smart scheduler! From reminders to deadlines, it's your new productivity superpower_ Curious how it'll revolutionize your wo.jpg"
+                    alt="">
+                <div class="info">
+                    <div class="img-name">
+                        <span class="material-symbols-outlined">
+                            account_circle
+                        </span>
+                        <h1>fist_name last_name</h1>
+                    </div>
+                    <div class="len">
+                        <div><a href="/web/html.html">HTML</a></div>
+                        <div><a href="/web/css.html">CSS</a></div>
+                        <div><a href="/web/js.html">JS</a></div>
+                        <div><a href="/web/py.html">Python</a></div>
+                        <div><a href="/web/c++.html">C++</a></div>
+                        <div><a href="/web/cc.html">C#</a></div>
+                        <div class="last"><a href="/web/c.html">C</a></div>
+                        <div class="map">
+                            <a target="_blank"
+                                href="https://earth.google.com/earth/d/1_KFGWiyowfKLzM4-HUjWGgLPC8crwDfT?usp=sharing">map</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <br><br><br><br><br><br><br><br>
+    <footer>
+        <div class="name">
+            <p>nika dobo --- <a href="#fake">ni#####0@gmail.com</a> --- 558######8</p>
+            <p>ketevan maxarashvili --- <a href="#fake">ke######i@gmail.com</a> --- 558######2</p>
+        </div>
+        <div class="soc">
+            <div>
+                <a href="#fake"><img src="/img/instagram-rounded3444-removebg-preview.png" alt="" width="35px"></a>
+                <a href="#fake"><img class="fc" src="/img/images-removebg-preview.png" width="35px"></a>
+            </div>
+            <div>
+                <a href="#fake"><img src="/img/instagram-rounded3444-removebg-preview.png" alt="" width="35px"></a>
+                <a href="#fake"><img class="fc" src="/img/images-removebg-preview.png" alt="" width="35px"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLoggedIn = localStorage.getItem("loggedIn");
+            const signUpLink = document.getElementById("signUpLink");
+
+            if (signUpLink) {
+                if (isLoggedIn === "true") {
+                    signUpLink.textContent = "Accaunt";
+                    signUpLink.href = "/web/accaunt.html";
+                } else {
+                    signUpLink.textContent = "Sing Up";
+                    signUpLink.href = "/web/sing_up.html";
+                }
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const firstName = localStorage.getItem("first_name");
+            const lastName = localStorage.getItem("last_name");
+
+            if (firstName && lastName) {
+                const h1 = document.querySelector(".img-name h1");
+                h1.textContent = firstName + " " + lastName;
+            }
+
+            // Log out ღილაკი
+            document.getElementById("logout-btn").addEventListener("click", function () {
+                localStorage.clear();
+                window.location.href = "/web/sing_up.html";
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>

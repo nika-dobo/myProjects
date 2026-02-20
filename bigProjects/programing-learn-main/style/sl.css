@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #031930;
+  font-family: "Share Tech Mono", monospace;
+  color: #4de3ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #101820;
+  border: 2px solid #4de3ec;
+  box-shadow: 0 0 15px #4de3ec;
+  padding: 30px 40px;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.shekitxva {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #0d1b24;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #00ffc344;
+  transition: 0.5s ease-in-out;
+}
+
+.shekitxva:hover {
+  color: #eeeeff;
+  text-shadow: 0 0 15px #00ffc3;
+}
+.archeva label {
+  display: block;
+  margin: 12px 0;
+  text-align: left;
+  padding-left: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.archeva input[type="radio"] {
+  accent-color: #4de3ec;
+  margin-right: 8px;
+}
+
+.archeva label:hover {
+  color: #eeeeff;
+  background-color: #0b121a;
+  border-left: 3px solid #00ffc3;
+  padding-left: 7px;
+  text-shadow: #00ffc3 0 0 15px;
+}
+
+#shemdegi {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-family: inherit;
+  background: rgb(3, 25, 48);
+  color: #4de3ec;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 8px #4de3ec;
+}
+
+#shemdegi:hover {
+  background-color: #4de3ec;
+  box-shadow: 0 0 15px #00ffc399;
+  color: #101820;
+}
+
+.progresi {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #00bbaa;
+  font-style: italic;
+  border-top: 1px solid #00ffc322;
+  padding-top: 10px;
+  transition: 0.5s ease-in-out;
+}
+
+.progresi:hover {
+  font-size: 14.5px;
+  text-shadow: #00ffc3 0 0 15px;
+}

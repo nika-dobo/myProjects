@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #031930;
+  font-family: "Share Tech Mono", monospace;
+  color: #4de3ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.web-head {
+  background: linear-gradient(to bottom, rgba(2, 40, 81, 0.511) 10%, #1c1f26);
+  width: 100%;
+  height: 80px;
+}
+.web-head .navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 10px 65px 0px 65px;
+}
+.web-head .navigation nav {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.web-head .navigation nav .material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 20px;
+  cursor: pointer;
+}
+.web-head .navigation nav a {
+  text-decoration: none;
+  color: #d6d6d6;
+  font-size: 15px;
+  transition: all 0.5s;
+  display: inline-block;
+  position: relative;
+}
+.web-head .navigation nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  top: 16px;
+  width: 0%;
+  height: 2px;
+  background-color: #4de3ec;
+  transition: width 0.5s ease, left 0.5s ease;
+}
+.web-head .navigation nav a:hover::after {
+  width: 100%;
+  left: 0;
+  transform: translateX(0);
+}
+.web-head .navigation nav a:hover {
+  color: #b5e2e5;
+}
+
+.box {
+  background: #0e131a;
+  border: 1px solid #4de3ec;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffcc88;
+  width: 500px;
+  max-width: 90%;
+}
+
+.box:hover {
+  box-shadow: #4de3ec;
+  border: #14143b 1px solid;
+  transition: 0.5s ease;
+}
+
+.challengelist {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.challengelist li {
+  margin: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.challengelist li a {
+  color: #00ffcc;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 12px;
+  display: inline-block;
+  transition: 0.3s ease-in-out;
+  border-left: 3px solid transparent;
+}
+
+.challengelist li a:hover {
+  color: #1affaa;
+  border-left: 3px solid #00ffcc;
+  background: #0c181f;
+  box-shadow: 0 0 8px #00ffcc66;
+  text-shadow: #4de3ec 0 0 12px;
+}
+
+#progresi {
+  font-size: 14px;
+  color: #00bbaa;
+  border-top: 1px solid #00ffcc33;
+  padding-top: 10px;
+  text-align: right;
+  font-style: italic;
+}
+
+#progresi:hover {
+  text-shadow: #4de3ec 0 0 12px;
+  transition: 0.5s ease-in-out;
+}
+
+body footer {
+  overflow: hidden;
+  margin-top: -40px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #1c1f26, #031930, #1c1f26);
+  mask-image: linear-gradient(to top, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgb(0, 0, 0) 60%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+body footer .name p {
+  margin: 0;
+  margin-left: -260px;
+  margin-bottom: 10px;
+  padding: 0;
+  text-align: start;
+  padding-left: 10px;
+  font-size: 1rem;
+}
+body footer .name a {
+  margin: 0;
+  padding: 0;
+  text-align: start;
+  font-size: 1rem;
+  color: #42bdc6;
+}
+body footer .soc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+body footer .soc img {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+body footer .soc .fc {
+  margin-right: 10px;
+  transform: scale(1.7);
+}

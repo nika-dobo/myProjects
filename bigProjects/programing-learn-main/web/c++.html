@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c++</title>
+    <link rel="stylesheet" href="/style/c++.css">
+
+
+    <style>
+        .icons {
+            display: flex;
+            justify-content: start;
+            gap: 115px;
+            position: relative;
+            margin-left: 25px;
+            top: 230px;
+            z-index: 999;
+            color: rgb(3, 25, 48)
+        }
+
+        .icon-str {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: transparent;
+            border-radius: 12px;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+
+        .icon-str i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .icon-str span {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .icon-str:hover {
+            transform: scale(1.1);
+
+        }
+
+        .speed:hover i {
+            color: rgb(255, 255, 167);
+            text-shadow: rgb(255, 255, 167) 0 0 12px;
+        }
+
+        .control:hover i {
+            color: #3498db;
+            text-shadow: #3498db 0 0 12px;
+        }
+
+        .power:hover i {
+            color: #36130f;
+            text-shadow: #36130f 0 0 12px;
+        }
+
+        .legacy:hover i {
+            color: #2f1739;
+            text-shadow: #2f1739 0 0 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <header class="web-head">
+        <div class="navigation">
+            <a href="#"><img src="/img/logo.png" alt="" width="70px"></a>
+            <nav>
+                <a href="/main.html">Main</a>
+                <a href="/web/Introduction.html">Introduction</a>
+                <a href="/web/about.html">About</a>
+                <a href="/web/sing_up.html" id="signUpLink">Sing Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <body class="webs">
+
+
+        <div class="icons">
+            <div class="icon-str speed">
+                <i class="fas fa-bolt"></i>
+                <span style="color: #51dee8;">Speed</span>
+            </div>
+            <div class="icon-str control">
+                <i class="fas fa-sliders-h"></i>
+                <span>Control</span>
+            </div>
+            <div class="icon-str power">
+                <i class="fas fa-dumbbell"></i>
+                <span>Power</span>
+            </div>
+            <div class="icon-str legacy">
+
+                <i class="fas fa-chess-king"></i>
+                <span>Legacy</span>
+            </div>
+        </div>
+
+
+        <div class="terminal">
+
+            <div class="codes">
+                <div class="int">int</div>
+                <div class="main">main</div>
+                <div class="symbols">() {</div> <br>
+                <div class="comments">// Required CGI headers</div>
+                <div class="std">std::cout << </div>
+                        <div class="cont">"Content-type: text/html\n\";</div> <br> <br>
+                        <div class="comments">// Get query string (from data)</div>
+                        <div class="std">std::string query = </div>
+                        <div class="get">getenv</div>
+                        <div class="query">("QUERY_STRING")</div>
+                        <div class="std">std::string name =</div>
+                        <div class="stranger">"stranger"</div> <br> <br>
+                        <div class="comments">// Find the 'name' parameter value</div>
+                        <div class="size">size_t</div>
+                        <div class="posquery">pos = query.</div>
+                        <div class="get">find</div>
+                        <div class="name">("name");</div> <br> <br>
+                        <div class="ifelse">if</div>
+                        <div class="pos">(pos != std::string::npos) {</div>
+                        <div class="name2">name = query.</div>
+                        <div class="subtr">substr</div>
+                        <div class="pos2">(pos + 5);</div>
+                        <div class="brac">}</div> <br> <br>
+                        <div class="comments">//Output </div>
+                        <div class="ifelse">return </div>
+                        <div class="zero">0;</div>
+                        <div class="brac2">}</div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- <div class="binarycode">0101010101</div> -->
+
+            <div class="containers">
+
+                <div class="container1"
+                    style="margin-top: -450px; background: url(https://www.excitel.com/wp-content/uploads/2021/12/difference-between-internet-and-download-speed-excitel.jpg); background-size: cover;">
+
+
+
+                    <p class="p2"><br>
+                        C++ is FAST! <br>
+                        It is used for systems, games, and engines, where every millisecond matters.
+                    </p>
+                </div>
+
+                <div class="container2" style="margin-top: -450px;">
+                    <p class="p2">
+                        <br>
+                        Low-level access. <br>
+                        C++ gives you control over memory, CPU, and hardware like no other.
+
+                    </p>
+
+                </div>
+
+                <div class="container3" style="margin-top: -450px;">
+                    <p class="p2"><br>
+                        Used in engines and OS. <br>
+                        C++ powers Unreal Engine, browsers, and parts of Windows, Linux and Unix.
+                    </p>
+
+                </div>
+
+                <div class="container4" style="margin-top: -450px;">
+                    <p class="p2"><br>
+                        Over 40 years of code. <br>
+                        From giants like Adobe to NASA, C++ still rules in critical software.
+                    </p>
+
+                </div>
+            </div>
+
+
+
+            <div class="cppjourney">
+                <h3>Your C++ Journey</h3>
+                <ul>
+                    <li class="li1"><span>ׂ╰┈➤</span>Learn Syntax</li>
+                    <li class="li1"><span>ׂ╰┈➤</span>Master Functions and Loops</li>
+                    <li class="li1"><span>ׂ╰┈➤</span>Understand OOP</li>
+                    <li class="li1"><span>ׂ╰┈➤</span>Build Real Projects</li>
+                </ul>
+            </div>
+
+
+
+
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <footer>
+                <div class="name">
+                    <p>nika dobo --- <a href="#fake">ni#####0@gmail.com</a> --- 558######8</p>
+                    <p>ketevan maxarashvili --- <a href="#fake">ke######i@gmail.com</a> --- 558######2</p>
+                </div>
+                <div class="soc">
+                    <div>
+                        <a href="#fake"><img src="/img/instagram-rounded3444-removebg-preview.png" alt=""
+                                width="35px"></a>
+                        <a href="#fake"><img class="fc" src="/img/images-removebg-preview.png" width="35px"></a>
+                    </div>
+                    <div>
+                        <a href="#fake"><img src="/img/instagram-rounded3444-removebg-preview.png" alt=""
+                                width="35px"></a>
+                        <a href="#fake"><img class="fc" src="/img/images-removebg-preview.png" alt="" width="35px"></a>
+                    </div>
+                </div>
+            </footer>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const isLoggedIn = localStorage.getItem("loggedIn");
+                    const signUpLink = document.getElementById("signUpLink");
+
+                    if (signUpLink) {
+                        if (isLoggedIn === "true") {
+                            signUpLink.textContent = "Accaunt";
+                            signUpLink.href = "/web/accaunt.html";
+                        } else {
+                            signUpLink.textContent = "Sing Up";
+                            signUpLink.href = "/web/sing_up.html";
+                        }
+                    }
+                });
+            </script>
+    </body>
+
+</html>

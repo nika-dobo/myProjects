@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/cc.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
+
+</head>
+
+<body class=" webs">
+    <header class="web-head">
+        <div class="navigation">
+            <a href="#"><img src="/img/logo.png" alt="" width="70px"></a>
+            <nav>
+                <a href="/main.html">Main</a>
+                <a href="/web/Introduction.html">Introduction</a>
+                <a href="/web/about.html">About</a>
+                <a href="/web/sing_up.html" id="signUpLink">Sing Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main">
+
+        <aside class="marcx-folderi">
+            <ul class="failebi">
+                <li onclick="loadContent('src')">📁 src</li>
+                <li style="padding-left: 20px;" onclick="loadContent('program')">📄 Program.cs</li>
+                <li style="padding-left: 20px;" onclick="loadContent('utils')">📄 Utils.cs</li>
+                <li style="padding-left: 20px;" onclick="loadContent('config')">📄 Config.cs</li>
+
+                <li onclick="loadContent('bin')">📁 bin</li>
+
+                <li onclick="loadContent('readme')">📄 README.md</li>
+                <li onclick="loadContent('license')">📄 LICENSE.txt</li>
+                <li onclick="loadContent('csharpHistory')">📄 csharp-history.md</li>
+                <li onclick="loadContent('dotnet')">📄 dotnet-info.txt</li>
+                <li onclick="loadContent('keywords')">📄 keywords.cs</li>
+                <li onclick="loadContent('shortcuts')">📄 shortcuts.md</li>
+                <li onclick="loadContent('facts')">📄 fun-facts.md</li>
+                <li onclick="loadContent('compiler')">📄 compiler.txt</li>
+            </ul>
+        </aside>
+
+
+        <section class="editori" id="editori2">
+            <pre>// Select a file from the sidebar to view its content</pre>
+        </section>
+
+
+        <aside class="outputi">
+            <h3>💻 Output</h3>
+            <div id="outputi2">
+                > Awaiting file execution...
+            </div>
+        </aside>
+    </div>
+
+
+    
+    <footer>
+        <div class="name">
+            <p>nika dobo --- <a href="#fake">ni#####0@gmail.com</a> --- 558######8</p>
+            <p>ketevan maxarashvili --- <a href="#fake">ke######i@gmail.com</a> --- 558######2</p>
+        </div>
+        <div class="soc">
+            <div>
+                <a href="#fake"><img src="/img/instagram-rounded3444-removebg-preview.png" alt="" width="35px"></a>
+                <a href="#fake"><img class="fc" src="/img/images-removebg-preview.png" width="35px"></a>
+            </div>
+            <div>
+                <a href="#fake"><img src="/img/instagram-rounded3444-removebg-preview.png" alt="" width="35px"></a>
+                <a href="#fake"><img class="fc" src="/img/images-removebg-preview.png" alt="" width="35px"></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const outputisteqsti = {
+            program: "> Hello, C# World!\n> Program executed successfully.",
+            utils: "> Utils loaded.\n> Add(2, 3) => 5",
+            config: "> Config set:\n> Version: 1.0.0\n> Debug: TRUE",
+            readme: "> Opening README.md...",
+            license: "> Loading license terms...",
+            csharpHistory: "> Timeline: .NET launch → Roslyn → .NET Core → .NET 6+",
+            dotnet: "> .NET Core SDK loaded. C# ready.",
+            keywords: "> Syntax keywords reference displayed.",
+            shortcuts: "> Editor shortcuts shown.",
+            facts: "> Loading fun facts about C#...",
+            compiler: "> Compilation process: [IL] → [CLR] → [Machine Code]",
+            src: "> Entering src/ directory...",
+            bin: "> Entering bin/ directory..."
+        };
+        function loadContent(file) {
+            const editor = document.getElementById("editori2");
+            const output = document.getElementById("outputi");
+
+            const files = {
+                program: `<pre>
+using System;
+using System.Collections.Generic;
+
+namespace RandomCSharpCode
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Generating random numbers...");
+            NumberGenerator generator = new NumberGenerator(10);
+            List<int> numbers = generator.Generate();
+
+            Console.WriteLine("Odd numbers:");
+            foreach (var number in numbers)
+            {
+                if (generator.IsOdd(number))
+                {
+                    Console.WriteLine(number);
+                }
+            }
+        }
+    }
+
+    public class NumberGenerator
+    {
+        private int count;
+        private Random random;
+
+        public NumberGenerator(int count)
+        {
+            this.count = count;
+            this.random = new Random();
+        }
+
+        public List<int> Generate()
+        {
+            List<int> result = new List<int>();
+            for (int i = 0; i < count; i++)
+            {
+                result.Add(random.Next(1, 100));
+            }
+            return result;
+        }
+
+        public bool IsOdd(int number)
+        {
+            return number % 2 != 0;
+        }
+    }
+}
+
+      </pre>`,
+                config: `<pre>
+using System;
+using System.Collections.Generic;
+
+namespace MyProject.Configuration
+{
+    public static class Config
+    {
+        // Internal dictionary to store configuration settings
+        private static readonly Dictionary<string, string> _settings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        // Load default settings
+        public static void LoadDefaults()
+        {
+            _settings["AppName"] = "MyApp";
+            _settings["Version"] = "1.0.0";
+            _settings["LogLevel"] = "Info";
+            _settings["MaxRetries"] = "3";
+            _settings["EnableTelemetry"] = "false";
+        }
+
+        // Set or update a configuration value
+        public static void Set(string key, string value)
+        {
+            if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Key cannot be null or whitespace.");
+            _settings[key] = value;
+        }
+
+        // Get a config value, returns null if not found
+        public static string? Get(string key)
+        {
+            if (_settings.TryGetValue(key, out var value))
+            {
+                return value;
+            }
+            return null;
+        }
+
+        // Get a config value as a specific type (int, bool, etc.)
+        public static T Get<T>(string key, T defaultValue = default!)
+        {
+            if (_settings.TryGetValue(key, out var value))
+            {
+                try
+                {
+                    return (T)Convert.ChangeType(value, typeof(T));
+                }
+                catch
+                {
+                    return defaultValue;
+                }
+            }
+            return defaultValue;
+        }
+
+        // Check if a key exists
+        public static bool Contains(string key)
+        {
+            return _settings.ContainsKey(key);
+        }
+
+        // Dump all settings (for debug/logging)
+        public static void DumpAll()
+        {
+            Console.WriteLine("=== Config Dump ===");
+            foreach (var pair in _settings)
+            {
+                Console.WriteLine($"{pair.Key}: {pair.Value}");
+            }
+        }
+    }
+}
+
+}
+      </pre>`,
+
+                readme: `<pre>
+# C# Terminal Project
+
+This is a simulated terminal-based project viewer,
+built using HTML, CSS, and JavaScript.
+It displays C# source files in a terminal-themed UI.
+
+:)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </pre>`,
+
+                license: `<pre>
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy...
+      </pre>`,
+
+                csharpHistory: `<pre>
+# History of C#
+This article provides a history of each major release of the C# language. The C# team is continuing to innovate and add new features. Detailed language feature status, including features considered for upcoming releases can be found on the dotnet/roslyn repository on GitHub. To find when a particular feature was added to the language, consult the C# version history file in the dotnet/csharplang repository on GitHub.
+
+C# (pronounced "C-sharp") was developed by Microsoft in the early 2000s.
+It was designed as part of the .NET initiative and led by Anders Hejlsberg.
+First released in 2002 with .NET Framework 1.0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </pre>`,
+
+                dotnet: `<pre>
+# .NET Information
+
+.NET is a developer platform made by Microsoft.
+It supports multiple languages including C#, F#, and VB.NET.
+C# and .NET are often used together in web, mobile, and desktop applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </pre>`,
+
+                keywords: `<pre>
+// Some Common C# Keywords
+class, public, static, void
+string, int, bool
+if, else, switch, case
+for, while, foreach
+return, break, continue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </pre>`,
+
+                shortcuts: `<pre>
+# Visual Studio Code Shortcuts (C# Dev):
+- Ctrl + K + C: Comment.
+- Ctrl + K + U: Uncomment.
+- Ctrl + . : Quick Fix.
+- F5: Run with debugger.
+- Ctrl + Shift + B: Build Solution.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </pre>`,
+
+                facts: `<pre>
+# Fun Facts About C#
+
+1. C# was inspired by C++, Java, and Delphi.
+2. The '#' in C# is a musical note — a nod to VB "flat" and C++ "sharp".
+3. Unity (game engine) uses C# as its scripting language.
+4. C# can now run on Windows, macOS, Linux thanks to .NET Core / .NET 6+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </pre>`,
+
+                compiler: `<pre>
+# How C# Compilation Works
+
+1. C# code is compiled by Roslyn into IL (Intermediate Language).
+2. The IL is executed by the CLR (Common Language Runtime).
+3. JIT (Just-In-Time) compiles IL into native machine code at runtime.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>`,
+
+                src: `<pre>// 📁 src/ contains all source code files</pre>`,
+                bin: `<pre>// 📁 bin/ contains compiled .exe or .dll output</pre>`
+            };
+
+            editor.innerHTML = files[file] || `<pre>// File not found</pre>`;
+            output.innerText = outputText[file] || "> Awaiting file execution...";
+        }
+    </script>
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLoggedIn = localStorage.getItem("loggedIn");
+            const signUpLink = document.getElementById("signUpLink");
+
+            if (signUpLink) {
+                if (isLoggedIn === "true") {
+                    signUpLink.textContent = "Accaunt";
+                    signUpLink.href = "/web/accaunt.html";
+                } else {
+                    signUpLink.textContent = "Sing Up";
+                    signUpLink.href = "/web/sing_up.html";
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
