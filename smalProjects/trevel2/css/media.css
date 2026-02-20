@@ -1,0 +1,29 @@
+@media (max-width: 1180px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (max-width: 800px) {
+  .myform {
+    flex-direction: column;
+  }
+  .textareadiv {
+    margin-bottom: 25px;
+  }
+  .inputsdiv {
+    max-width: 800px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 655px) {
+  .footerflex {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .photowrapper img {
+    width: 80%;
+  }
+}
