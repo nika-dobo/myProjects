@@ -1,0 +1,561 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 25px;
+  background-color: rgb(85, 85, 85);
+}
+body header {
+  background-color: rgb(120, 120, 120);
+  width: 100%;
+  height: 100px;
+}
+body header nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+}
+body header nav .icon {
+  width: 20px;
+  height: 20px;
+}
+body header nav .a {
+  font-size: 20px;
+  color: #ffffff;
+}
+body header nav .a1 {
+  font-size: 20px;
+  color: #ffffff;
+}
+body header nav .a:hover,
+body header nav .a1:hover {
+  transition: color 0.25s, color 0.5s;
+  color: #4a4a4a;
+}
+body .s-1 .main-box {
+  display: flex;
+  justify-content: space-around;
+}
+body .s-1 .main-box .box {
+  border-radius: 15px;
+  background-color: rgb(136, 161, 153);
+  margin-top: 75px;
+  border: 1px solid rgb(0, 0, 0);
+  width: 25%;
+  height: 450px;
+  overflow: hidden;
+}
+body .s-1 .main-box .box img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body .s-1 .main-box .box .text {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+}
+body .s-1 .main-box .box .check_here {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .s-1 .main-box .box .check_here .check {
+  border-radius: 10px;
+  width: 50%;
+  height: 40px;
+}
+body .s-1 .main-box .box .check_here .check:hover {
+  transition: background-color 0.25s, color 0.25s;
+  background-color: rgb(129, 129, 129);
+  color: #ffffff;
+}
+body .s-2 .main-h1 {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 50px;
+  color: #ffffff;
+}
+body .s-2 .main-box {
+  display: flex;
+  justify-content: space-around;
+}
+body .s-2 .main-box .big-box {
+  background-color: rgb(136, 161, 153);
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-top: 75px;
+  width: 68%;
+  height: 320px;
+}
+body .s-2 .main-box .min-box {
+  background-color: rgb(136, 161, 153);
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-top: 75px;
+  margin-left: -60px;
+  width: 27%;
+  height: 320px;
+}
+body .s-2 .main-box h1 {
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+}
+body .s-2 .main-box p {
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+}
+body .s-2 .main-box .min-box2 {
+  background-color: rgb(136, 161, 153);
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-top: 25px;
+  width: 37%;
+  height: 330px;
+}
+body .s-2 .main-box .big-box2 {
+  background-color: rgb(136, 161, 153);
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-left: -60px;
+  margin-top: 25px;
+  width: 58%;
+  height: 330px;
+}
+body footer {
+  margin-top: 75px;
+  background-color: rgb(120, 120, 120);
+  width: 100%;
+  height: 200px;
+}
+body footer div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+body footer div .info {
+  flex-direction: column;
+  margin-top: 75px;
+  width: 10%;
+  height: 50px;
+}
+body footer div .info .name {
+  font-size: 17px;
+  color: #ffffff;
+}
+body footer div .info a {
+  font-size: 17px;
+  color: #ffffff;
+}
+body footer div .info a:hover {
+  text-decoration: underline;
+}
+body .game-sec .Ans {
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  background-color: rgb(120, 120, 120);
+  border: #000000 2px solid;
+  border-radius: 10px;
+  width: 250px;
+  height: 75px;
+  justify-content: center;
+}
+body .game-sec .Ans .an {
+  margin-top: 20px;
+  font-size: 30px;
+  color: #ffffff;
+}
+body .game-sec .vs {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+body .game-sec .vs .game {
+  border: 5px solid rgb(79, 79, 79);
+  border-radius: 15px;
+  filter: brightness(70%);
+}
+body .game-sec .vs .VS {
+  margin-top: 160px;
+  position: absolute;
+  height: 75px;
+  width: 75px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+body .game-sec .vs .VS .vs-text {
+  text-align: center;
+  height: 75px;
+  width: 75px;
+  margin-top: 33%;
+  font-size: 30px;
+}
+body .game-sec .car {
+  margin-top: 75px;
+  display: flex;
+  justify-content: space-around;
+}
+body .game-sec .car .cars {
+  background-color: rgb(120, 120, 120);
+  border-radius: 10px;
+  width: 250px;
+  height: 30px;
+  text-align: center;
+}
+body .game-sec .car .cars .car_name {
+  margin: 5px;
+  color: #ffffff;
+}
+body .game-sec .l-h {
+  margin-top: -360px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+body .game-sec .l-h .b1 {
+  border: 3px solid rgb(248, 51, 51);
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  height: 50px;
+  width: 200px;
+  margin-top: 200px;
+}
+body .game-sec .l-h .b2 {
+  border: 3px solid rgb(51, 255, 0);
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  height: 50px;
+  width: 200px;
+}
+body .game-sec .l-h .b1:hover {
+  transition: background-color 0.5s, color 0.5s;
+  background-color: rgb(129, 1, 1);
+  color: #ffffff;
+}
+body .game-sec .l-h .b2:hover {
+  transition: background-color 0.5s, color 0.5s;
+  background-color: rgb(36, 189, 1);
+  color: #ffffff;
+}
+body .singup {
+  display: flex;
+  justify-content: center;
+}
+body .singup .singup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(136, 161, 153);
+  border-radius: 20px;
+  margin-top: 75px;
+  height: 550px;
+  width: 400px;
+}
+body .singup .singup-form input {
+  border-radius: 10px;
+  width: 300px;
+  height: 30px;
+}
+body .login {
+  display: flex;
+  justify-content: center;
+}
+body .login .login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(136, 161, 153);
+  border-radius: 20px;
+  margin-top: 75px;
+  height: 300px;
+  width: 400px;
+}
+body .login .login-form input {
+  border-radius: 10px;
+  width: 300px;
+  height: 30px;
+}
+body .login .login-form .sub {
+  border-radius: 10px;
+  width: 300px;
+  height: 30px;
+}
+body .footer {
+  margin-top: 75px;
+  background-color: rgb(120, 120, 120);
+  width: 100%;
+  height: 200px;
+}
+body .footer div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+body .footer div .info {
+  flex-direction: column;
+  margin-top: 75px;
+  width: 10%;
+  height: 50px;
+}
+body .footer div .info .name {
+  font-size: 17px;
+  color: #ffffff;
+}
+body .footer div .info a {
+  font-size: 17px;
+  color: #ffffff;
+}
+body .footer div .info a:hover {
+  text-decoration: underline;
+}
+body .cars .car-conteiner {
+  margin-top: 75px;
+  display: flex;
+  justify-content: space-around;
+}
+body .cars .car-conteiner .car-img {
+  margin-left: 50px;
+}
+body .cars .car-conteiner .car-img .car {
+  border-radius: 10px;
+}
+body .cars .car-conteiner .car-info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: rgb(120, 120, 120);
+  border-radius: 10px;
+}
+body .cars .car-conteiner .car-info .car-name {
+  color: #ffffff;
+  font-size: 30px;
+}
+body .cars .car-conteiner .car-info .car-info-text {
+  text-align: center;
+  margin-left: 10px;
+  color: #ffffff;
+  margin-top: -150px;
+  font-size: 20px;
+}
+body .acc .acaunt {
+  width: 100%;
+  height: 600px;
+  margin-top: 75px;
+  background-color: rgb(120, 120, 120);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+body .acc .acaunt .image img {
+  width: 250px;
+  height: 250px;
+}
+body .acc .acaunt .info {
+  width: 550px;
+  height: 250px;
+  background-color: rgb(103, 103, 103);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+body .acc .acaunt .info h1 {
+  font-size: 50px;
+  color: #ffffff;
+}
+body .acc .acaunt .info h2 {
+  font-size: 30px;
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+body .about {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .about div {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(120, 120, 120);
+  width: 90%;
+  border-radius: 14px;
+}
+body .about div h2 {
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+body .about div h3 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+body .about div p {
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+body .about div h1 {
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+body .about .final {
+  height: 75px;
+}
+body .about .start {
+  height: 75px;
+}/*# sourceMappingURL=global.css.map */
