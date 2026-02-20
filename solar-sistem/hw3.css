@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+
+.sun {
+  position: absolute;
+  top: 320px;
+  left: 320px;
+  width: 50px;
+  height: 50px;
+  background-color: yellow;
+  box-shadow: 0 0 50px yellow;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: rotate 10s linear infinite;
+}
+
+.planet1 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  transform: translate(-50%, -50%);
+}
+.planet2 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(255, 72, 0);
+  transform: translate(-50%, -50%);
+}
+.planet3 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(0, 139, 252);
+  transform: translate(-50%, -50%);
+}
+.planet4 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(217, 192, 192);
+  transform: translate(-50%, -50%);
+}
+.planet5 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgb(111, 92, 92);
+  transform: translate(-50%, -50%);
+}
+.planet6 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(0, 187, 255);
+  transform: translate(-50%, -50%);
+}
+.planet7 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(0, 208, 255);
+  transform: translate(-50%, -50%);
+}
+.planet7 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(128, 92, 52);
+  transform: translate(-50%, -50%);
+}
+.planet8 {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(128, 92, 52);
+  transform: translate(-50%, -50%);
+}
+
+.orbit1 {
+  width: 80px;
+  height: 80px;
+  top: 280px;
+  left: 280px;
+  animation-duration: 1s;
+}
+.orbit2 {
+  width: 160px;
+  height: 160px;
+  top: 240px;
+  left: 240px;
+  animation-duration: 4s;
+}
+.orbit3 {
+  width: 200px;
+  height: 200px;
+  top: 220px;
+  left: 220px;
+  animation-duration: 6s;
+}
+.orbit4 {
+  width: 240px;
+  height: 240px;
+  top: 200px;
+  left: 200px;
+  animation-duration: 15s;
+}
+.orbit5 {
+  width: 280px;
+  height: 280px;
+  top: 180px;
+  left: 180px;
+  animation-duration: 20s;
+}
+.orbit6 {
+  width: 320px;
+  height: 320px;
+  top: 160px;
+  left: 160px;
+  animation-duration: 39s;
+}
+.orbit7 {
+  width: 360px;
+  height: 360px;
+  top: 140px;
+  left: 140px;
+  animation-duration: 40s;
+}
+.orbit8 {
+  width: 400px;
+  height: 400px;
+  top: 120px;
+  left: 120px;
+  animation-duration: 50s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

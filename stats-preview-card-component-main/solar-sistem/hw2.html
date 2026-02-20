@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .main {
+            width: 400px;
+            height: 50px;
+            background-color: rgb(34, 34, 34);
+            border-radius: 50px;
+            border: 2px solid rgb(40, 40, 40);
+        }
+
+        .son {
+            margin-top: 2.5px;
+            margin-left: 5px;
+            height: 45px;
+            width: 0px;
+            background-color: red;
+            border-radius: 50px;
+            animation: load infinite 5s alternate;
+        }
+
+        @keyframes load {
+            from {
+                width: 0px;
+            }
+
+            to {
+                width: 390px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="son"></div>
+    </div>
+</body>
+
+</html>
