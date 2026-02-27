@@ -1,0 +1,52 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  gap: 50px;
+}
+
+.dice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.dice img {
+  width: 70px;
+}
+
+.dice button {
+  background-color: #2e8baf;
+  color: white;
+  width: 170px;
+  height: 60px;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.info {
+  width: 400px;
+  padding: 15px 10px;
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info img {
+  width: 45px;
+}
