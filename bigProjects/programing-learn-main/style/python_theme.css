@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-color: #0d1117;
+  --bg-panel: #161b22;
+  --bg-highlight: #21262d;
+  --py-blue: #4B8BBE;
+  --py-yellow: #FFE873;
+  --text-main: #c9d1d9;
+  --text-muted: #8b949e;
+  --border-color: #30363d;
+  --neon-glow: rgba(75, 139, 190, 0.4);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+header {
+  background: var(--bg-panel);
+  border-bottom: 2px solid var(--border-color);
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--py-blue), var(--py-yellow));
+}
+
+header h1 {
+  font-family: 'Fira Code', monospace;
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  background: linear-gradient(to right, var(--py-blue), var(--py-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px var(--neon-glow);
+}
+
+main {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 40px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+main::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 15px; left: 20px;
+  font-size: 10px;
+  color: var(--border-color);
+  letter-spacing: 5px;
+}
+
+h2, h3 {
+  color: var(--py-yellow);
+  font-family: 'Fira Code', monospace;
+  margin-top: 30px;
+}
+
+a {
+  color: var(--py-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #6fb3eb;
+  text-shadow: 0 0 8px var(--neon-glow);
+}
+
+.btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--py-yellow);
+  border: 2px solid var(--py-yellow);
+  padding: 12px 35px;
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 232, 115, 0.1);
+}
+
+.btn:hover {
+  background: var(--py-yellow);
+  color: var(--bg-color);
+  box-shadow: 0 0 20px rgba(255, 232, 115, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Code Block Styling */
+pre, code {
+  font-family: 'Fira Code', monospace;
+  background: var(--bg-highlight);
+  color: #a5d6ff;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  border: 1px solid var(--border-color);
+}
+
+pre {
+  padding: 20px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+}
