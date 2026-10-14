@@ -82,6 +82,7 @@
                 <a href="../main.html">Main</a>
                 <a href="./Introduction.html">Introduction</a>
                 <a href="./about.html">About</a>
+                <a href="./sites.html">Sites</a>
                 <a href="./sing_up.html" id="signUpLink">Sing Up</a>
             </nav>
         </div>
@@ -233,10 +234,10 @@
                     if (signUpLink) {
                         if (isLoggedIn === "true") {
                             signUpLink.textContent = "Accaunt";
-                            signUpLink.href = "/web/accaunt.html";
+                            signUpLink.href = "./accaunt.html";
                         } else {
                             signUpLink.textContent = "Sing Up";
-                            signUpLink.href = "/web/sing_up.html";
+                            signUpLink.href = "./sing_up.html";
                         }
                     }
                 });

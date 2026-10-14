@@ -1,42 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar System</title>
-    <link rel="stylesheet" href="hw3.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Solar System 🪐</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hw3.css" />
 </head>
-
 <body>
-    <div class="center">
-        <div class="sun"></div>
 
-        <div class="orbit orbit1">
-            <div class="planet1"></div>
-        </div>
-        <div class="orbit orbit2">
-            <div class="planet2"></div>
-        </div>
-        <div class="orbit orbit3">
-            <div class="planet3"></div>
-        </div>
-        <div class="orbit orbit4">
-            <div class="planet4"></div>
-        </div>
-        <div class="orbit orbit5">
-            <div class="planet5"></div>
-        </div>
-        <div class="orbit orbit6">
-            <div class="planet6"></div>
-        </div>
-        <div class="orbit orbit7">
-            <div class="planet7"></div>
-        </div>
-        <div class="orbit orbit8">
-            <div class="planet8"></div>
-        </div>
+  <!-- Starfield Canvas -->
+  <canvas id="starfield"></canvas>
+
+  <!-- Control HUD -->
+  <header class="hud-header">
+    <div class="hud-brand">
+      <span class="hud-icon">🪐</span>
+      <div class="hud-titles">
+        <h1>Solar System</h1>
+        <p>Interactive 3D Orbital Explorer</p>
+      </div>
     </div>
-</body>
 
+    <div class="hud-controls">
+      <div class="control-group">
+        <label>Speed</label>
+        <div class="speed-buttons">
+          <button class="speed-btn" data-speed="0.5">0.5x</button>
+          <button class="speed-btn active" data-speed="1">1x</button>
+          <button class="speed-btn" data-speed="2">2x</button>
+          <button class="speed-btn" data-speed="5">5x</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <button id="pause-btn" class="action-btn">⏸ Pause</button>
+      </div>
+
+      <div class="control-group toggles">
+        <button id="toggle-orbits" class="action-btn active-toggle">⭕ Orbits</button>
+        <button id="toggle-labels" class="action-btn active-toggle">🏷 Labels</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Universe Viewport -->
+  <main class="solar-system-viewport">
+    <div class="solar-system" id="system">
+
+      <!-- Sun -->
+      <div class="sun-wrapper" data-name="Sun">
+        <div class="sun-corona corona-outer"></div>
+        <div class="sun-corona corona-inner"></div>
+        <div class="sun"></div>
+        <span class="planet-label sun-label">Sun ☀️</span>
+      </div>
+
+      <!-- 1. Mercury -->
+      <div class="orbit-ring ring-mercury" style="--duration: 6s;">
+        <div class="planet-container">
+          <div class="planet mercury" data-planet="mercury"></div>
+          <span class="planet-label">Mercury</span>
+        </div>
+      </div>
+
+      <!-- 2. Venus -->
+      <div class="orbit-ring ring-venus" style="--duration: 10s;">
+        <div class="planet-container">
+          <div class="planet venus" data-planet="venus"></div>
+          <span class="planet-label">Venus</span>
+        </div>
+      </div>
+
+      <!-- 3. Earth & Moon -->
+      <div class="orbit-ring ring-earth" style="--duration: 15s;">
+        <div class="planet-container">
+          <div class="planet earth" data-planet="earth">
+            <div class="moon-orbit">
+              <div class="moon"></div>
+            </div>
+          </div>
+          <span class="planet-label">Earth</span>
+        </div>
+      </div>
+
+      <!-- 4. Mars -->
+      <div class="orbit-ring ring-mars" style="--duration: 22s;">
+        <div class="planet-container">
+          <div class="planet mars" data-planet="mars"></div>
+          <span class="planet-label">Mars</span>
+        </div>
+      </div>
+
+      <!-- 5. Jupiter -->
+      <div class="orbit-ring ring-jupiter" style="--duration: 38s;">
+        <div class="planet-container">
+          <div class="planet jupiter" data-planet="jupiter">
+            <div class="great-red-spot"></div>
+          </div>
+          <span class="planet-label">Jupiter</span>
+        </div>
+      </div>
+
+      <!-- 6. Saturn -->
+      <div class="orbit-ring ring-saturn" style="--duration: 54s;">
+        <div class="planet-container">
+          <div class="planet saturn" data-planet="saturn">
+            <div class="saturn-rings"></div>
+          </div>
+          <span class="planet-label">Saturn</span>
+        </div>
+      </div>
+
+      <!-- 7. Uranus -->
+      <div class="orbit-ring ring-uranus" style="--duration: 72s;">
+        <div class="planet-container">
+          <div class="planet uranus" data-planet="uranus">
+            <div class="uranus-ring"></div>
+          </div>
+          <span class="planet-label">Uranus</span>
+        </div>
+      </div>
+
+      <!-- 8. Neptune -->
+      <div class="orbit-ring ring-neptune" style="--duration: 90s;">
+        <div class="planet-container">
+          <div class="planet neptune" data-planet="neptune"></div>
+          <span class="planet-label">Neptune</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Planet Info Card / Tooltip -->
+  <aside id="planet-card" class="planet-info-card hidden">
+    <div class="card-header">
+      <span class="card-icon" id="card-icon">🪐</span>
+      <div>
+        <h2 id="card-title">Earth</h2>
+        <span class="card-type" id="card-type">Terrestrial Planet</span>
+      </div>
+      <button id="close-card" class="close-btn">&times;</button>
+    </div>
+    <div class="card-stats">
+      <div class="stat-item">
+        <span class="stat-label">Distance from Sun</span>
+        <strong id="card-distance">149.6M km</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Orbital Period</span>
+        <strong id="card-period">365.25 Days</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Diameter</span>
+        <strong id="card-diameter">12,742 km</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Known Moons</span>
+        <strong id="card-moons">1 (The Moon)</strong>
+      </div>
+    </div>
+    <p class="card-desc" id="card-desc">
+      Our home world is the only planet currently known to harbor and sustain life.
+    </p>
+  </aside>
+
+  <script src="hw3.js"></script>
+</body>
 </html>

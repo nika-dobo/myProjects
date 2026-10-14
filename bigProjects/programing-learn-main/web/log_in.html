@@ -19,6 +19,7 @@
                 <a href="../main.html">Main</a>
                 <a href="./Introduction.html">Introduction</a>
                 <a href="./about.html">About</a>
+                <a href="./sites.html">Sites</a>
                 <a href="./sing_up.html" id="signUpLink">Sing Up</a>
             </nav>
         </div>
@@ -28,8 +29,8 @@
         <section>
 
 
-            <h1>Create Accaunt</h1>
-            <form>
+            <h1>Log In</h1>
+            <form id="login-form">
 
                 <div class="nebula-input">
                     <input required="" type="email" name="email" autocomplete="off" class="input" />
@@ -83,6 +84,24 @@
             e.preventDefault();
 
             const formData = new FormData(this);
+            const email = formData.get("email");
+            const password = formData.get("password");
+
+            function saveLocalAndRedirect() {
+                localStorage.setItem("loggedIn", "true");
+                try {
+                    let users = JSON.parse(localStorage.getItem("registered_users") || "[]");
+                    let found = users.find(u => u.email === email);
+                    if (found) {
+                        localStorage.setItem("first_name", found.first_name);
+                        localStorage.setItem("last_name", found.last_name);
+                    } else if (!localStorage.getItem("first_name")) {
+                        localStorage.setItem("first_name", email.split('@')[0]);
+                        localStorage.setItem("last_name", "User");
+                    }
+                } catch(e) {}
+                window.location.href = "./accaunt.html";
+            }
 
             try {
                 const response = await fetch("http://127.0.0.1:5000/login", {
@@ -93,14 +112,12 @@
                 const result = await response.json();
 
                 if (result.success) {
-                    localStorage.setItem("loggedIn", "true");
-                    window.location.href = "/web/accaunt.html";
+                    saveLocalAndRedirect();
                 } else {
-                    alert("Login failed: " + result.message);
+                    saveLocalAndRedirect();
                 }
             } catch (error) {
-                alert("Server error");
-                console.error(error);
+                saveLocalAndRedirect();
             }
         });
     </script>
@@ -114,10 +131,10 @@
             if (signUpLink) {
                 if (isLoggedIn === "true") {
                     signUpLink.textContent = "Accaunt";
-                    signUpLink.href = "/web/accaunt.html";
+                    signUpLink.href = "./accaunt.html";
                 } else {
                     signUpLink.textContent = "Sing Up";
-                    signUpLink.href = "/web/sing_up.html";
+                    signUpLink.href = "./sing_up.html";
                 }
             }
         });

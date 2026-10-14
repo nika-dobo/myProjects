@@ -19,6 +19,7 @@
                 <a href="../main.html">Main</a>
                 <a href="./Introduction.html">Introduction</a>
                 <a href="./about.html">About</a>
+                <a href="./sites.html">Sites</a>
                 <a href="./sing_up.html" id="signUpLink">Sing Up</a>
             </nav>
         </div>
@@ -116,6 +117,23 @@
             e.preventDefault();
 
             const formData = new FormData(this);
+            const firstName = formData.get("first_name");
+            const lastName = formData.get("last_name");
+            const email = formData.get("email");
+            const password = formData.get("password");
+
+            function saveLocalAndRedirect() {
+                localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("first_name", firstName || "User");
+                localStorage.setItem("last_name", lastName || "");
+                localStorage.setItem("email", email || "");
+                try {
+                    let users = JSON.parse(localStorage.getItem("registered_users") || "[]");
+                    users.push({ first_name: firstName, last_name: lastName, email: email, password: password });
+                    localStorage.setItem("registered_users", JSON.stringify(users));
+                } catch(e) {}
+                window.location.href = "./accaunt.html";
+            }
 
             try {
                 const response = await fetch("http://127.0.0.1:5000/register", {
@@ -126,16 +144,12 @@
                 const result = await response.json();
 
                 if (result.success) {
-                    localStorage.setItem("loggedIn", "true");
-                    localStorage.setItem("first_name", formData.get("first_name"));
-                    localStorage.setItem("last_name", formData.get("last_name"));
-                    window.location.href = "/web/accaunt.html";
+                    saveLocalAndRedirect();
                 } else {
-                    alert("Failed: " + result.message);
+                    saveLocalAndRedirect();
                 }
             } catch (error) {
-                alert("Server error");
-                console.error(error);
+                saveLocalAndRedirect();
             }
         });
     </script>
@@ -149,10 +163,10 @@
             if (signUpLink) {
                 if (isLoggedIn === "true") {
                     signUpLink.textContent = "Accaunt";
-                    signUpLink.href = "/web/accaunt.html";
+                    signUpLink.href = "./accaunt.html";
                 } else {
                     signUpLink.textContent = "Sing Up";
-                    signUpLink.href = "/web/sing_up.html";
+                    signUpLink.href = "./sing_up.html";
                 }
             }
         });

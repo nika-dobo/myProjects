@@ -1,107 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
   <title>Frontend Mentor | Bento grid</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <div class="main">
-
-    <div class="first f">
-
-      <p class="fir">
-
-        Social Media 10x Faster with AI
-        Over 4,000 5-star reviews
-      </p>
-      <img src="./assets/images/illustration-five-stars.webp" alt="">
+  <main class="bento-container">
+    <!-- Card 1: Hero (Center Top) -->
+    <div class="bento-card card-hero">
+      <h1>Social Media <span class="highlight">10x</span> <em>Faster</em> with AI</h1>
+      <img src="./assets/images/illustration-five-stars.webp" alt="5 stars" class="stars-img" />
+      <p>Over 4,000 5-star reviews</p>
     </div>
 
-    <div class="second f">
-
-      <p class="sedc">
-
-        Manage multiple accounts and platforms.
-      </p>
-      <img src="./assets/images/illustration-multiple-platforms.webp" alt="">
+    <!-- Card 2: Multiple Accounts (Col 2, Row 2) -->
+    <div class="bento-card card-multiple">
+      <div class="img-wrapper">
+        <img src="./assets/images/illustration-multiple-platforms.webp" alt="Multiple platforms" />
+      </div>
+      <h2>Manage multiple accounts and platforms.</h2>
     </div>
 
-    <div class="third f">
-
-      <p class="thr">
-
-        Maintain a consistent posting schedule.
-      </p>
-      <img src="./assets/images/illustration-consistent-schedule.webp" alt="">
+    <!-- Card 3: Consistent Schedule (Col 3, Row 2) -->
+    <div class="bento-card card-consistent">
+      <h2>Maintain a consistent posting schedule.</h2>
+      <div class="img-wrapper">
+        <img src="./assets/images/illustration-consistent-schedule.webp" alt="Consistent schedule" />
+      </div>
     </div>
 
-    <div class="fourth f">
-
-      <p class="for">
-        Schedule to social media.
-        Optimize post timings to publish content at the perfect time for your audience.
-      </p>
-      <img src="./assets/images/illustration-schedule-posts.webp" alt="">
+    <!-- Card 4: Schedule to Social Media (Col 4, Row 1-2) -->
+    <div class="bento-card card-schedule">
+      <h2>Schedule to social media.</h2>
+      <div class="img-wrapper">
+        <img src="./assets/images/illustration-schedule-posts.webp" alt="Schedule posts graph" />
+      </div>
+      <p>Optimize post timings to publish content at the perfect time for your audience.</p>
     </div>
 
-
-    <div class="fifth f">
-      <p class="fifyh">
-        <img src="./assets/images/illustration-grow-followers.webp" alt="">
-        Grow followers with non-stop content.
-      </p>
-
+    <!-- Card 5: Grow Followers (Col 3-4, Row 3) -->
+    <div class="bento-card card-grow">
+      <div class="img-wrapper">
+        <img src="./assets/images/illustration-grow-followers.webp" alt="Follower growth chart" />
+      </div>
+      <h2>Grow followers with non-stop content.</h2>
     </div>
 
-    <div class="sixth f">
-      <p class="six">
-
-        >56% faster audience growth
-      </p>
-      <img src="./assets/images/illustration-audience-growth.webp" alt="">
+    <!-- Card 6: Faster Audience Growth (Col 2, Row 3) -->
+    <div class="bento-card card-audience">
+      <div class="stat-number">>56%</div>
+      <p>faster audience growth</p>
+      <div class="img-wrapper">
+        <img src="./assets/images/illustration-audience-growth.webp" alt="Audience member avatars" />
+      </div>
     </div>
 
-    <div class="seventh f">
-
-      <p class="sev">
-
-        Create and schedule content quicker.
-      </p>
-      <img src="./assets/images/illustration-create-post.webp" alt="">
-
+    <!-- Card 7: Create & Schedule (Col 1, Row 1) -->
+    <div class="bento-card card-create">
+      <h2>Create and schedule content <span class="italic-purple">quicker.</span></h2>
+      <div class="img-wrapper">
+        <img src="./assets/images/illustration-create-post.webp" alt="Create post button" />
+      </div>
     </div>
 
-    <div class="eight f">
-
-      <p class="eig">
-
-        Write your content using AI.
-      </p>
-      <img src="./assets/images/illustration-ai-content.webp" alt="">
+    <!-- Card 8: Write Content AI (Col 1, Row 2) -->
+    <div class="bento-card card-ai">
+      <h2>Write your content using AI.</h2>
+      <div class="img-wrapper">
+        <img src="./assets/images/illustration-ai-content.webp" alt="AI chat box" />
+      </div>
     </div>
-  </div>
+  </main>
 
 </body>
-
 </html>

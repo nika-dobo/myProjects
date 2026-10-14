@@ -1,96 +1,330 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f7f7f7;
+  color: #121212;
+  min-height: 100vh;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-family: sans-serif;
-  display: flex;
-  height: 100vh;
+  padding: 40px 20px;
 }
 
-.main {
+.bento-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* height: 700px; */
-  width: 845px;
-  border: 1px solid red;
-  grid-template-rows: 250px 75px 125px 200px;
-  gap: 15px;
+  grid-template-columns: 250px 250px 250px 250px;
+  grid-template-rows: 150px 150px 120px 120px 120px 120px;
+  gap: 24px;
+  max-width: 1080px;
+  width: 100%;
 }
 
-.f {
-  border-radius: 5px;
+.bento-card {
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 28px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-img {
-  width: 100px;
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.first {
-  background: hsl(256, 67%, 59%);
-  grid-column: 2/4;
-  grid-row: 1/2;
-  display: flex;
+/* Card 1: Hero */
+.card-hero {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  background-color: hsl(256, 67%, 59%);
+  color: #ffffff;
+  text-align: center;
   align-items: center;
   justify-content: center;
-}
-/* 
-.first img{
-    d
-} */
-
-.second {
-  background: hsl(0, 0%, 100%);
-  grid-column: 2/3;
-  grid-row: 2/4;
-  display: flex;
+  padding: 32px 36px;
 }
 
-.third {
-  background: hsl(39, 100%, 71%);
-  grid-column: 3/4;
-  grid-row: 2/4;
+.card-hero h1 {
+  font-size: 2.75rem;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
 }
 
-.fourth {
-  background: hsl(254, 88%, 90%);
-  grid-column: 4/5;
-  grid-row: 1/4;
+.card-hero .highlight {
+  color: hsl(39, 100%, 71%);
+  font-weight: 600;
 }
 
-.fifth {
-  background: hsl(256, 67%, 59%);
-  grid-row: 4/5;
-  grid-column: 3/5;
+.card-hero em {
+  font-style: italic;
+}
+
+.card-hero .stars-img {
+  width: 180px;
+  margin-bottom: 8px;
+}
+
+.card-hero p {
+  font-size: 1.05rem;
+  color: #f7f5ff;
+}
+
+/* Card 2: Multiple Accounts */
+.card-multiple {
+  grid-column: 2 / 3;
+  grid-row: 3 / 5;
+  background-color: #ffffff;
+  padding: 24px;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.card-multiple .img-wrapper {
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.card-multiple img {
+  width: 110%;
+  max-width: none;
+}
+
+.card-multiple h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+/* Card 3: Consistent Schedule */
+.card-consistent {
+  grid-column: 3 / 4;
+  grid-row: 3 / 5;
+  background-color: hsl(39, 100%, 71%);
+  padding: 24px;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+.card-consistent h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.card-consistent .img-wrapper {
+  margin-bottom: -40px;
+}
+
+.card-consistent img {
+  width: 90%;
+  max-width: 200px;
+}
+
+/* Card 4: Schedule to Social Media */
+.card-schedule {
+  grid-column: 4 / 5;
+  grid-row: 1 / 5;
+  background-color: hsl(254, 88%, 90%);
+  padding: 30px 24px;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+.card-schedule h2 {
+  font-size: 1.65rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.card-schedule .img-wrapper {
+  margin-right: -40px;
+  margin-bottom: 18px;
+}
+
+.card-schedule img {
+  width: 130%;
+  max-width: none;
+}
+
+.card-schedule p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #333333;
+}
+
+/* Card 5: Grow Followers */
+.card-grow {
+  grid-column: 3 / 5;
+  grid-row: 5 / 7;
+  background-color: hsl(256, 67%, 59%);
+  color: #ffffff;
   flex-direction: row;
-  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 30px;
 }
 
-.sixth {
-  background: hsl(0, 0%, 100%);
-  grid-column: 2/3;
-  grid-row: 4/5;
+.card-grow img {
+  width: 175px;
+  flex-shrink: 0;
 }
 
-.seventh {
+.card-grow h2 {
+  font-size: 1.85rem;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+/* Card 6: Audience Growth */
+.card-audience {
+  grid-column: 2 / 3;
+  grid-row: 5 / 7;
+  background-color: #ffffff;
+  padding: 24px;
+  justify-content: space-between;
+}
+
+.card-audience .stat-number {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+
+.card-audience p {
+  font-size: 1rem;
+  color: #333333;
+  margin-bottom: 14px;
+}
+
+.card-audience img {
+  width: 160px;
+}
+
+/* Card 7: Create & Schedule (Left Top) */
+.card-create {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
   background-color: hsl(31, 66%, 93%);
-  grid-row: 1/3;
-  grid-column: 1/2;
+  padding: 30px 24px;
+  justify-content: space-between;
 }
 
-.eight {
-  background: hsl(39, 100%, 71%);
-  grid-row: 3/5;
-  grid-column: 1/2;
+.card-create h2 {
+  font-size: 1.85rem;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  margin-bottom: 20px;
 }
 
-.fir {
-  padding: 30px;
-  font-size: 30px;
+.card-create .italic-purple {
+  color: hsl(256, 67%, 59%);
+  font-style: italic;
+}
+
+.card-create img {
+  width: 100%;
+}
+
+/* Card 8: AI Content (Left Bottom) */
+.card-ai {
+  grid-column: 1 / 2;
+  grid-row: 4 / 7;
+  background-color: hsl(39, 100%, 71%);
+  padding: 26px 24px;
+  justify-content: space-between;
+}
+
+.card-ai h2 {
+  font-size: 1.85rem;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
+}
+
+.card-ai img {
+  width: 100%;
+}
+
+/* ===== Responsive Layout ===== */
+@media (max-width: 1100px) {
+  .bento-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    max-width: 680px;
+  }
+
+  .card-hero {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+
+  .card-create {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+
+  .card-ai {
+    grid-column: 2 / 3;
+    grid-row: auto;
+  }
+
+  .card-multiple {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+
+  .card-consistent {
+    grid-column: 2 / 3;
+    grid-row: auto;
+  }
+
+  .card-schedule {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+
+  .card-audience {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+
+  .card-grow {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card-hero, .card-create, .card-ai, .card-multiple, .card-consistent, .card-schedule, .card-audience, .card-grow {
+    grid-column: 1 / 2;
+  }
+
+  .card-grow {
+    flex-direction: column;
+    text-align: center;
+  }
 }
