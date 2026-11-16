@@ -55,7 +55,32 @@
                 <span class="stat-label">Small Projects</span>
             </div>
         </div>
+
+        <!-- Search & Filter -->
+        <div class="search-hub">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="project-search" placeholder="მოძებნე პროექტი ან ტექნოლოგია (React, Next.js, Multi-page, Game...)" autocomplete="off">
+                <span class="search-kbd" id="search-kbd">/</span>
+                <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+            </div>
+            <div class="filter-pills" id="filter-pills">
+                <button type="button" class="filter-pill active" data-filter="all">ყველა (57)</button>
+                <button type="button" class="filter-pill" data-filter="big">🔥 Big (24)</button>
+                <button type="button" class="filter-pill" data-filter="medium">⚙️ Medium (9)</button>
+                <button type="button" class="filter-pill" data-filter="small">✨ Small (24)</button>
+                <button type="button" class="filter-pill" data-filter="multipage">📄 Multi-page</button>
+                <button type="button" class="filter-pill" data-filter="app">🚀 Open App / Live</button>
+            </div>
+            <p class="search-status" id="search-status"></p>
+        </div>
     </section>
+
+    <div class="search-empty" id="search-empty">
+        <h3>პროექტი ვერ მოიძებნა</h3>
+        <p>სცადე სხვა საძიებო სიტყვა ან გაასუფთავე ფილტრი.</p>
+        <button type="button" class="reset-search-btn" id="reset-search-btn">ფილტრის გასუფთავება</button>
+    </div>
 
     <!-- ========================================================
          LEVEL 1: BIG PROJECTS
@@ -1035,6 +1060,114 @@
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Search & Filter
+        const searchInput = document.getElementById('project-search');
+        const clearBtn = document.getElementById('search-clear');
+        const kbdHint = document.getElementById('search-kbd');
+        const statusEl = document.getElementById('search-status');
+        const emptyEl = document.getElementById('search-empty');
+        const resetBtn = document.getElementById('reset-search-btn');
+        const filterBtns = document.querySelectorAll('#filter-pills .filter-pill');
+        const sections = document.querySelectorAll('.level-section');
+        let activeFilter = 'all';
+
+        sections.forEach(sec => {
+            const countEl = sec.querySelector('.level-count');
+            if (countEl && !sec.dataset.originalCount) {
+                sec.dataset.originalCount = countEl.textContent.trim();
+            }
+        });
+
+        function applySearchAndFilter() {
+            const q = searchInput.value.trim().toLowerCase();
+            const isFiltering = q.length > 0 || activeFilter !== 'all';
+
+            clearBtn.style.display = q.length > 0 ? 'inline-block' : 'none';
+            kbdHint.style.display = q.length > 0 ? 'none' : '';
+
+            let totalShown = 0;
+
+            sections.forEach(sec => {
+                const secId = sec.id;
+                const cards = sec.querySelectorAll('.project-card');
+                let secShown = 0;
+
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    const hrefs = Array.from(card.querySelectorAll('a'))
+                        .map(a => (a.getAttribute('href') || '').toLowerCase())
+                        .join(' ');
+                    const linkLabels = Array.from(card.querySelectorAll('a'))
+                        .map(a => a.textContent.toLowerCase())
+                        .join(' ');
+
+                    let matchesFilter = true;
+                    if (activeFilter === 'big' || activeFilter === 'medium' || activeFilter === 'small') {
+                        matchesFilter = secId === activeFilter;
+                    } else if (activeFilter === 'multipage') {
+                        matchesFilter = text.includes('multi-page');
+                    } else if (activeFilter === 'app') {
+                        matchesFilter = linkLabels.includes('open app') || linkLabels.includes('live demo');
+                    }
+
+                    const matchesQuery = !q || text.includes(q) || hrefs.includes(q);
+                    const show = matchesFilter && matchesQuery;
+
+                    card.style.display = show ? '' : 'none';
+                    if (show) {
+                        card.classList.add('visible');
+                        secShown++;
+                        totalShown++;
+                    }
+                });
+
+                const countEl = sec.querySelector('.level-count');
+                if (countEl) {
+                    countEl.textContent = isFiltering ? `${secShown} shown` : sec.dataset.originalCount;
+                }
+                sec.style.display = secShown > 0 ? '' : 'none';
+                if (secShown > 0) sec.classList.add('visible');
+            });
+
+            if (isFiltering) {
+                statusEl.textContent = `ნაპოვნია: ${totalShown} პროექტი`;
+            } else {
+                statusEl.textContent = '';
+            }
+            emptyEl.style.display = totalShown === 0 ? 'block' : 'none';
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeFilter = btn.dataset.filter;
+                filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+                applySearchAndFilter();
+            });
+        });
+
+        searchInput.addEventListener('input', applySearchAndFilter);
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            applySearchAndFilter();
+            searchInput.focus();
+        });
+        resetBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            activeFilter = 'all';
+            filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+            applySearchAndFilter();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                e.preventDefault();
+                searchInput.focus();
+            } else if (e.key === 'Escape' && document.activeElement === searchInput && searchInput.value) {
+                searchInput.value = '';
+                applySearchAndFilter();
+            }
         });
     </script>
 
