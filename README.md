@@ -1,6 +1,6 @@
 # ⚡ MyProjects — Web Portfolio Hub
 
-A curated portfolio index of **53 completed web projects** organized by scope (**20 Big · 9 Medium · 24 Small**), spanning React + Tailwind CSS applications, hackathon builds, API integrations, and Frontend Mentor UI challenges.
+A curated portfolio index of **55 completed web projects** organized by scope (**22 Big · 9 Medium · 24 Small**), spanning React + Tailwind CSS applications, hackathon builds, API integrations, and Frontend Mentor UI challenges.
 
 Open [`allWeb.html`](./allWeb.html) in a browser (or serve the repository locally) to browse and launch every project.
 
@@ -8,6 +8,8 @@ Open [`allWeb.html`](./allWeb.html) in a browser (or serve the repository locall
 
 - **CIPHER//50 — Web Engineering Escape Room** (`React 18 · Tailwind · Vite · Serverless API`) — [Live Demo](https://hakaton-escape-room-v2.vercel.app) · [Repo](https://github.com/nika-dobo/Hakaton-Escape-Room-v2)
 - **Python Learn Platform** (`React 19 · Tailwind v4 · Context API`) — [Live Demo](https://python-learn-self.vercel.app) · [Repo](https://github.com/nika-dobo/python_learn)
+- **BoholVista — Island Travel & Booking** (`React 19 · Tailwind v4 · Python FastAPI · SQLite`) — [`./bigProjects/boholvista/`](./bigProjects/boholvista/index.html) · [Repo](https://github.com/nika-dobo/BoholVista)
+- **Salt Restaurant — Terrace & Bar** (`React 18 · Tailwind · React Router`) — [`./bigProjects/salt-restaurant/`](./bigProjects/salt-restaurant/index.html)
 - **Product Store CRUD (React)** (`React 19 · Tailwind v4 · Vite`) — [`./bigProjects/react-store/`](./bigProjects/react-store/index.html)
 - **Weather Dashboard (React)** (`React 19 · React Router · Tailwind v4`) — [`./bigProjects/weather-react/`](./bigProjects/weather-react/index.html)
 - **SoundShift — Audio Deduction Game** (`Node.js · Express · Socket.io`) — [Repo](https://github.com/nika-dobo/SoundShift)
