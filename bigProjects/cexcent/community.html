@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community &amp; Customers — Nexcent</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="hw.html" class="nx-logo"><img src="Icon.png" alt="Nexcent logo" /><span>Nexcent</span></a>
+      <nav class="nx-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="community.html" class="active">Community</a>
+        <a href="blog.html">Blog</a>
+        <a href="pricing.html">Pricing</a>
+      </nav>
+      <a href="register.html" class="nx-btn">Register Now</a>
+    </div>
+  </header>
+
+  <section class="nx-hero">
+    <div class="nx-hero-inner">
+      <div>
+        <span class="nx-badge">2,245,341+ Members Worldwide</span>
+        <h1 style="margin-top: 12px;">Trusted by <span>associations &amp; clubs</span></h1>
+        <p>See how sports federations, non-profits, and creative teams scale their communities with Nexcent.</p>
+      </div>
+      <div style="text-align: center;">
+        <img src="pana.png" alt="Community growth illustration" style="max-width: 340px; width: 100%;" />
+      </div>
+    </div>
+  </section>
+
+  <main class="nx-main">
+    <section>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px;">
+        <h2 style="font-size: 28px; color: #263238;">Customer Stories</h2>
+        <div class="nx-pills" role="group" aria-label="Filter customer stories">
+          <button type="button" class="nx-pill active" data-org="All">All</button>
+          <button type="button" class="nx-pill" data-org="Sports">Sports</button>
+          <button type="button" class="nx-pill" data-org="Non-Profit">Non-Profit</button>
+          <button type="button" class="nx-pill" data-org="Tech">Tech &amp; Agencies</button>
+        </div>
+      </div>
+
+      <div id="stories-grid" class="nx-grid-2"></div>
+    </section>
+  </main>
+
+  <footer class="nx-footer">
+    <div class="nx-footer-inner">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="Icon111.png" alt="" style="width: 28px;" />
+          <strong style="font-size: 20px;">Nexcent</strong>
+        </div>
+        <p style="font-size: 13px; color: #b0bec5;">Community &amp; Membership Management Suite</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="nx-footer-links">
+          <a href="hw.html">Home</a>
+          <a href="features.html">Features</a>
+          <a href="community.html">Community</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <div class="nx-footer-links">
+          <a href="pricing.html">Pricing</a>
+          <a href="register.html">Book a Demo</a>
+          <a href="register.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const STORIES = [
+      {
+        name: "British Dragon Boat Racing Association",
+        type: "Sports",
+        lead: "Tim Smith",
+        summary: "Unified 60+ regional racing clubs onto a single membership portal, automating annual licensing and event entries.",
+        impact: "42% faster seasonal onboarding"
+      },
+      {
+        name: "Triathlon Australia",
+        type: "Sports",
+        lead: "Membership Operations",
+        summary: "Revamped national-to-club membership tiers with automated renewal reminders and instant digital credentials.",
+        impact: "+18% year-over-year retention"
+      },
+      {
+        name: "OneRen Community Trust",
+        type: "Non-Profit",
+        lead: "Safeguarding Team",
+        summary: "Streamlined safeguarding compliance workflows and volunteer background checks across cultural and leisure venues.",
+        impact: "100% audit readiness"
+      },
+      {
+        name: "Pixelgrade Studio Network",
+        type: "Tech",
+        lead: "Product Team",
+        summary: "Migrated client member portals and billing into Nexcent over a three-year partnership.",
+        impact: "3x reduction in manual billing work"
+      }
+    ];
+
+    const grid = document.getElementById("stories-grid");
+    const buttons = document.querySelectorAll("[data-org]");
+
+    function renderStories(cat) {
+      buttons.forEach((b) => b.classList.toggle("active", b.dataset.org === cat));
+      const list = cat === "All" ? STORIES : STORIES.filter((s) => s.type === cat);
+      grid.innerHTML = list
+        .map(
+          (s) => `
+          <article class="nx-card">
+            <span class="nx-badge">${s.type}</span>
+            <h3>${s.name}</h3>
+            <p>${s.summary}</p>
+            <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid #e2e8ed; display: flex; justify-content: space-between; font-size: 13px;">
+              <span style="color: #717171;">Lead: ${s.lead}</span>
+              <strong style="color: #388e3c;">${s.impact}</strong>
+            </div>
+          </article>`
+        )
+        .join("");
+    }
+
+    buttons.forEach((b) => b.addEventListener("click", () => renderStories(b.dataset.org)));
+    renderStories("All");
+  </script>
+</body>
+</html>

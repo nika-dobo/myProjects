@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Vehicles &amp; Build &amp; Price — Ford Lineup</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="fd-header">
+    <div class="fd-header-inner">
+      <a href="hw.html" class="fd-logo"><img src="img/e45f4eede28b7902eebef7944a80c4ec1e9943d0.png" alt="Ford Logo" /></a>
+      <nav class="fd-nav" aria-label="Main navigation">
+        <a href="hw.html">HOME</a>
+        <a href="suvs.html">SUVS</a>
+        <a href="trucks.html">TRUCKS</a>
+        <a href="electrified.html">ELECTRIFIED</a>
+        <a href="vehicles.html" class="active">ALL VEHICLES</a>
+      </nav>
+      <div class="fd-auth-links">
+        <a href="auth.html" style="font-size: 14px; font-weight: 500;">Sign in</a>
+        <a href="auth.html?tab=signup" class="fd-btn fd-btn-outline">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="fd-hero">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <span class="fd-badge">Complete Showroom</span>
+      <h1>All Vehicles &amp; Custom Order Builder</h1>
+      <p>Filter the full lineup or configure your custom Mustang, Bronco, F-150, or Mach-E with instant pricing.</p>
+    </div>
+  </section>
+
+  <main class="fd-main">
+    <!-- Inventory Filter -->
+    <section>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-bottom: 24px;">
+        <div class="fd-pills" role="group" aria-label="Filter vehicles">
+          <button type="button" class="fd-pill active" data-type="All">All</button>
+          <button type="button" class="fd-pill" data-type="Performance">Performance</button>
+          <button type="button" class="fd-pill" data-type="SUV">SUV</button>
+          <button type="button" class="fd-pill" data-type="Truck">Truck</button>
+          <button type="button" class="fd-pill" data-type="Electric">Electric</button>
+        </div>
+        <input id="veh-search" type="search" class="fd-input" style="max-width: 280px;" placeholder="Search model..." aria-label="Search vehicle models" />
+      </div>
+
+      <div id="veh-grid" class="fd-grid-3"></div>
+    </section>
+
+    <!-- Interactive Build & Price Configurator -->
+    <section id="builder" class="fd-card" style="padding: 36px; background: #f6f8fb;">
+      <span class="fd-badge">Custom Order Studio</span>
+      <h2 style="font-size: 28px; color: #003478; margin-top: 8px;">Build &amp; Price Your Ford</h2>
+      <p style="color: #546266;">Choose your model, trim package, and exterior finish to generate a dealer reservation code.</p>
+
+      <div class="fd-grid-2" style="margin-top: 20px; align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <label for="cfg-model" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">1. Select Model</label>
+            <select id="cfg-model" class="fd-select">
+              <option value="mustang">Mustang EcoBoost / GT ($27,205 base)</option>
+              <option value="bronco">Ford Bronco ($39,630 base)</option>
+              <option value="f150">Ford F-150 ($38,710 base)</option>
+              <option value="mach-e">Mustang Mach-E ($39,995 base)</option>
+              <option value="explorer">Ford Explorer ($39,755 base)</option>
+              <option value="maverick">Ford Maverick ($26,395 base)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="cfg-trim" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">2. Select Trim Level</label>
+            <select id="cfg-trim" class="fd-select">
+              <option value="0">Standard Equipment ($0)</option>
+              <option value="4800">Premium / Lariat Package (+$4,800)</option>
+              <option value="11500">GT / Performance / Raptor Trim (+$11,500)</option>
+            </select>
+          </div>
+
+          <div>
+            <span style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px;">3. Exterior Paint</span>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button type="button" class="fd-pill active" data-paint="Oxford White" data-paint-price="0">Oxford White ($0)</button>
+              <button type="button" class="fd-pill" data-paint="Velocity Blue" data-paint-price="495">Velocity Blue (+$495)</button>
+              <button type="button" class="fd-pill" data-paint="Rapid Red Metallic" data-paint-price="695">Rapid Red (+$695)</button>
+              <button type="button" class="fd-pill" data-paint="Shadow Black" data-paint-price="0">Shadow Black ($0)</button>
+            </div>
+          </div>
+
+          <label style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; cursor: pointer;">
+            <input id="cfg-tech" type="checkbox" style="width: 18px; height: 18px; accent-color: #003478;" />
+            Add Co-Pilot360 Assist+ &amp; Connected Navigation (+$1,295)
+          </label>
+        </div>
+
+        <div class="fd-card" style="background: #ffffff;">
+          <img id="cfg-img" src="img/c07a982a8e3d70b457edd0a5221be137ddc98b4a.png" alt="Configured vehicle" style="width: 100%; height: 190px; object-fit: contain;" />
+          <h3 id="cfg-summary-title">Mustang EcoBoost / GT</h3>
+          <p id="cfg-summary-meta">Standard Equipment · Oxford White</p>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid #dce3ec; padding-top: 14px;">
+            <span style="font-size: 13px; color: #546266;">Estimated Total MSRP</span>
+            <strong id="cfg-total" style="font-size: 28px; color: #003478;">$27,205</strong>
+          </div>
+          <button type="button" id="cfg-reserve" class="fd-btn">Generate Dealer Order Code</button>
+          <p id="cfg-msg" style="display: none; font-size: 13px; font-weight: 600; color: #003478; background: #eef3fa; padding: 10px 12px; border-radius: 8px;"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fd-footer">
+    <div class="fd-footer-inner">
+      <img src="img/e45f4eede28b7902eebef7944a80c4ec1e9943d0.png" alt="Ford Logo" style="width: 96px; filter: brightness(0) invert(1);" />
+      <div class="fd-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="suvs.html">SUVs</a>
+        <a href="trucks.html">Trucks</a>
+        <a href="electrified.html">Electrified</a>
+        <a href="vehicles.html">Build &amp; Price</a>
+        <a href="auth.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const MODELS = {
+      mustang: { name: "Ford Mustang", type: "Performance", price: 27205, hp: "315–760 hp", mpg: "21/30 MPG", img: "img/c07a982a8e3d70b457edd0a5221be137ddc98b4a.png" },
+      bronco: { name: "Ford Bronco", type: "SUV", price: 39630, hp: "330 hp", mpg: "4x4 Trail", img: "img/car2.png" },
+      f150: { name: "Ford F-150", type: "Truck", price: 38710, hp: "400 hp", mpg: "13,500 lbs tow", img: "img/car3.png" },
+      "mach-e": { name: "Mustang Mach-E", type: "Electric", price: 39995, hp: "480 hp GT", mpg: "320 mi range", img: "img/car.png" },
+      explorer: { name: "Ford Explorer", type: "SUV", price: 39755, hp: "300–400 hp", mpg: "7 Seats", img: "img/car2.png" },
+      maverick: { name: "Ford Maverick", type: "Truck", price: 26395, hp: "191–250 hp", mpg: "42 City MPG", img: "img/car3.png" }
+    };
+
+    const grid = document.getElementById("veh-grid");
+    const search = document.getElementById("veh-search");
+    const typePills = document.querySelectorAll("[data-type]");
+    let activeType = "All";
+
+    function renderGrid() {
+      const q = search.value.trim().toLowerCase();
+      typePills.forEach((p) => p.classList.toggle("active", p.dataset.type === activeType));
+      const entries = Object.entries(MODELS).filter(([, m]) => {
+        const matchType = activeType === "All" || m.type === activeType;
+        const matchQ = !q || m.name.toLowerCase().includes(q) || m.type.toLowerCase().includes(q);
+        return matchType && matchQ;
+      });
+
+      grid.innerHTML = entries
+        .map(
+          ([key, m]) => `
+          <article class="fd-card">
+            <img src="${m.img}" alt="${m.name}" style="width: 100%; height: 150px; object-fit: contain;" />
+            <span class="fd-badge">${m.type}</span>
+            <h3>${m.name}</h3>
+            <div class="fd-specs">
+              <div>Starting<strong>$${m.price.toLocaleString()}</strong></div>
+              <div>Power<strong>${m.hp}</strong></div>
+              <div>Highlight<strong>${m.mpg}</strong></div>
+            </div>
+            <button type="button" class="fd-btn select-model-btn" data-key="${key}">Select in Builder</button>
+          </article>`
+        )
+        .join("");
+
+      grid.querySelectorAll(".select-model-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          modelSelect.value = btn.dataset.key;
+          updateBuilder();
+          document.getElementById("builder").scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    }
+
+    const modelSelect = document.getElementById("cfg-model");
+    const trimSelect = document.getElementById("cfg-trim");
+    const techCheck = document.getElementById("cfg-tech");
+    const paintBtns = document.querySelectorAll("[data-paint]");
+    let activePaint = "Oxford White";
+    let paintPrice = 0;
+
+    function updateBuilder() {
+      const m = MODELS[modelSelect.value] || MODELS.mustang;
+      const trimCost = Number(trimSelect.value);
+      const trimLabel = trimSelect.options[trimSelect.selectedIndex].text.split(" (")[0];
+      const techCost = techCheck.checked ? 1295 : 0;
+      const total = m.price + trimCost + paintPrice + techCost;
+
+      document.getElementById("cfg-img").src = m.img;
+      document.getElementById("cfg-summary-title").textContent = m.name;
+      document.getElementById("cfg-summary-meta").textContent =
+        `${trimLabel} · ${activePaint}${techCheck.checked ? " · Co-Pilot360+" : ""}`;
+      document.getElementById("cfg-total").textContent = `$${total.toLocaleString()}`;
+      document.getElementById("cfg-msg").style.display = "none";
+    }
+
+    const paramModel = new URLSearchParams(window.location.search).get("model");
+    if (paramModel && MODELS[paramModel]) {
+      modelSelect.value = paramModel;
+    }
+
+    typePills.forEach((p) => p.addEventListener("click", () => { activeType = p.dataset.type; renderGrid(); }));
+    search.addEventListener("input", renderGrid);
+
+    paintBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        paintBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        activePaint = btn.dataset.paint;
+        paintPrice = Number(btn.dataset.paintPrice);
+        updateBuilder();
+      });
+    });
+
+    modelSelect.addEventListener("change", updateBuilder);
+    trimSelect.addEventListener("change", updateBuilder);
+    techCheck.addEventListener("change", updateBuilder);
+
+    document.getElementById("cfg-reserve").addEventListener("click", () => {
+      const code = "FD-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+      const msg = document.getElementById("cfg-msg");
+      msg.style.display = "block";
+      msg.textContent = `Order summary code generated: ${code}. Share this code with your local Ford dealer.`;
+    });
+
+    renderGrid();
+    updateBuilder();
+  </script>
+</body>
+</html>

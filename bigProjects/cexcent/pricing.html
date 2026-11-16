@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Nexcent</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="hw.html" class="nx-logo"><img src="Icon.png" alt="Nexcent logo" /><span>Nexcent</span></a>
+      <nav class="nx-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="community.html">Community</a>
+        <a href="blog.html">Blog</a>
+        <a href="pricing.html" class="active">Pricing</a>
+      </nav>
+      <a href="register.html" class="nx-btn">Register Now</a>
+    </div>
+  </header>
+
+  <section class="nx-hero">
+    <div style="max-width: 780px; margin: 0 auto; text-align: center;">
+      <span class="nx-badge">Transparent Plans</span>
+      <h1 style="margin-top: 12px;">Simple pricing for <span>every community</span></h1>
+      <p style="margin: 14px auto 24px;">Start with a local club and scale to nationwide associations with zero hidden per-transaction surprises.</p>
+
+      <div class="nx-pills" style="justify-content: center;">
+        <button type="button" id="bill-monthly" class="nx-pill active">Monthly Billing</button>
+        <button type="button" id="bill-annual" class="nx-pill">Annual Billing (Save 20%)</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="nx-main">
+    <section class="nx-grid-3">
+      <article class="nx-card">
+        <span class="nx-badge">Starter</span>
+        <h3>Local Club</h3>
+        <div style="font-size: 36px; font-weight: 800; color: #263238;" data-price-monthly="$29" data-price-annual="$23">$29<span style="font-size: 14px; font-weight: 500; color: #717171;">/mo</span></div>
+        <p>Up to 250 active members, automated renewal emails, and event ticketing.</p>
+        <a href="register.html?plan=starter" class="nx-btn nx-btn-outline" style="margin-top: auto;">Choose Starter</a>
+      </article>
+
+      <article class="nx-card highlight">
+        <span class="nx-badge">Most Popular</span>
+        <h3>Growth Association</h3>
+        <div style="font-size: 36px; font-weight: 800; color: #388e3c;" data-price-monthly="$79" data-price-annual="$63">$79<span style="font-size: 14px; font-weight: 500; color: #717171;">/mo</span></div>
+        <p>Up to 2,500 members, multi-chapter admin roles, safeguarding tracking, and custom branding.</p>
+        <a href="register.html?plan=growth" class="nx-btn" style="margin-top: auto;">Start Growth Trial</a>
+      </article>
+
+      <article class="nx-card">
+        <span class="nx-badge">Enterprise</span>
+        <h3>National Federation</h3>
+        <div style="font-size: 36px; font-weight: 800; color: #263238;" data-price-monthly="$199" data-price-annual="$159">$199<span style="font-size: 14px; font-weight: 500; color: #717171;">/mo</span></div>
+        <p>Unlimited members, dedicated SLA, custom API webhooks, and multi-currency payouts.</p>
+        <a href="register.html?plan=enterprise" class="nx-btn nx-btn-outline" style="margin-top: auto;">Contact Sales</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="nx-footer">
+    <div class="nx-footer-inner">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="Icon111.png" alt="" style="width: 28px;" />
+          <strong style="font-size: 20px;">Nexcent</strong>
+        </div>
+        <p style="font-size: 13px; color: #b0bec5;">Community &amp; Membership Management Suite</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="nx-footer-links">
+          <a href="hw.html">Home</a>
+          <a href="features.html">Features</a>
+          <a href="community.html">Community</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <div class="nx-footer-links">
+          <a href="pricing.html">Pricing</a>
+          <a href="register.html">Book a Demo</a>
+          <a href="register.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const monthlyBtn = document.getElementById("bill-monthly");
+    const annualBtn = document.getElementById("bill-annual");
+    const prices = document.querySelectorAll("[data-price-monthly]");
+
+    function setBilling(isAnnual) {
+      monthlyBtn.classList.toggle("active", !isAnnual);
+      annualBtn.classList.toggle("active", isAnnual);
+      prices.forEach((el) => {
+        const val = isAnnual ? el.dataset.priceAnnual : el.dataset.priceMonthly;
+        el.innerHTML = `${val}<span style="font-size: 14px; font-weight: 500; color: #717171;">/mo</span>`;
+      });
+    }
+
+    monthlyBtn.addEventListener("click", () => setBilling(false));
+    annualBtn.addEventListener("click", () => setBilling(true));
+  </script>
+</body>
+</html>

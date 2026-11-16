@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — Nexcent</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="hw.html" class="nx-logo"><img src="Icon.png" alt="Nexcent logo" /><span>Nexcent</span></a>
+      <nav class="nx-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="features.html" class="active">Features</a>
+        <a href="community.html">Community</a>
+        <a href="blog.html">Blog</a>
+        <a href="pricing.html">Pricing</a>
+      </nav>
+      <a href="register.html" class="nx-btn">Register Now</a>
+    </div>
+  </header>
+
+  <section class="nx-hero">
+    <div class="nx-hero-inner">
+      <div>
+        <span class="nx-badge">Platform Capabilities</span>
+        <h1 style="margin-top: 12px;">Everything needed to <span>automate membership</span></h1>
+        <p>From recurring billing and event ticketing to safeguarding compliance and role-based member directories, Nexcent centralizes community operations.</p>
+        <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="register.html" class="nx-btn">Get a Demo</a>
+          <a href="pricing.html" class="nx-btn nx-btn-outline">View Pricing</a>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <img src="Frame 35.png" alt="Nexcent automation illustration" style="max-width: 360px; width: 100%;" />
+      </div>
+    </div>
+  </section>
+
+  <main class="nx-main">
+    <section>
+      <div class="nx-section-title">
+        <h2>Core Automation Modules</h2>
+        <p>Built for associations, clubs, federations, and growing member networks.</p>
+      </div>
+      <div class="nx-grid-3">
+        <article class="nx-card">
+          <img src="Icon (1).png" alt="" style="width: 48px;" />
+          <h3>Automated Renewals</h3>
+          <p>Trigger smart email reminders, auto-charge saved cards, and track churn metrics without spreadsheets.</p>
+        </article>
+        <article class="nx-card">
+          <img src="Icon (2).png" alt="" style="width: 48px;" />
+          <h3>Event &amp; Chapter Booking</h3>
+          <p>Manage regional events, attendance check-ins, and tiered member pricing from one calendar.</p>
+        </article>
+        <article class="nx-card">
+          <img src="Icon (3).png" alt="" style="width: 48px;" />
+          <h3>Safeguarding &amp; Compliance</h3>
+          <p>Track background checks, certifications, and expiry alerts automatically across every club chapter.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="nx-section-title">
+        <h2>Interactive Workflow Preview</h2>
+        <p>Select a department to inspect how Nexcent streamlines daily operations.</p>
+      </div>
+
+      <div class="nx-card" style="background: #f5f7fa;">
+        <div class="nx-pills" role="tablist" aria-label="Workflow roles">
+          <button type="button" class="nx-pill active" data-wf="admin">Membership Admins</button>
+          <button type="button" class="nx-pill" data-wf="finance">Finance Teams</button>
+          <button type="button" class="nx-pill" data-wf="chapters">Local Chapters</button>
+        </div>
+        <div id="wf-panel" style="margin-top: 12px; background: #ffffff; border-radius: 8px; padding: 24px; border: 1px solid #e2e8ed;"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="nx-footer">
+    <div class="nx-footer-inner">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="Icon111.png" alt="" style="width: 28px;" />
+          <strong style="font-size: 20px;">Nexcent</strong>
+        </div>
+        <p style="font-size: 13px; color: #b0bec5;">Community &amp; Membership Management Suite</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="nx-footer-links">
+          <a href="hw.html">Home</a>
+          <a href="features.html">Features</a>
+          <a href="community.html">Community</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <div class="nx-footer-links">
+          <a href="pricing.html">Pricing</a>
+          <a href="register.html">Book a Demo</a>
+          <a href="register.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const WORKFLOWS = {
+      admin: {
+        title: "Centralized Member Roster & Self-Service Portal",
+        desc: "Members update profiles, download receipts, and renew tiers online—cutting manual admin tickets by up to 65%.",
+        metrics: "99.2% Renewal Accuracy · Real-time Directory Sync"
+      },
+      finance: {
+        title: "Automated Invoicing, Payouts & Reconciliation",
+        desc: "Consolidate 1.9M+ annual transactions with instant tax-ready exports, multi-chapter splits, and failed-payment retries.",
+        metrics: "Instant Stripe & Bank Export · Zero Spreadsheet Audits"
+      },
+      chapters: {
+        title: "Regional Chapter Autonomy with Central Oversight",
+        desc: "Empower local club organizers to run events and safeguarding checks while headquarters retains clean reporting.",
+        metrics: "46,000+ Active Clubs · Role-Based Access"
+      }
+    };
+
+    const panel = document.getElementById("wf-panel");
+    const buttons = document.querySelectorAll("[data-wf]");
+
+    function renderWorkflow(key) {
+      const item = WORKFLOWS[key];
+      buttons.forEach((btn) => btn.classList.toggle("active", btn.dataset.wf === key));
+      panel.innerHTML = `
+        <h3 style="font-size: 20px; color: #263238;">${item.title}</h3>
+        <p style="margin-top: 8px; color: #717171; font-size: 15px;">${item.desc}</p>
+        <p style="margin-top: 14px; font-weight: 700; color: #388e3c; font-size: 13px;">${item.metrics}</p>`;
+    }
+
+    buttons.forEach((btn) => btn.addEventListener("click", () => renderWorkflow(btn.dataset.wf)));
+    renderWorkflow("admin");
+  </script>
+</body>
+</html>

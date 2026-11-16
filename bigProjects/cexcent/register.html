@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register &amp; Book a Demo — Nexcent</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="hw.html" class="nx-logo"><img src="Icon.png" alt="Nexcent logo" /><span>Nexcent</span></a>
+      <nav class="nx-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="community.html">Community</a>
+        <a href="blog.html">Blog</a>
+        <a href="pricing.html">Pricing</a>
+      </nav>
+      <a href="register.html" class="nx-btn">Register Now</a>
+    </div>
+  </header>
+
+  <main class="nx-main">
+    <section class="nx-grid-2" style="align-items: start;">
+      <div>
+        <span class="nx-badge">14-Day Free Trial</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); color: #263238; margin-top: 12px;">Launch your Nexcent workspace</h1>
+        <p style="margin-top: 12px; color: #717171;">Tell us about your organization and our onboarding team will prepare your membership portal demo.</p>
+        <div style="margin-top: 28px;">
+          <img src="Illustration.png" alt="Workspace onboarding" style="max-width: 340px; width: 100%;" />
+        </div>
+      </div>
+
+      <form id="nx-register-form" class="nx-card" novalidate>
+        <h3>Create Account / Request Demo</h3>
+        <div>
+          <label for="org-name" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Organization Name</label>
+          <input id="org-name" type="text" class="nx-input" placeholder="e.g. Tbilisi Tech Club" />
+        </div>
+        <div>
+          <label for="org-email" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Work Email</label>
+          <input id="org-email" type="email" class="nx-input" placeholder="you@organization.org" />
+        </div>
+        <div>
+          <label for="org-plan" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Plan Interest</label>
+          <select id="org-plan" class="nx-select">
+            <option value="starter">Starter ($29/mo)</option>
+            <option value="growth">Growth Association ($79/mo)</option>
+            <option value="enterprise">National Federation ($199/mo)</option>
+          </select>
+        </div>
+        <div id="nx-form-msg" style="display: none; padding: 12px; border-radius: 6px; font-size: 13px; font-weight: 600;"></div>
+        <button type="submit" class="nx-btn">Complete Registration</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="nx-footer">
+    <div class="nx-footer-inner">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="Icon111.png" alt="" style="width: 28px;" />
+          <strong style="font-size: 20px;">Nexcent</strong>
+        </div>
+        <p style="font-size: 13px; color: #b0bec5;">Community &amp; Membership Management Suite</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="nx-footer-links">
+          <a href="hw.html">Home</a>
+          <a href="features.html">Features</a>
+          <a href="community.html">Community</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <div class="nx-footer-links">
+          <a href="pricing.html">Pricing</a>
+          <a href="register.html">Book a Demo</a>
+          <a href="register.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const planSelect = document.getElementById("org-plan");
+    const urlPlan = new URLSearchParams(window.location.search).get("plan");
+    if (urlPlan && ["starter", "growth", "enterprise"].includes(urlPlan)) {
+      planSelect.value = urlPlan;
+    }
+
+    const regForm = document.getElementById("nx-register-form");
+    const msg = document.getElementById("nx-form-msg");
+
+    regForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const org = document.getElementById("org-name").value.trim();
+      const email = document.getElementById("org-email").value.trim();
+      msg.style.display = "block";
+      if (org.length < 2 || !email.includes("@")) {
+        msg.style.background = "#fef2f2";
+        msg.style.color = "#b91c1c";
+        msg.textContent = "Please provide an organization name and valid email.";
+        return;
+      }
+      msg.style.background = "#eaf6eb";
+      msg.style.color = "#2e7d32";
+      msg.textContent = `Workspace demo scheduled for ${org} (${planSelect.value} plan)!`;
+      regForm.reset();
+    });
+  </script>
+</body>
+</html>

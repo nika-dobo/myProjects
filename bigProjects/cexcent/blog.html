@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog &amp; Insights — Nexcent</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="nx-header">
+    <div class="nx-header-inner">
+      <a href="hw.html" class="nx-logo"><img src="Icon.png" alt="Nexcent logo" /><span>Nexcent</span></a>
+      <nav class="nx-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="community.html">Community</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="pricing.html">Pricing</a>
+      </nav>
+      <a href="register.html" class="nx-btn">Register Now</a>
+    </div>
+  </header>
+
+  <section class="nx-hero">
+    <div class="nx-hero-inner">
+      <div>
+        <span class="nx-badge">Caring Is The New Marketing</span>
+        <h1 style="margin-top: 12px;">The <span>Nexcent Blog</span></h1>
+        <p>Read practical playbooks on safeguarding, membership retention, recurring revenue, and community operations.</p>
+      </div>
+      <div>
+        <input id="blog-search" type="search" class="nx-input" placeholder="Search articles..." aria-label="Search blog articles" />
+      </div>
+    </div>
+  </section>
+
+  <main class="nx-main">
+    <section>
+      <div class="nx-pills" style="margin-bottom: 24px;" role="group" aria-label="Filter articles">
+        <button type="button" class="nx-pill active" data-topic="All">All</button>
+        <button type="button" class="nx-pill" data-topic="Safeguarding">Safeguarding</button>
+        <button type="button" class="nx-pill" data-topic="Membership">Membership</button>
+        <button type="button" class="nx-pill" data-topic="Product">Product</button>
+      </div>
+
+      <div id="blog-grid" class="nx-grid-3"></div>
+    </section>
+  </main>
+
+  <!-- Reader Modal -->
+  <div id="article-modal" style="display: none; position: fixed; inset: 0; z-index: 60; background: rgba(38,50,56,0.6); align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: #fff; max-width: 620px; width: 100%; border-radius: 12px; padding: 28px; position: relative;">
+      <button type="button" id="close-article" aria-label="Close article" style="position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border-radius: 8px; border: 1px solid #e2e8ed; background: #fff; cursor: pointer; font-size: 18px;">×</button>
+      <span id="modal-topic" class="nx-badge"></span>
+      <h2 id="modal-title" style="margin-top: 12px; font-size: 24px; color: #263238;"></h2>
+      <p id="modal-body" style="margin-top: 14px; color: #4d4d4d; font-size: 15px; line-height: 1.7;"></p>
+    </div>
+  </div>
+
+  <footer class="nx-footer">
+    <div class="nx-footer-inner">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="Icon111.png" alt="" style="width: 28px;" />
+          <strong style="font-size: 20px;">Nexcent</strong>
+        </div>
+        <p style="font-size: 13px; color: #b0bec5;">Community &amp; Membership Management Suite</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="nx-footer-links">
+          <a href="hw.html">Home</a>
+          <a href="features.html">Features</a>
+          <a href="community.html">Community</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <div class="nx-footer-links">
+          <a href="pricing.html">Pricing</a>
+          <a href="register.html">Book a Demo</a>
+          <a href="register.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const POSTS = [
+      {
+        title: "Creating Streamlined Safeguarding Processes with OneRen",
+        topic: "Safeguarding",
+        img: "7776b16fd94779a6038df61ab3795e3388d1c731.jpg",
+        excerpt: "How centralized compliance checklists cut volunteer onboarding time in half.",
+        body: "OneRen replaced fragmented spreadsheets with automated credential verification inside Nexcent. Club coordinators now receive automated renewal notices 30 days prior to certificate expiration, keeping 100% of active coaches compliant."
+      },
+      {
+        title: "What are your safeguarding responsibilities and how to manage them?",
+        topic: "Safeguarding",
+        img: "5b68113ad80dfca071d88cdc680544ed9cbcf9ed.jpg",
+        excerpt: "A practical framework for sports clubs and national associations.",
+        body: "Effective safeguarding starts with clear audit trails, role-based document visibility, and automated expiration workflows. Learn how to map your compliance requirements into repeatable digital checklists."
+      },
+      {
+        title: "Revamping the Membership Model with Triathlon Australia",
+        topic: "Membership",
+        img: "a353eb29cb260e5e45b8deb813272ee1a31ac6f1.jpg",
+        excerpt: "Connecting national tiers with local club benefits to boost retention.",
+        body: "By unifying national federation passes and local training club fees into a single checkout experience, Triathlon Australia removed friction at renewal time and increased annual member retention by 18%."
+      },
+      {
+        title: "Designing High-Converting Membership Footers & Portals",
+        topic: "Product",
+        img: "66af9e158d309dd1704c49bad560036519bae324.jpg",
+        excerpt: "Small UX improvements that reduce support emails and increase sign-ups.",
+        body: "Clear navigation hierarchies, visible pricing transparency, and instant self-service account links help members solve billing questions independently."
+      }
+    ];
+
+    const grid = document.getElementById("blog-grid");
+    const search = document.getElementById("blog-search");
+    const topicBtns = document.querySelectorAll("[data-topic]");
+    const modal = document.getElementById("article-modal");
+    let activeTopic = "All";
+
+    function renderPosts() {
+      const q = search.value.trim().toLowerCase();
+      topicBtns.forEach((b) => b.classList.toggle("active", b.dataset.topic === activeTopic));
+      const list = POSTS.filter((p) => {
+        const matchTopic = activeTopic === "All" || p.topic === activeTopic;
+        const matchQ = !q || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q);
+        return matchTopic && matchQ;
+      });
+
+      grid.innerHTML = list
+        .map(
+          (p, i) => `
+          <article class="nx-card" style="padding: 0; overflow: hidden;">
+            <img src="${p.img}" alt="${p.title}" style="width: 100%; height: 200px; object-fit: cover;" />
+            <div style="padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+              <span class="nx-badge">${p.topic}</span>
+              <h3>${p.title}</h3>
+              <p style="flex: 1;">${p.excerpt}</p>
+              <button type="button" class="nx-btn nx-btn-outline read-btn" data-idx="${POSTS.indexOf(p)}" style="align-self: flex-start;">Read Article</button>
+            </div>
+          </article>`
+        )
+        .join("");
+
+      grid.querySelectorAll(".read-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const post = POSTS[Number(btn.dataset.idx)];
+          document.getElementById("modal-topic").textContent = post.topic;
+          document.getElementById("modal-title").textContent = post.title;
+          document.getElementById("modal-body").textContent = post.body;
+          modal.style.display = "flex";
+        });
+      });
+    }
+
+    document.getElementById("close-article").addEventListener("click", () => { modal.style.display = "none"; });
+    modal.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
+    topicBtns.forEach((b) => b.addEventListener("click", () => { activeTopic = b.dataset.topic; renderPosts(); }));
+    search.addEventListener("input", renderPosts);
+    renderPosts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electrified &amp; EV Savings — Ford Lineup</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="fd-header">
+    <div class="fd-header-inner">
+      <a href="hw.html" class="fd-logo"><img src="img/e45f4eede28b7902eebef7944a80c4ec1e9943d0.png" alt="Ford Logo" /></a>
+      <nav class="fd-nav" aria-label="Main navigation">
+        <a href="hw.html">HOME</a>
+        <a href="suvs.html">SUVS</a>
+        <a href="trucks.html">TRUCKS</a>
+        <a href="electrified.html" class="active">ELECTRIFIED</a>
+        <a href="vehicles.html">ALL VEHICLES</a>
+      </nav>
+      <div class="fd-auth-links">
+        <a href="auth.html" style="font-size: 14px; font-weight: 500;">Sign in</a>
+        <a href="auth.html?tab=signup" class="fd-btn fd-btn-outline">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="fd-hero">
+    <div class="fd-hero-inner">
+      <div>
+        <span class="fd-badge">Zero Tailpipe Emissions</span>
+        <h1>All-electric performance &amp; home backup power</h1>
+        <p>Explore Mustang Mach-E and F-150 Lightning, and calculate how much you save annually by switching from gasoline.</p>
+      </div>
+      <div style="text-align: center;">
+        <img src="img/car.png" alt="Electrified Mustang" style="max-width: 440px; width: 100%;" />
+      </div>
+    </div>
+  </section>
+
+  <main class="fd-main">
+    <section class="fd-card" style="background: #0d1b2a; color: #ffffff; padding: 36px; border: none;">
+      <div class="fd-grid-2" style="align-items: center;">
+        <div>
+          <span class="fd-badge" style="background: rgba(129, 217, 248, 0.2); color: #81d9f8;">Interactive Estimator</span>
+          <h2 style="font-size: 28px; margin-top: 12px;">EV Annual Fuel Savings Calculator</h2>
+          <p style="color: #b4c2d4; margin-top: 8px;">Compare annual driving costs between an electric Ford and a comparable gas vehicle.</p>
+
+          <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label for="ev-miles" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px;">
+                Annual Distance: <span id="miles-label" style="color: #81d9f8;">12,000 miles/year</span>
+              </label>
+              <input id="ev-miles" type="range" min="4000" max="30000" step="1000" value="12000" style="width: 100%; accent-color: #81d9f8;" />
+            </div>
+
+            <div>
+              <label for="gas-price" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px;">
+                Local Gas Price ($/gallon): <span id="gas-label" style="color: #81d9f8;">$3.60 / gal</span>
+              </label>
+              <input id="gas-price" type="range" min="2.5" max="6.0" step="0.1" value="3.6" style="width: 100%; accent-color: #81d9f8;" />
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+            <span style="color: #b4c2d4;">Est. Gas Cost / Year</span>
+            <strong id="gas-cost" style="font-size: 18px;">$1,728</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+            <span style="color: #b4c2d4;">Est. Home EV Charge / Year</span>
+            <strong id="ev-cost" style="font-size: 18px; color: #81d9f8;">$520</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <span style="color: #b4c2d4;">Estimated Annual Savings</span>
+            <strong id="ev-savings" style="font-size: 28px; color: #4ade80;">$1,208 / yr</strong>
+          </div>
+          <a href="vehicles.html?model=mach-e#builder" class="fd-btn" style="margin-top: 6px;">Configure Mustang Mach-E</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fd-grid-2">
+      <article class="fd-card">
+        <span class="fd-badge">All-Electric SUV</span>
+        <h3>Mustang Mach-E GT</h3>
+        <p>Dual-motor eAWD, MagneRide damping system, and BlueOval Charge Network access.</p>
+        <div class="fd-specs">
+          <div>Target Range<strong>280 mi</strong></div>
+          <div>0–60 mph<strong>3.3 sec</strong></div>
+          <div>Torque<strong>700 lb-ft</strong></div>
+        </div>
+      </article>
+      <article class="fd-card">
+        <span class="fd-badge">All-Electric Truck</span>
+        <h3>F-150 Lightning</h3>
+        <p>Up to 9.6 kW Pro Power Onboard and Mega Power Frunk with 14.1 cu. ft. of lockable front storage.</p>
+        <div class="fd-specs">
+          <div>Target Range<strong>320 mi</strong></div>
+          <div>Max Towing<strong>10,000 lbs</strong></div>
+          <div>Backup Power<strong>3 Days</strong></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="fd-footer">
+    <div class="fd-footer-inner">
+      <img src="img/e45f4eede28b7902eebef7944a80c4ec1e9943d0.png" alt="Ford Logo" style="width: 96px; filter: brightness(0) invert(1);" />
+      <div class="fd-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="suvs.html">SUVs</a>
+        <a href="trucks.html">Trucks</a>
+        <a href="electrified.html">Electrified</a>
+        <a href="vehicles.html">Build &amp; Price</a>
+        <a href="auth.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const milesInput = document.getElementById("ev-miles");
+    const gasInput = document.getElementById("gas-price");
+
+    function updateSavings() {
+      const miles = Number(milesInput.value);
+      const gasPrice = Number(gasInput.value);
+      const gasAnnual = (miles / 25) * gasPrice;
+      const evAnnual = (miles / 3.2) * 0.14;
+      const saved = Math.max(0, gasAnnual - evAnnual);
+
+      document.getElementById("miles-label").textContent = `${miles.toLocaleString()} miles/year`;
+      document.getElementById("gas-label").textContent = `$${gasPrice.toFixed(2)} / gal`;
+      document.getElementById("gas-cost").textContent = `$${Math.round(gasAnnual).toLocaleString()}`;
+      document.getElementById("ev-cost").textContent = `$${Math.round(evAnnual).toLocaleString()}`;
+      document.getElementById("ev-savings").textContent = `$${Math.round(saved).toLocaleString()} / yr`;
+    }
+
+    milesInput.addEventListener("input", updateSavings);
+    gasInput.addEventListener("input", updateSavings);
+    updateSavings();
+  </script>
+</body>
+</html>

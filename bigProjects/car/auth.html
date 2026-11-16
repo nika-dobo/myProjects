@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account &amp; Dealer Contact — Ford Lineup</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="fd-header">
+    <div class="fd-header-inner">
+      <a href="hw.html" class="fd-logo"><img src="img/e45f4eede28b7902eebef7944a80c4ec1e9943d0.png" alt="Ford Logo" /></a>
+      <nav class="fd-nav" aria-label="Main navigation">
+        <a href="hw.html">HOME</a>
+        <a href="suvs.html">SUVS</a>
+        <a href="trucks.html">TRUCKS</a>
+        <a href="electrified.html">ELECTRIFIED</a>
+        <a href="vehicles.html">ALL VEHICLES</a>
+      </nav>
+      <div class="fd-auth-links">
+        <a href="auth.html" style="font-size: 14px; font-weight: 700; color: #003478;">Sign in</a>
+        <a href="auth.html?tab=signup" class="fd-btn fd-btn-outline">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="fd-main">
+    <section class="fd-grid-2" style="align-items: start;">
+      <!-- Sign in / Sign up -->
+      <div class="fd-card">
+        <div class="fd-pills" style="margin-bottom: 8px;">
+          <button type="button" id="tab-signin" class="fd-pill active">Sign In</button>
+          <button type="button" id="tab-signup" class="fd-pill">Create Account</button>
+        </div>
+
+        <h2 id="auth-heading" style="color: #003478;">Sign in to FordPass</h2>
+        <p id="auth-sub">Access saved vehicle builds, reservation codes, and scheduled test drives.</p>
+
+        <form id="fd-auth-form" novalidate style="display: flex; flex-direction: column; gap: 14px;">
+          <div id="name-wrap" style="display: none;">
+            <label for="auth-name" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Full Name</label>
+            <input id="auth-name" type="text" class="fd-input" placeholder="Nika Dobo" />
+          </div>
+          <div>
+            <label for="auth-email" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Email Address</label>
+            <input id="auth-email" type="email" class="fd-input" placeholder="driver@example.com" />
+          </div>
+          <div>
+            <label for="auth-pass" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Password</label>
+            <input id="auth-pass" type="password" class="fd-input" placeholder="••••••••" />
+          </div>
+          <div id="auth-msg" style="display: none; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;"></div>
+          <button type="submit" id="auth-submit" class="fd-btn">Sign In</button>
+        </form>
+      </div>
+
+      <!-- Dealer Contact Form -->
+      <div id="contact" class="fd-card" style="background: #f6f8fb;">
+        <span class="fd-badge">Dealership Support</span>
+        <h2>Contact For Queries</h2>
+        <p>Have a question about custom orders, EV charging installation, or local test drives?</p>
+
+        <form id="fd-contact-form" novalidate style="display: flex; flex-direction: column; gap: 14px;">
+          <input id="cnt-name" type="text" class="fd-input" placeholder="Your Name" aria-label="Your Name" />
+          <input id="cnt-email" type="email" class="fd-input" placeholder="Your Email" aria-label="Your Email" />
+          <textarea id="cnt-msg" rows="3" class="fd-textarea" placeholder="Vehicle model, order code, or question..." aria-label="Question"></textarea>
+          <div id="cnt-feedback" style="display: none; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;"></div>
+          <button type="submit" class="fd-btn">Send Dealer Inquiry</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fd-footer">
+    <div class="fd-footer-inner">
+      <img src="img/e45f4eede28b7902eebef7944a80c4ec1e9943d0.png" alt="Ford Logo" style="width: 96px; filter: brightness(0) invert(1);" />
+      <div class="fd-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="suvs.html">SUVs</a>
+        <a href="trucks.html">Trucks</a>
+        <a href="electrified.html">Electrified</a>
+        <a href="vehicles.html">Build &amp; Price</a>
+        <a href="auth.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const tabIn = document.getElementById("tab-signin");
+    const tabUp = document.getElementById("tab-signup");
+    const nameWrap = document.getElementById("name-wrap");
+    const heading = document.getElementById("auth-heading");
+    const submitBtn = document.getElementById("auth-submit");
+    let mode = "signin";
+
+    function setAuthMode(next) {
+      mode = next;
+      const isUp = next === "signup";
+      tabIn.classList.toggle("active", !isUp);
+      tabUp.classList.toggle("active", isUp);
+      nameWrap.style.display = isUp ? "block" : "none";
+      heading.textContent = isUp ? "Create FordPass Account" : "Sign in to FordPass";
+      submitBtn.textContent = isUp ? "Create Account" : "Sign In";
+    }
+
+    if (new URLSearchParams(window.location.search).get("tab") === "signup") {
+      setAuthMode("signup");
+    }
+
+    tabIn.addEventListener("click", () => setAuthMode("signin"));
+    tabUp.addEventListener("click", () => setAuthMode("signup"));
+
+    document.getElementById("fd-auth-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("auth-email").value.trim();
+      const pass = document.getElementById("auth-pass").value;
+      const msg = document.getElementById("auth-msg");
+      msg.style.display = "block";
+      if (!email.includes("@") || pass.length < 6) {
+        msg.style.background = "#fef2f2";
+        msg.style.color = "#b91c1c";
+        msg.textContent = "Enter a valid email and a password of at least 6 characters.";
+        return;
+      }
+      msg.style.background = "#eef3fa";
+      msg.style.color = "#003478";
+      msg.textContent = mode === "signup"
+        ? `Welcome! Account created for ${email}.`
+        : `Signed in as ${email}.`;
+    });
+
+    document.getElementById("fd-contact-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("cnt-name").value.trim();
+      const email = document.getElementById("cnt-email").value.trim();
+      const fb = document.getElementById("cnt-feedback");
+      fb.style.display = "block";
+      if (name.length < 2 || !email.includes("@")) {
+        fb.style.background = "#fef2f2";
+        fb.style.color = "#b91c1c";
+        fb.textContent = "Please provide your name and email address.";
+        return;
+      }
+      fb.style.background = "#eef3fa";
+      fb.style.color = "#003478";
+      fb.textContent = `Thank you, ${name}. A local dealer representative will contact ${email}.`;
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
