@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Center &amp; FAQ — CoinFusion</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="cf-header">
+    <div class="cf-head-bar">
+      <a href="hw.html" class="cf-logo">CoinFusion</a>
+      <nav class="cf-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore</a>
+        <a href="join.html">Join</a>
+        <a href="help.html" class="active">Help</a>
+      </nav>
+      <a href="explore.html" class="cf-cta-top">Explore Apps</a>
+    </div>
+
+    <div class="cf-hero">
+      <span class="cf-pill-badge">Support · Wallets · Security FAQ</span>
+      <h1>Help Center &amp; Frequently Asked Questions</h1>
+      <p>Quick answers about Stacking STX, Bitcoin rewards, Clarity security, and connecting non-custodial wallets.</p>
+    </div>
+  </header>
+
+  <main class="cf-main">
+    <section>
+      <div class="cf-filter-row">
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700;">Frequently Asked Questions</h2>
+        <div style="min-width: 260px; flex: 0 1 320px;">
+          <input id="faq-search" type="search" class="cf-input" placeholder="Search questions..." aria-label="Search FAQ" />
+        </div>
+      </div>
+
+      <div id="faq-list" style="display: flex; flex-direction: column; gap: 14px;"></div>
+    </section>
+
+    <section>
+      <div class="cf-card-dark" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+        <div>
+          <h2 style="font-size: 28px;">Still need developer or wallet help?</h2>
+          <p style="color: #b7bcc8; margin-top: 6px;">Explore our developer templates or join the builder community channel.</p>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="build.html" class="cf-btn">Developer Docs</a>
+          <a href="join.html" class="cf-btn" style="background: rgba(255,255,255,0.12);">Join Community</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cf-footer">
+    <div class="cf-footer-inner">
+      <h2 class="cf-footer-title">Explore Stacks</h2>
+      <div class="cf-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore Ecosystem</a>
+        <a href="join.html">Join Community</a>
+        <a href="help.html">Help &amp; FAQ</a>
+      </div>
+      <div class="cf-footer-bottom">
+        <span class="cf-footer-brand">CoinFusion</span>
+        <span>Multi-Page Bitcoin Layer Ecosystem Hub</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const FAQS = [
+      {
+        q: "What is the minimum STX needed for Stacking?",
+        a: "Solo Stacking directly on-chain requires meeting the dynamic cycle minimum (often ~90,000+ STX), while pooled Stacking via wallets like Xverse or Leather lets you participate with as little as 100 STX."
+      },
+      {
+        q: "How long are STX tokens locked during a PoX cycle?",
+        a: "Each Proof of Transfer cycle lasts roughly 2 weeks (2,100 Bitcoin blocks). You can select between 1 and 12 consecutive cycles before tokens automatically unlock."
+      },
+      {
+        q: "How do smart contracts stay safer in Clarity than EVM Solidity?",
+        a: "Clarity is decidable and interpreted directly on-chain without compilation surprises, preventing reentrancy attacks and enabling static analysis of every asset post-condition."
+      },
+      {
+        q: "Which wallets work with CoinFusion ecosystem apps?",
+        a: "Both Xverse and Leather (formerly Hiro Wallet) support STX, Bitcoin Ordinals, SIP-010 tokens, and Clarity dApp signing via @stacks/connect."
+      },
+      {
+        q: "Where can I estimate my BTC rewards before locking STX?",
+        a: "Visit our Learn page and scroll to the interactive STX Stacking Yield Calculator to simulate rewards across 1 to 12 PoX cycles."
+      }
+    ];
+
+    const faqList = document.getElementById("faq-list");
+    const faqSearch = document.getElementById("faq-search");
+
+    function renderFaq() {
+      const q = faqSearch.value.trim().toLowerCase();
+      const filtered = FAQS.filter(
+        (item) => !q || item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q)
+      );
+
+      if (filtered.length === 0) {
+        faqList.innerHTML = `
+          <div class="cf-card" style="text-align: center; align-items: center;">
+            <h3>No matching questions found</h3>
+            <p>Try searching for "Stacking", "Clarity", or "wallet".</p>
+          </div>`;
+        return;
+      }
+
+      faqList.innerHTML = filtered
+        .map(
+          (item, idx) => `
+          <div class="cf-faq-item ${idx === 0 ? "open" : ""}">
+            <button type="button" class="cf-faq-trigger" aria-expanded="${idx === 0 ? "true" : "false"}">
+              <span>${item.q}</span>
+              <span aria-hidden="true" style="color: #5846fb; font-size: 20px;">${idx === 0 ? "−" : "+"}</span>
+            </button>
+            <div class="cf-faq-answer">${item.a}</div>
+          </div>`
+        )
+        .join("");
+
+      faqList.querySelectorAll(".cf-faq-item").forEach((container) => {
+        const btn = container.querySelector(".cf-faq-trigger");
+        const icon = btn.querySelectorAll("span")[1];
+        btn.addEventListener("click", () => {
+          const isOpen = container.classList.toggle("open");
+          btn.setAttribute("aria-expanded", String(isOpen));
+          icon.textContent = isOpen ? "−" : "+";
+        });
+      });
+    }
+
+    faqSearch.addEventListener("input", renderFaq);
+    renderFaq();
+  </script>
+</body>
+</html>

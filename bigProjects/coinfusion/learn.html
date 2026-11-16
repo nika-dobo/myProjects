@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn &amp; Stacking Calculator — CoinFusion</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="cf-header">
+    <div class="cf-head-bar">
+      <a href="hw.html" class="cf-logo">CoinFusion</a>
+      <nav class="cf-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="learn.html" class="active">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore</a>
+        <a href="join.html">Join</a>
+        <a href="help.html">Help</a>
+      </nav>
+      <a href="build.html" class="cf-cta-top">Start Building</a>
+    </div>
+
+    <div class="cf-hero">
+      <span class="cf-pill-badge">Proof of Transfer · Bitcoin Finality</span>
+      <h1>Learn how Stacks unlocks Bitcoin</h1>
+      <p>Understand Proof of Transfer (PoX), Clarity decidable smart contracts, and calculate your estimated BTC rewards from Stacking STX.</p>
+    </div>
+  </header>
+
+  <main class="cf-main">
+    <section id="pox">
+      <div class="cf-section-head">
+        <h2>Core Architecture</h2>
+        <p>Stacks settles transactions on Bitcoin without modifying Bitcoin's base protocol.</p>
+      </div>
+
+      <div class="cf-grid-3">
+        <article class="cf-card">
+          <span class="cf-tag">01 · Consensus</span>
+          <h3>Proof of Transfer (PoX)</h3>
+          <p>Miners commit BTC to produce Stacks blocks, and those BTC rewards flow directly to STX holders who lock tokens in consensus cycles.</p>
+        </article>
+        <article class="cf-card">
+          <span class="cf-tag">02 · Security</span>
+          <h3>Bitcoin Settlement</h3>
+          <p>Every Stacks block anchors its cryptographic hash to a Bitcoin transaction, inheriting Bitcoin's hashpower finality.</p>
+        </article>
+        <article class="cf-card">
+          <span class="cf-tag">03 · Yield</span>
+          <h3>Earn Native BTC</h3>
+          <p>Instead of inflationary token emissions, Stackers receive real Bitcoin payouts across ~2-week consensus reward cycles.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="calculator">
+      <div class="cf-card-dark">
+        <div class="cf-grid-2" style="align-items: center;">
+          <div>
+            <span class="cf-tag" style="background: rgba(88, 70, 251, 0.25); color: #c7c2ff;">Interactive Estimator</span>
+            <h2 style="font-size: clamp(1.75rem, 3vw, 2.5rem); margin-top: 14px;">STX Stacking Yield Calculator</h2>
+            <p style="color: #b7bcc8; margin-top: 10px;">Adjust your STX amount and lock duration to preview estimated BTC rewards at a 9.5% annualized reference rate.</p>
+
+            <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 18px;">
+              <div>
+                <label for="stx-amount" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
+                  STX Amount to Stack: <span id="stx-label" style="color: #9e94ff;">10,000 STX</span>
+                </label>
+                <input id="stx-amount" type="range" min="500" max="200000" step="500" value="10000" style="width: 100%; accent-color: #5846fb; cursor: pointer;" />
+              </div>
+
+              <div>
+                <label for="cycle-count" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
+                  Lock Duration (2-week PoX cycles): <span id="cycle-label" style="color: #9e94ff;">6 cycles (~12 weeks)</span>
+                </label>
+                <input id="cycle-count" type="range" min="1" max="12" step="1" value="6" style="width: 100%; accent-color: #5846fb; cursor: pointer;" />
+              </div>
+            </div>
+          </div>
+
+          <div style="background: #15171d; border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 18px;">
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+              <span style="color: #a5abb8;">Reference APY</span>
+              <strong style="font-size: 20px; color: #ffffff;">9.50%</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+              <span style="color: #a5abb8;">Estimated USD Value</span>
+              <strong id="usd-reward" style="font-size: 22px; color: #c7c2ff;">$438.46</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="color: #a5abb8;">Estimated BTC Reward</span>
+              <strong id="btc-reward" style="font-size: 28px; color: #5846fb;">0.004615 BTC</strong>
+            </div>
+            <a href="explore.html?cat=Wallets" class="cf-btn" style="margin-top: 8px;">Choose a Stacking Wallet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cf-section-head">
+        <h2>Learning Tracks</h2>
+        <p>Step-by-step paths whether you are new to Bitcoin L2 or shipping smart contracts.</p>
+      </div>
+      <div class="cf-grid-2">
+        <article class="cf-card">
+          <span class="cf-tag">Beginner</span>
+          <h3>Bitcoin DeFi Essentials</h3>
+          <p>Learn how sBTC, non-custodial wallets, and PoX liquidity pools operate without wrapped centralized custody.</p>
+          <a href="explore.html?cat=DeFi" class="cf-btn cf-btn-outline" style="align-self: flex-start;">Explore DeFi Apps</a>
+        </article>
+        <article class="cf-card">
+          <span class="cf-tag">Engineering</span>
+          <h3>Clarity Smart Contracts</h3>
+          <p>Clarity is an interpreted, non-Turing-complete language designed to eliminate reentrancy bugs before deployment.</p>
+          <a href="build.html" class="cf-btn" style="align-self: flex-start;">Open Developer Docs</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cf-footer">
+    <div class="cf-footer-inner">
+      <h2 class="cf-footer-title">Explore Stacks</h2>
+      <div class="cf-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore Ecosystem</a>
+        <a href="join.html">Join Community</a>
+        <a href="help.html">Help &amp; FAQ</a>
+      </div>
+      <div class="cf-footer-bottom">
+        <span class="cf-footer-brand">CoinFusion</span>
+        <span>Multi-Page Bitcoin Layer Ecosystem Hub</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const stxInput = document.getElementById("stx-amount");
+    const cycleInput = document.getElementById("cycle-count");
+    const stxLabel = document.getElementById("stx-label");
+    const cycleLabel = document.getElementById("cycle-label");
+    const usdReward = document.getElementById("usd-reward");
+    const btcReward = document.getElementById("btc-reward");
+
+    function updateCalculator() {
+      const stx = Number(stxInput.value);
+      const cycles = Number(cycleInput.value);
+      const stxPriceUsd = 2.0;
+      const btcPriceUsd = 95000;
+      const annualRate = 0.095;
+      const yearFraction = (cycles * 14) / 365;
+      const rewardUsd = stx * stxPriceUsd * annualRate * yearFraction;
+      const rewardBtc = rewardUsd / btcPriceUsd;
+
+      stxLabel.textContent = `${stx.toLocaleString()} STX`;
+      cycleLabel.textContent = `${cycles} ${cycles === 1 ? "cycle" : "cycles"} (~${cycles * 2} weeks)`;
+      usdReward.textContent = `$${rewardUsd.toFixed(2)}`;
+      btcReward.textContent = `${rewardBtc.toFixed(6)} BTC`;
+    }
+
+    stxInput.addEventListener("input", updateCalculator);
+    cycleInput.addEventListener("input", updateCalculator);
+    updateCalculator();
+  </script>
+</body>
+</html>

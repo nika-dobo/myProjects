@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Community &amp; Grants — CoinFusion</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="cf-header">
+    <div class="cf-head-bar">
+      <a href="hw.html" class="cf-logo">CoinFusion</a>
+      <nav class="cf-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore</a>
+        <a href="join.html" class="active">Join</a>
+        <a href="help.html">Help</a>
+      </nav>
+      <a href="build.html" class="cf-cta-top">Developer Docs</a>
+    </div>
+
+    <div class="cf-hero">
+      <span class="cf-pill-badge">Builders · Grants · Global Chapters</span>
+      <h1>Join the CoinFusion &amp; Stacks community</h1>
+      <p>Collaborate with Bitcoin developers, apply for ecosystem micro-grants, and join upcoming hackathons and workshops.</p>
+    </div>
+  </header>
+
+  <main class="cf-main">
+    <section id="events">
+      <div class="cf-section-head">
+        <h2>Upcoming Events &amp; Programs</h2>
+        <p>Open initiatives for students, smart contract engineers, and community organizers.</p>
+      </div>
+
+      <div class="cf-grid-3">
+        <article class="cf-card">
+          <span class="cf-tag">Hackathon</span>
+          <h3>Bitcoin L2 Builder Sprint</h3>
+          <p>4-week online buildathon focused on sBTC DeFi tools, Clarity smart contracts, and React dApp interfaces.</p>
+          <strong style="color: #5846fb; font-size: 14px;">Remote · Worldwide</strong>
+        </article>
+        <article class="cf-card">
+          <span class="cf-tag">Grants</span>
+          <h3>Open-Source Micro-Grants</h3>
+          <p>Funding for developer SDKs, educational guides, and security tooling improving the Bitcoin ecosystem.</p>
+          <strong style="color: #5846fb; font-size: 14px;">Up to $25,000 STX</strong>
+        </article>
+        <article class="cf-card">
+          <span class="cf-tag">Chapters</span>
+          <h3>University &amp; City Meetups</h3>
+          <p>Host workshops on Proof of Transfer, Clarity, and Web3 UX across Europe, Caucasus, and Asia.</p>
+          <strong style="color: #5846fb; font-size: 14px;">Rolling Applications</strong>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="cf-card" style="background: #ffffff; max-width: 720px; margin: 0 auto;">
+        <span class="cf-tag">Application</span>
+        <h3>Apply as a Builder or Community Contributor</h3>
+        <p>Submit your track interest and GitHub profile to receive hackathon invites and grant updates.</p>
+
+        <form id="join-form" novalidate style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
+          <div>
+            <label for="join-name" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px;">Full Name</label>
+            <input id="join-name" type="text" class="cf-input" placeholder="Nika Dobo" />
+          </div>
+          <div>
+            <label for="join-email" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px;">Email Address</label>
+            <input id="join-email" type="email" class="cf-input" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="join-track" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px;">Preferred Track</label>
+            <select id="join-track" class="cf-select">
+              <option value="Frontend / React dApps">Frontend / React dApps</option>
+              <option value="Clarity Smart Contracts">Clarity Smart Contracts</option>
+              <option value="Community & Events">Community &amp; Events</option>
+              <option value="Ecosystem Grant Proposal">Ecosystem Grant Proposal</option>
+            </select>
+          </div>
+          <div>
+            <label for="join-note" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px;">Project Idea / GitHub Link</label>
+            <textarea id="join-note" rows="3" class="cf-textarea" placeholder="https://github.com/..." style="resize: vertical;"></textarea>
+          </div>
+
+          <div id="join-feedback" style="display: none; padding: 12px 16px; border-radius: 14px; font-size: 14px; font-weight: 600;"></div>
+
+          <button type="submit" class="cf-btn" style="align-self: flex-start;">Submit Application</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cf-footer">
+    <div class="cf-footer-inner">
+      <h2 class="cf-footer-title">Explore Stacks</h2>
+      <div class="cf-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore Ecosystem</a>
+        <a href="join.html">Join Community</a>
+        <a href="help.html">Help &amp; FAQ</a>
+      </div>
+      <div class="cf-footer-bottom">
+        <span class="cf-footer-brand">CoinFusion</span>
+        <span>Multi-Page Bitcoin Layer Ecosystem Hub</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("join-form");
+    const feedback = document.getElementById("join-feedback");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = document.getElementById("join-name").value.trim();
+      const email = document.getElementById("join-email").value.trim();
+      const track = document.getElementById("join-track").value;
+
+      feedback.style.display = "block";
+      if (name.length < 2 || !email.includes("@")) {
+        feedback.style.background = "#fef2f2";
+        feedback.style.color = "#b91c1c";
+        feedback.textContent = "Please enter your full name and a valid email address.";
+        return;
+      }
+
+      feedback.style.background = "#eef2ff";
+      feedback.style.color = "#4338ca";
+      feedback.textContent = `Thanks, ${name}! Your "${track}" application was recorded for the next cohort.`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>

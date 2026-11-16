@@ -52,8 +52,17 @@ header {
 .head nav a {
   text-decoration: none;
   color: #000;
-  font-weight: 400;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.head nav a:hover,
+.head nav a.active {
+  background-color: #5846fb;
+  color: #fff;
 }
 
 .head div {
@@ -91,13 +100,26 @@ header .bottom p {
   max-width: 400px;
 }
 
-button {
+button,
+.btn-link {
   background-color: #5846fb;
   border-radius: 100px;
   border: none;
   color: white;
   padding: 18px 45px;
   font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover,
+.btn-link:hover {
+  background-color: #4331e8;
+  transform: translateY(-2px);
 }
 
 header .conteiners {
@@ -489,11 +511,19 @@ footer .top {
   flex-wrap: wrap;
 }
 
-footer .top div {
-  padding: 20px 40px;
+footer .top a {
+  padding: 18px 34px;
   border: #fff 1px solid;
   border-radius: 50px;
   cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+footer .top a:hover {
+  background-color: #5846fb;
+  border-color: #5846fb;
 }
 
 footer .bottom {

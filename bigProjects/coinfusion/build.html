@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build with Clarity &amp; Stacks SDK — CoinFusion</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="cf-header">
+    <div class="cf-head-bar">
+      <a href="hw.html" class="cf-logo">CoinFusion</a>
+      <nav class="cf-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html" class="active">Build</a>
+        <a href="explore.html">Explore</a>
+        <a href="join.html">Join</a>
+        <a href="help.html">Help</a>
+      </nav>
+      <a href="join.html" class="cf-cta-top">Apply for Grants</a>
+    </div>
+
+    <div class="cf-hero">
+      <span class="cf-pill-badge">Clarity Language · Stacks.js · Clarinet</span>
+      <h1>Build apps secured by Bitcoin</h1>
+      <p>Write predictable smart contracts in Clarity, read Bitcoin state directly on-chain, and connect React frontends with Stacks.js.</p>
+    </div>
+  </header>
+
+  <main class="cf-main">
+    <section id="sdk">
+      <div class="cf-section-head">
+        <h2>Interactive Clarity Contract Examples</h2>
+        <p>Switch between contract templates to inspect Clarity syntax and copy snippets into your Clarinet workspace.</p>
+      </div>
+
+      <div class="cf-card-dark">
+        <div class="cf-filter-row" style="margin-bottom: 18px;">
+          <div class="cf-pills" role="tablist" aria-label="Contract examples">
+            <button type="button" class="cf-pill-btn active" data-tab="vault">STX Counter / Vault</button>
+            <button type="button" class="cf-pill-btn" data-tab="nft">SIP-009 NFT Mint</button>
+            <button type="button" class="cf-pill-btn" data-tab="pox">Bitcoin Block Check</button>
+          </div>
+          <button type="button" id="copy-code-btn" class="cf-btn">Copy Contract</button>
+        </div>
+
+        <pre id="code-display" class="cf-code-block"></pre>
+      </div>
+    </section>
+
+    <section>
+      <div class="cf-section-head">
+        <h2>3-Step Local Development Workflow</h2>
+        <p>Spin up a local devnet, test Clarity contracts, and wire your frontend UI in minutes.</p>
+      </div>
+
+      <div class="cf-grid-3">
+        <article class="cf-card">
+          <span class="cf-tag">Step 01</span>
+          <h3>Scaffold with Clarinet</h3>
+          <p>Run <code>clarinet new my-btc-app</code> to generate a local contract test suite and deterministic devnet chain.</p>
+        </article>
+        <article class="cf-card">
+          <span class="cf-tag">Step 02</span>
+          <h3>Verify Static Safety</h3>
+          <p>Execute <code>clarinet check</code> to catch type mismatches, unchecked errors, or asset leaks prior to testnet deploy.</p>
+        </article>
+        <article class="cf-card">
+          <span class="cf-tag">Step 03</span>
+          <h3>Connect Frontend</h3>
+          <p>Use <code>@stacks/connect</code> in React to authenticate Xverse or Leather wallets and broadcast contract calls.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cf-footer">
+    <div class="cf-footer-inner">
+      <h2 class="cf-footer-title">Explore Stacks</h2>
+      <div class="cf-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore Ecosystem</a>
+        <a href="join.html">Join Community</a>
+        <a href="help.html">Help &amp; FAQ</a>
+      </div>
+      <div class="cf-footer-bottom">
+        <span class="cf-footer-brand">CoinFusion</span>
+        <span>Multi-Page Bitcoin Layer Ecosystem Hub</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SNIPPETS = {
+      vault: `(define-data-var vault-balance uint u0)
+
+(define-public (deposit (amount uint))
+  (begin
+    (try! (stx-transfer? amount tx-sender (as-contract tx-sender)))
+    (var-set vault-balance (+ (var-get vault-balance) amount))
+    (ok (var-get vault-balance))
+  )
+)
+
+(define-read-only (get-balance)
+  (ok (var-get vault-balance))
+)`,
+      nft: `(impl-trait 'SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.nft-trait.nft-trait)
+(define-non-fungible-token coinfusion-pass uint)
+(define-data-var last-token-id uint u0)
+
+(define-public (mint (recipient principal))
+  (let ((next-id (+ (var-get last-token-id) u1)))
+    (try! (nft-mint? coinfusion-pass next-id recipient))
+    (var-set last-token-id next-id)
+    (ok next-id)
+  )
+)`,
+      pox: `(define-read-only (get-bitcoin-anchor-info)
+  (ok {
+    stacks-height: block-height,
+    bitcoin-height: burn-block-height,
+    header-hash: (get-burn-block-info? header-hash (- burn-block-height u1))
+  })
+)`
+    };
+
+    const codeDisplay = document.getElementById("code-display");
+    const copyBtn = document.getElementById("copy-code-btn");
+    const tabButtons = document.querySelectorAll("[data-tab]");
+    let activeKey = "vault";
+
+    function renderSnippet(key) {
+      activeKey = key;
+      codeDisplay.textContent = SNIPPETS[key];
+      tabButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.tab === key);
+      });
+    }
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => renderSnippet(btn.dataset.tab));
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(SNIPPETS[activeKey]);
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => { copyBtn.textContent = "Copy Contract"; }, 1800);
+      } catch {
+        copyBtn.textContent = "Select & Copy";
+      }
+    });
+
+    renderSnippet("vault");
+  </script>
+</body>
+</html>

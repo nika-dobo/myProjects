@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Ecosystem — CoinFusion</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="cf-header">
+    <div class="cf-head-bar">
+      <a href="hw.html" class="cf-logo">CoinFusion</a>
+      <nav class="cf-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html" class="active">Explore</a>
+        <a href="join.html">Join</a>
+        <a href="help.html">Help</a>
+      </nav>
+      <a href="learn.html#calculator" class="cf-cta-top">Stack STX</a>
+    </div>
+
+    <div class="cf-hero">
+      <span class="cf-pill-badge">Wallets · DeFi · NFTs · Infrastructure</span>
+      <h1>Explore the Bitcoin ecosystem</h1>
+      <p>Browse live wallets, decentralized exchanges, lending protocols, and developer tools built on Stacks.</p>
+    </div>
+  </header>
+
+  <main class="cf-main">
+    <section>
+      <div class="cf-filter-row">
+        <div class="cf-pills" role="group" aria-label="Filter ecosystem apps">
+          <button type="button" class="cf-pill-btn active" data-cat="All">All</button>
+          <button type="button" class="cf-pill-btn" data-cat="DeFi">DeFi</button>
+          <button type="button" class="cf-pill-btn" data-cat="Wallets">Wallets</button>
+          <button type="button" class="cf-pill-btn" data-cat="NFTs">NFTs</button>
+          <button type="button" class="cf-pill-btn" data-cat="Infrastructure">Infrastructure</button>
+        </div>
+
+        <div style="min-width: 260px; flex: 0 1 320px;">
+          <input id="app-search" type="search" class="cf-input" placeholder="Search dApps or protocols..." aria-label="Search ecosystem apps" />
+        </div>
+      </div>
+
+      <div id="apps-grid" class="cf-grid-3"></div>
+    </section>
+  </main>
+
+  <footer class="cf-footer">
+    <div class="cf-footer-inner">
+      <h2 class="cf-footer-title">Explore Stacks</h2>
+      <div class="cf-footer-links">
+        <a href="hw.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="build.html">Build</a>
+        <a href="explore.html">Explore Ecosystem</a>
+        <a href="join.html">Join Community</a>
+        <a href="help.html">Help &amp; FAQ</a>
+      </div>
+      <div class="cf-footer-bottom">
+        <span class="cf-footer-brand">CoinFusion</span>
+        <span>Multi-Page Bitcoin Layer Ecosystem Hub</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const APPS = [
+      {
+        name: "ALEX Lab",
+        category: "DeFi",
+        summary: "Bitcoin DeFi super-app offering AMM swaps, orderbook trading, launchpad, and cross-chain bridging.",
+        stat: "$8.6M+ Backed"
+      },
+      {
+        name: "Xverse Wallet",
+        category: "Wallets",
+        summary: "Self-custodial mobile & browser wallet supporting Bitcoin Ordinals, BRC-20, Stacks STX, and native Stacking.",
+        stat: "Mobile & Extension"
+      },
+      {
+        name: "Leather Wallet",
+        category: "Wallets",
+        summary: "Open-source Bitcoin & Stacks web wallet engineered for Clarity smart contract interaction and hardware signing.",
+        stat: "Open Source"
+      },
+      {
+        name: "Arkadiko Finance",
+        category: "DeFi",
+        summary: "Decentralized liquidity protocol minting USDA stablecoins backed by Stacking STX collateral.",
+        stat: "Self-Repaying Vaults"
+      },
+      {
+        name: "Gamma.io",
+        category: "NFTs",
+        summary: "Creator launchpad and marketplace for Bitcoin-secured SIP-009 NFTs and Ordinals inscriptions.",
+        stat: "Creator Studio"
+      },
+      {
+        name: "Stacking Club",
+        category: "Infrastructure",
+        summary: "Real-time analytics dashboard tracking PoX cycles, total value locked, and historical BTC yield.",
+        stat: "PoX Analytics"
+      },
+      {
+        name: "Zest Protocol",
+        category: "DeFi",
+        summary: "On-chain Bitcoin lending markets built for transparent institutional and retail BTC yield.",
+        stat: "Bitcoin Lending"
+      },
+      {
+        name: "Clarinet & Hiro API",
+        category: "Infrastructure",
+        summary: "Developer CLI, local devnet, and blockchain indexer APIs powering Clarity smart contract apps.",
+        stat: "Dev Tooling"
+      },
+      {
+        name: "Megapont Ape Club",
+        category: "NFTs",
+        summary: "Flagship generative NFT collection anchored on Stacks with on-chain trait upgrades.",
+        stat: "Community NFT"
+      }
+    ];
+
+    const grid = document.getElementById("apps-grid");
+    const searchInput = document.getElementById("app-search");
+    const pills = document.querySelectorAll("[data-cat]");
+
+    const params = new URLSearchParams(window.location.search);
+    let activeCategory = params.get("cat") || "All";
+    if (!["All", "DeFi", "Wallets", "NFTs", "Infrastructure"].includes(activeCategory)) {
+      activeCategory = "All";
+    }
+
+    function renderApps() {
+      const q = searchInput.value.trim().toLowerCase();
+      const filtered = APPS.filter((app) => {
+        const matchCat = activeCategory === "All" || app.category === activeCategory;
+        const matchQuery =
+          !q ||
+          app.name.toLowerCase().includes(q) ||
+          app.summary.toLowerCase().includes(q) ||
+          app.category.toLowerCase().includes(q);
+        return matchCat && matchQuery;
+      });
+
+      pills.forEach((pill) => {
+        pill.classList.toggle("active", pill.dataset.cat === activeCategory);
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="cf-card" style="grid-column: 1 / -1; align-items: center; text-align: center; padding: 48px 24px;">
+            <h3>No ecosystem projects matched "${q}"</h3>
+            <p>Try clearing your search or switching back to All categories.</p>
+            <button type="button" id="reset-explore" class="cf-btn">Show All Projects</button>
+          </div>`;
+        document.getElementById("reset-explore").addEventListener("click", () => {
+          activeCategory = "All";
+          searchInput.value = "";
+          renderApps();
+        });
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map(
+          (app) => `
+          <article class="cf-card">
+            <span class="cf-tag">${app.category}</span>
+            <h3>${app.name}</h3>
+            <p style="flex: 1;">${app.summary}</p>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #e2e4ea;">
+              <strong style="font-size: 13px; color: #5846fb;">${app.stat}</strong>
+              <a href="learn.html" style="font-size: 14px; font-weight: 600;">Learn more →</a>
+            </div>
+          </article>`
+        )
+        .join("");
+    }
+
+    pills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        activeCategory = pill.dataset.cat;
+        renderApps();
+      });
+    });
+    searchInput.addEventListener("input", renderApps);
+    renderApps();
+  </script>
+</body>
+</html>
