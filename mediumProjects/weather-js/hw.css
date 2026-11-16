@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  background-image: url("img/maxresdefault.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 80px;
+  left: 60px;
+  gap: 20px;
+}
+
+.temp-container #temp {
+  font-size: 8rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.city-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.city-info #city-name {
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.city-info #time {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+#weather-icon {
+  width: 150px;
+}
+
+
+
+.right {
+  width: 400px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#search-form {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+#city-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+}
+
+#city-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#search-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#search-btn i {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.details-section h3,
+.forecast-section h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.weather-desc {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.details-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.details-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.details-list .label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.details-list .value {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 80px;
+  justify-content: flex-end;
+}
+
+.icon-red {
+  color: #ff6b6b;
+}
+
+.icon-blue {
+  color: #4facfe;
+}
+
+.icon-white {
+  color: white;
+}

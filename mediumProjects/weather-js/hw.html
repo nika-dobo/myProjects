@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="hw.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="left">
+      <div class="temp-container">
+        <span id="temp">##°</span>
+      </div>
+      <div class="city-info">
+        <h1 id="city-name">City Name</h1>
+        <p id="time">HH:MM - DAY, DD MON YY</p>
+      </div>
+      <img id="weather-icon" src="" alt="">
+    </div>
+
+    <div class="right">
+      <form id="search-form" action="">
+        <input
+          type="text"
+          name="city"
+          id="city-input"
+          placeholder="Search Location..."
+        />
+        <button type="submit" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+      <div class="details-section">
+        <h3>Weather Details...</h3>
+        <p id="weather" class="weather-desc">THUNDERSTORM WITH LIGHT DRIZZLE</p>
+
+        <ul class="details-list">
+          <li>
+            <span class="label">Temp max</span>
+            <span class="value"><span id="temp-max">##°</span> <i class="fa-solid fa-temperature-half icon-red"></i></span>
+          </li>
+          <li>
+            <span class="label">Temp min</span>
+            <span class="value"><span id="temp-min">##°</span> <i class="fa-solid fa-temperature-half icon-blue"></i></span>
+          </li>
+          <li>
+            <span class="label">Humidity</span>
+            <span class="value"><span id="humidity">##%</span> <i class="fa-solid fa-droplet icon-white"></i></span>
+          </li>
+          <li>
+            <span class="label">Cloudy</span>
+            <span class="value"><span id="cloudy">##%</span> <i class="fa-solid fa-cloud icon-white"></i></span>
+          </li>
+          <li>
+            <span class="label">Wind</span>
+            <span class="value"><span id="wind">##km/h</span> <i class="fa-solid fa-wind icon-white"></i></span>
+          </li>
+        </ul>
+      </div>
+
+    <script src="hw.js"></script>
+  </body>
+</html>
