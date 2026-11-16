@@ -2,11 +2,13 @@
 
 🌐 **Live Site:** https://nika-dobo.github.io/myProjects/
 
-A curated portfolio index of **57 completed web projects** organized by scope (**0 Ultra · 24 Big · 9 Medium · 24 Small**), with live search and category filters (`Ultra`, `Big`, `Medium`, `Small`, `Multi-page`, `Open App / Live`). Spans Next.js 15, TypeScript, React + Tailwind CSS applications, Python FastAPI backends, Three.js / Web Audio experiences, hackathon builds, and multi-page sites.
+A curated portfolio index of **58 completed web projects** organized by scope (**1 Ultra · 24 Big · 9 Medium · 24 Small**), with live search and category filters (`Ultra`, `Big`, `Medium`, `Small`, `Multi-page`, `Open App / Live`). Spans Next.js 15, TypeScript, React + Tailwind CSS applications, Python FastAPI backends, Three.js / Web Audio experiences, hackathon builds, and multi-page sites.
 
 Open [`allWeb.html`](./allWeb.html) (or [`index.html`](./index.html)) in a browser to search and launch every project.
 
 ## Highlights
+
+- **AetherMind — AI Research & Decision Copilot** (`Next.js 15 · React 19 · TypeScript · FastAPI · WebSockets · SQLite`) — [Live Demo](./ultraProjects/aethermind/index.html) · [Repo](https://github.com/nika-dobo/aethermind)
 
 - **FlowForge — Visual Workflow Studio** (`Next.js 15 · React 19 · TypeScript · SQLite`) — [Live Demo](./bigProjects/flowforge/index.html) · [Repo](https://github.com/nika-dobo/flowforge)
 - **SoundForge DAW — Web Audio Studio** (`Next.js 15 · TypeScript · Web Audio API`) — [Live Demo](./bigProjects/soundforge-daw/index.html) · [Repo](https://github.com/nika-dobo/soundforge-daw)
