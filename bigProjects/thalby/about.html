@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About &amp; Contact — Thalby</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="th-header">
+    <div class="th-header-inner">
+      <nav class="th-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="collections.html">Collections</a>
+        <a href="free-guide.html">Try a Free Guide</a>
+        <a href="stories.html">Stories</a>
+      </nav>
+      <a href="hw.html" class="th-logo"><img src="c60014631aab13ff4a01b1d3fb0bee12ae80ffff.gif" alt="Thalby" /></a>
+      <div class="th-icons">
+        <a href="shop.html" class="th-btn" style="min-height: 40px; padding: 8px 18px;">Shop Guides</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="th-hero">
+    <div style="max-width: 1120px; margin: 0 auto;">
+      <h1>About Thalby</h1>
+      <p>We publish concise, locally authored cultural guides for curious travelers and global citizens.</p>
+    </div>
+  </section>
+
+  <main class="th-main">
+    <section id="write" class="th-grid-2">
+      <article class="th-card">
+        <h3>Write for Us</h3>
+        <p style="color: #525252;">Are you a journalist, designer, or researcher living in your home city? Pitch a local Culture &amp; Heritage or Society guide to our editorial desk.</p>
+      </article>
+
+      <form id="th-contact-form" class="th-card" novalidate>
+        <h3 id="contact">Contact &amp; Help (hi@thalby.com)</h3>
+        <input id="th-name" type="text" class="th-input" placeholder="Your Name" aria-label="Your Name" />
+        <input id="th-email" type="email" class="th-input" placeholder="Email Address" aria-label="Email Address" />
+        <textarea id="th-msg" rows="3" class="th-textarea" placeholder="Pitch topic or ebook support question..." aria-label="Message"></textarea>
+        <p id="th-fb" style="display: none; font-size: 13px; font-weight: 700;"></p>
+        <button type="submit" class="th-btn" style="align-self: flex-start;">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="th-footer">
+    <div class="th-footer-inner">
+      <div>
+        <strong style="font-size: 24px; letter-spacing: 0.04em;">thalby</strong>
+        <p style="font-size: 13px; color: #b5b5b5; margin-top: 8px;">Thalby LLC © 2021–2026</p>
+      </div>
+      <div class="th-footer-cols">
+        <div>
+          <h4>EXPLORE</h4>
+          <a href="hw.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="collections.html">Collections</a>
+          <a href="free-guide.html">Try a Free Guide</a>
+        </div>
+        <div>
+          <h4>ABOUT</h4>
+          <a href="stories.html">Stories</a>
+          <a href="about.html">About Us</a>
+          <a href="about.html#write">Write for Us</a>
+          <a href="about.html#contact">Help</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("th-contact-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("th-name").value.trim();
+      const email = document.getElementById("th-email").value.trim();
+      const fb = document.getElementById("th-fb");
+      fb.style.display = "block";
+      if (name.length < 2 || !email.includes("@")) {
+        fb.style.color = "#b91c1c";
+        fb.textContent = "Please enter your name and valid email.";
+        return;
+      }
+      fb.style.color = "#15803d";
+      fb.textContent = `Thanks, ${name}! Our editorial team will reply to ${email}.`;
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

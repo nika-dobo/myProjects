@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try a Free Guide — Thalby</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+  <header class="th-header">
+    <div class="th-header-inner">
+      <nav class="th-nav" aria-label="Main navigation">
+        <a href="hw.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="collections.html">Collections</a>
+        <a href="free-guide.html" class="active">Try a Free Guide</a>
+        <a href="stories.html">Stories</a>
+      </nav>
+      <a href="hw.html" class="th-logo"><img src="c60014631aab13ff4a01b1d3fb0bee12ae80ffff.gif" alt="Thalby" /></a>
+      <div class="th-icons">
+        <a href="shop.html" class="th-btn" style="min-height: 40px; padding: 8px 18px;">Shop Guides</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="th-hero">
+    <div class="th-hero-inner">
+      <div>
+        <h1>Try a Free 10-Minute Chapter</h1>
+        <p>Experience Thalby's signature 1-hour format before buying—local insights, etiquette essentials, and real interviews.</p>
+      </div>
+      <div style="text-align: center;">
+        <img src="c5b3763c2e1dff5c756b04a47363c0e3d98157bb.png" alt="Sample Thalby Guide" style="max-width: 240px; width: 100%;" />
+      </div>
+    </div>
+  </section>
+
+  <main class="th-main">
+    <section class="th-card" style="padding: 32px;">
+      <div class="th-pills" role="tablist" aria-label="Sample chapters" style="margin-bottom: 16px;">
+        <button type="button" class="th-pill active" data-chap="france">Ch. 1 · Everyday Etiquette in France</button>
+        <button type="button" class="th-pill" data-chap="germany">Ch. 2 · Neighborhood Culture in Berlin</button>
+        <button type="button" class="th-pill" data-chap="morocco">Ch. 3 · Craft Guilds of Fez</button>
+      </div>
+
+      <article id="chapter-body" style="border-top: 1px solid #dcdad4; padding-top: 20px;"></article>
+    </section>
+  </main>
+
+  <footer class="th-footer">
+    <div class="th-footer-inner">
+      <div>
+        <strong style="font-size: 24px; letter-spacing: 0.04em;">thalby</strong>
+        <p style="font-size: 13px; color: #b5b5b5; margin-top: 8px;">Thalby LLC © 2021–2026</p>
+      </div>
+      <div class="th-footer-cols">
+        <div>
+          <h4>EXPLORE</h4>
+          <a href="hw.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="collections.html">Collections</a>
+          <a href="free-guide.html">Try a Free Guide</a>
+        </div>
+        <div>
+          <h4>ABOUT</h4>
+          <a href="stories.html">Stories</a>
+          <a href="about.html">About Us</a>
+          <a href="about.html#write">Write for Us</a>
+          <a href="about.html#contact">Help</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CHAPTERS = {
+      france: {
+        title: "Always Start With 'Bonjour'",
+        readTime: "4 min excerpt · French People & Society",
+        text: "In France, stepping into a neighborhood bakery or bookshop without a clear 'Bonjour' feels like walking past a friend without making eye contact. That single greeting establishes mutual respect before any transaction begins—whether you're ordering an espresso in Lyon or negotiating at a flea market in Paris."
+      },
+      germany: {
+        title: "Sunday Quiet & The Art of Kiez Life",
+        readTime: "5 min excerpt · German Culture & Heritage",
+        text: "To understand modern Germany, spend a quiet Sunday morning walking through a local Kiez (neighborhood). Shops close, sidewalks slow down, and parks fill with cyclists, bakery bags, and multi-generational picnics—a deliberate cultural pause protected by law and habit."
+      },
+      morocco: {
+        title: "Living Guilds Inside the Medina",
+        readTime: "4 min excerpt · Moroccan Culture & Heritage",
+        text: "Behind cedar doors in Fez, ceramicists, brass workers, and weavers pass down techniques across seven generations. Understanding the rhythm of mint tea hospitality unlocks conversations that standard tourist itineraries rush past."
+      }
+    };
+
+    const bodyEl = document.getElementById("chapter-body");
+    const tabs = document.querySelectorAll("[data-chap]");
+
+    function renderChapter(key) {
+      const ch = CHAPTERS[key];
+      tabs.forEach((t) => t.classList.toggle("active", t.dataset.chap === key));
+      bodyEl.innerHTML = `
+        <span style="font-size: 12px; font-weight: 700; color: #525252;">${ch.readTime}</span>
+        <h2 style="font-size: 28px; margin-top: 6px;">${ch.title}</h2>
+        <p style="margin-top: 14px; font-size: 16px; color: #333; max-width: 68ch;">${ch.text}</p>
+        <div style="margin-top: 24px;">
+          <a href="shop.html" class="th-btn">Get Full Guide ($6.99)</a>
+        </div>`;
+    }
+
+    tabs.forEach((t) => t.addEventListener("click", () => renderChapter(t.dataset.chap)));
+    renderChapter("france");
+  </script>
+</body>
+</html>

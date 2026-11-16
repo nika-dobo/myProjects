@@ -44,12 +44,16 @@ nav {
   grid-column: 1/2;
 }
 
-nav p {
+nav p,
+nav a {
   cursor: pointer;
   transition: all 0.1s;
+  color: inherit;
+  text-decoration: none;
 }
 
-nav p:hover {
+nav p:hover,
+nav a:hover {
   transform: scale(1.03);
 }
 

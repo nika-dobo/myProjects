@@ -6,8 +6,8 @@ Open [`allWeb.html`](./allWeb.html) in a browser (or serve the repository locall
 
 ## Highlights
 
-- **FlowForge — Visual Workflow Studio** (`Next.js 15 · React 19 · TypeScript · SQLite`) — [Repo](https://github.com/nika-dobo/flowforge)
-- **SoundForge DAW — Web Audio Studio** (`Next.js 15 · TypeScript · Web Audio API`) — [Repo](https://github.com/nika-dobo/soundforge-daw)
+- **FlowForge — Visual Workflow Studio** (`Next.js 15 · React 19 · TypeScript · SQLite`) — [Live Demo](./bigProjects/flowforge/index.html) · [Repo](https://github.com/nika-dobo/flowforge)
+- **SoundForge DAW — Web Audio Studio** (`Next.js 15 · TypeScript · Web Audio API`) — [Live Demo](./bigProjects/soundforge-daw/index.html) · [Repo](https://github.com/nika-dobo/soundforge-daw)
 - **CIPHER//50 — Web Engineering Escape Room** (`React 18 · Tailwind · Vite · Serverless API`) — [Live Demo](https://hakaton-escape-room-v2.vercel.app) · [Repo](https://github.com/nika-dobo/Hakaton-Escape-Room-v2)
 - **Python Learn Platform** (`React 19 · Tailwind v4 · Context API`) — [Live Demo](https://python-learn-self.vercel.app) · [Repo](https://github.com/nika-dobo/python_learn)
 - **BoholVista — Island Travel & Booking** (`React 19 · Tailwind v4 · Python FastAPI · SQLite`) — [`./bigProjects/boholvista/`](./bigProjects/boholvista/index.html) · [Repo](https://github.com/nika-dobo/BoholVista)
