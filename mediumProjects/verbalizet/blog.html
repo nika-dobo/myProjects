@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — VerbalizeIt</title>
+  <link rel="stylesheet" href="hw.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1><a href="hw.html">VerbalizeIt</a></h1>
+      <nav>
+        <a href="service.html">Service</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="register.html" class="nav-cta">Register</a>
+      <img id="mobile-menu-btn" src="img/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Menu" style="cursor: pointer;">
+    </div>
+  </header>
+  <div id="mobile-drawer" class="vb-mobile-drawer">
+    <a href="hw.html">Home</a>
+    <a href="service.html">Service</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register →</a>
+  </div>
+
+  <main class="vb-page-main">
+    <section class="vb-hero">
+      <div class="vb-hero-copy">
+        <span class="vb-badge">VERBALIZEIT JOURNAL</span>
+        <h1>Science-Backed Guides for Faster Fluency</h1>
+        <p>Practical memory techniques, pronunciation breakdowns, and daily study routines written by linguists and polyglots.</p>
+      </div>
+      <div class="vb-card highlight" style="max-width: 420px;">
+        <span style="font-size: 12px; font-weight: 700;">FEATURED ESSAY · 5 MIN READ</span>
+        <h3>Why 10 Minutes a Day Beats a 2-Hour Weekend Cram</h3>
+        <p>Consistent spaced intervals strengthen active recall while keeping learner fatigue near zero.</p>
+        <button type="button" class="vb-btn-outline read-article" data-idx="0">Read Full Guide →</button>
+      </div>
+    </section>
+
+    <section class="vb-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <h2 style="font-size: 36px; font-weight: 700;">Latest Articles</h2>
+        <div class="vb-filters" id="blog-filters">
+          <button type="button" class="vb-pill active" data-cat="All">All</button>
+          <button type="button" class="vb-pill" data-cat="Habits">Habits</button>
+          <button type="button" class="vb-pill" data-cat="Pronunciation">Pronunciation</button>
+          <button type="button" class="vb-pill" data-cat="Culture">Culture</button>
+        </div>
+      </div>
+
+      <div class="vb-grid" id="blog-grid"></div>
+
+      <div id="article-reader" class="vb-card" style="display: none; border-color: #000; background: #fffbeb;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+          <span id="reader-cat" class="vb-badge">HABITS</span>
+          <button type="button" id="close-reader" class="vb-btn-outline" style="padding: 8px 20px;">Close ✕</button>
+        </div>
+        <h2 id="reader-title" style="font-size: 30px; font-weight: 700;"></h2>
+        <p id="reader-body" style="font-size: 17px; line-height: 30px;"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="main">
+      <div class="left">
+        <h3>VerbalizeIt</h3>
+        <p>Learning is a global training provider based across the UK that specialises in accredited and bespoke training courses.</p>
+      </div>
+      <div class="right">
+        <div>
+          <a href="about.html">About Us</a>
+          <a href="service.html">Service</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="register.html">Free Trial</a>
+          <a href="contact.html">Become a Partner</a>
+        </div>
+        <div>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <p class="bottom">Privacy Policy | Terms &amp; Conditions | Cookies Policy</p>
+  </footer>
+
+  <script>
+    document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+      document.getElementById("mobile-drawer").classList.toggle("open");
+    });
+
+    const POSTS = [
+      {
+        cat: "Habits",
+        date: "5 min read",
+        title: "Why 10 Minutes a Day Beats a 2-Hour Weekend Cram",
+        summary: "Short daily recall sessions trigger deeper consolidation during sleep cycles than marathon study blocks.",
+        full: "Neuroscience research consistently shows that encoding new vocabulary requires frequent retrieval cues spaced across multiple days. When you complete one 10-minute VerbalizeIt dialogue over morning coffee and review five flashcards at lunch, your brain treats those phrases as high-priority working knowledge rather than temporary exam facts."
+      },
+      {
+        cat: "Pronunciation",
+        date: "4 min read",
+        title: "Shadowing Native Cadence Without Feeling Awkward",
+        summary: "Repeat whole rhythm chunks 0.5 seconds behind native speakers to train muscle memory fast.",
+        full: "Most learners study isolated words and then struggle when native speakers blend syllables together. Audio shadowing fixes this by training your ear and vocal tract together: pick a 20-second VerbalizeIt clip, focus on melody and stress rather than individual letters, and echo the speaker aloud three times."
+      },
+      {
+        cat: "Culture",
+        date: "6 min read",
+        title: "How Politeness Registers Change Across Spanish & Japanese",
+        summary: "Choosing the right level of formality makes conversations smoother from your very first trip.",
+        full: "Direct word-for-word translation often misses social context. In Tokyo, ending a request politely signals warmth and attentiveness; in Madrid or Bogota, matching a stranger's tú or usted keeps the exchange relaxed. Each VerbalizeIt track labels formality levels so you never have to guess."
+      },
+      {
+        cat: "Habits",
+        date: "3 min read",
+        title: "Turning Podcasts & Commutes Into Active Listening Drills",
+        summary: "Pair passive audio with 3-phrase spoken summaries right after you step off the train.",
+        full: "Passive listening familiarizes your ear with phonetic pace, while a quick 60-second spoken recap forces active grammar production. Use VerbalizeIt's streak reminders to log one spoken summary phrase immediately after listening."
+      }
+    ];
+
+    let activeCat = "All";
+    function renderPosts() {
+      document.querySelectorAll("#blog-filters .vb-pill").forEach((b) => b.classList.toggle("active", b.dataset.cat === activeCat));
+      const grid = document.getElementById("blog-grid");
+      grid.innerHTML = POSTS.map((p, i) => ({ ...p, i }))
+        .filter((p) => activeCat === "All" || p.cat === activeCat)
+        .map((p) => `
+          <article class="vb-card">
+            <span style="font-size:12px;font-weight:700;color:#525252;">${p.cat.toUpperCase()} · ${p.date}</span>
+            <h3>${p.title}</h3>
+            <p>${p.summary}</p>
+            <button type="button" class="vb-btn-outline read-article" data-idx="${p.i}" style="margin-top:auto;">Read Article →</button>
+          </article>
+        `).join("");
+
+      document.querySelectorAll(".read-article").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const post = POSTS[Number(btn.dataset.idx)];
+          document.getElementById("reader-cat").textContent = post.cat.toUpperCase();
+          document.getElementById("reader-title").textContent = post.title;
+          document.getElementById("reader-body").textContent = post.full;
+          const reader = document.getElementById("article-reader");
+          reader.style.display = "flex";
+          reader.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+    }
+
+    document.getElementById("close-reader").addEventListener("click", () => {
+      document.getElementById("article-reader").style.display = "none";
+    });
+    document.querySelectorAll("#blog-filters .vb-pill").forEach((btn) => {
+      btn.addEventListener("click", () => { activeCat = btn.dataset.cat; renderPosts(); });
+    });
+    renderPosts();
+  </script>
+</body>
+</html>

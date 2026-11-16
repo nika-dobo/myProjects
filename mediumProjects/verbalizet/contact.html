@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — VerbalizeIt</title>
+  <link rel="stylesheet" href="hw.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1><a href="hw.html">VerbalizeIt</a></h1>
+      <nav>
+        <a href="service.html">Service</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <a href="register.html" class="nav-cta">Register</a>
+      <img id="mobile-menu-btn" src="img/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Menu" style="cursor: pointer;">
+    </div>
+  </header>
+  <div id="mobile-drawer" class="vb-mobile-drawer">
+    <a href="hw.html">Home</a>
+    <a href="service.html">Service</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register →</a>
+  </div>
+
+  <main class="vb-page-main">
+    <section class="vb-hero">
+      <div class="vb-hero-copy">
+        <span class="vb-badge">GET IN TOUCH</span>
+        <h1>Talk With Our Training &amp; Support Team</h1>
+        <p>Have questions about courses, bespoke corporate programs, or becoming a VerbalizeIt education partner? Send us a note.</p>
+      </div>
+    </section>
+
+    <section class="vb-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+      <form id="contact-form" class="vb-form-card">
+        <h2 style="font-size: 28px; font-weight: 700;">Send a Message</h2>
+        <div class="vb-field">
+          <label for="c-name">Full Name</label>
+          <input id="c-name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="vb-field">
+          <label for="c-email">Email Address</label>
+          <input id="c-email" type="email" placeholder="you@company.com" required>
+        </div>
+        <div class="vb-field">
+          <label for="c-topic">Topic</label>
+          <select id="c-topic">
+            <option value="General Support">General Learner Support</option>
+            <option value="Become a Partner">Become a Partner / University</option>
+            <option value="Enterprise Training">Bespoke Enterprise Training</option>
+          </select>
+        </div>
+        <div class="vb-field">
+          <label for="c-msg">Message</label>
+          <textarea id="c-msg" rows="4" placeholder="How can our team help?" required></textarea>
+        </div>
+        <button type="submit">Send Message →</button>
+        <div id="contact-toast" class="vb-toast"></div>
+      </form>
+
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="vb-card">
+          <h3>London Training HQ</h3>
+          <p>42 Clerkenwell Green, London EC1R 0EB, United Kingdom</p>
+          <p><strong>Hours:</strong> Mon–Fri, 09:00 – 18:00 GMT</p>
+        </div>
+        <div class="vb-card highlight">
+          <h3>Partnership Inquiries</h3>
+          <p>Schools and remote teams receive volume seat discounts and dedicated onboarding coaches within 24 hours.</p>
+          <a href="service.html" class="vb-btn-outline" style="background: #fff; text-align: center;">Browse Course Tracks</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="main">
+      <div class="left">
+        <h3>VerbalizeIt</h3>
+        <p>Learning is a global training provider based across the UK that specialises in accredited and bespoke training courses.</p>
+      </div>
+      <div class="right">
+        <div>
+          <a href="about.html">About Us</a>
+          <a href="service.html">Service</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="register.html">Free Trial</a>
+          <a href="contact.html">Become a Partner</a>
+        </div>
+        <div>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <p class="bottom">Privacy Policy | Terms &amp; Conditions | Cookies Policy</p>
+  </footer>
+
+  <script>
+    document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+      document.getElementById("mobile-drawer").classList.toggle("open");
+    });
+
+    document.getElementById("contact-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("c-name").value.trim();
+      const topic = document.getElementById("c-topic").value;
+      const toast = document.getElementById("contact-toast");
+      toast.style.display = "block";
+      toast.textContent = `Thanks, ${name}! Your "${topic}" inquiry has been logged and our team will reply shortly.`;
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

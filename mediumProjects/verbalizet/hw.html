@@ -4,24 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VerbalizeIt — Learn Language Easily</title>
     <link rel="stylesheet" href="hw.css">
+    <link rel="stylesheet" href="pages.css">
 </head>
 
 <body>
     <header>
         <div>
-            <h1>VerbalizeIt</h1>
+            <h1><a href="hw.html">VerbalizeIt</a></h1>
             <nav>
-                <a href="">Service</a>
-                <a href="">Blog</a>
-                <a href="">About Us</a>
-                <a href="">Contact</a>
+                <a href="service.html">Service</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
             </nav>
-            <button>Register</button>
-            <img src="img/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
+            <a href="register.html" class="nav-cta">Register</a>
+            <img id="mobile-menu-btn" src="img/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Menu" style="cursor: pointer;">
         </div>
     </header>
+    <div id="mobile-drawer" class="vb-mobile-drawer">
+        <a href="hw.html">Home</a>
+        <a href="service.html">Service</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register →</a>
+    </div>
 
     <main>
         <section class="section-1">
@@ -113,24 +122,41 @@
 
             <div class="right">
                 <div>
-                    <p>About Us</p>
-                    <p>Service</p>
-                    <p>Blog</p>
+                    <a href="about.html">About Us</a>
+                    <a href="service.html">Service</a>
+                    <a href="blog.html">Blog</a>
                 </div>
                 <div>
-                    <p>Terms & conditions</p>
-                    <p>Privacy Policy</p>
-                    <p>Become a Partner</p>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="register.html">Free Trial</a>
+                    <a href="contact.html">Become a Partner</a>
                 </div>
                 <div>
-                    <p>Twitter</p>
-                    <p>Facebook</p>
-                    <p>Instagram</p>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
                 </div>
             </div>
         </div>
-        <p class="bottom">Privacy Policy | Terms & Conditions | Cookies Policy </p>
+        <p class="bottom">Privacy Policy | Terms &amp; Conditions | Cookies Policy</p>
     </footer>
+    <script>
+        const menuBtn = document.getElementById("mobile-menu-btn");
+        const drawer = document.getElementById("mobile-drawer");
+        if (menuBtn && drawer) {
+            menuBtn.addEventListener("click", () => drawer.classList.toggle("open"));
+        }
+        const heroForm = document.querySelector(".section-1 form");
+        if (heroForm) {
+            heroForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const emailInput = heroForm.querySelector('input[type="email"]');
+                const email = emailInput ? emailInput.value.trim() : "";
+                if (!email) return;
+                window.location.href = "register.html?email=" + encodeURIComponent(email);
+            });
+        }
+    </script>
 </body>
 
 </html>

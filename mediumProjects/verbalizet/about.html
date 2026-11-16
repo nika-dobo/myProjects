@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — VerbalizeIt</title>
+  <link rel="stylesheet" href="hw.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1><a href="hw.html">VerbalizeIt</a></h1>
+      <nav>
+        <a href="service.html">Service</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html" class="active">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="register.html" class="nav-cta">Register</a>
+      <img id="mobile-menu-btn" src="img/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Menu" style="cursor: pointer;">
+    </div>
+  </header>
+  <div id="mobile-drawer" class="vb-mobile-drawer">
+    <a href="hw.html">Home</a>
+    <a href="service.html">Service</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register →</a>
+  </div>
+
+  <main class="vb-page-main">
+    <section class="vb-hero">
+      <div class="vb-hero-copy">
+        <span class="vb-badge">ABOUT VERBALIZEIT</span>
+        <h1>Built in the UK, Trusted by Learners Globally</h1>
+        <p>VerbalizeIt is a global language training provider delivering accredited corporate workshops and playful mobile micro-lessons so anyone can speak with confidence.</p>
+      </div>
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <img src="img/pic.png" alt="Partner" style="height: 44px;">
+        <img src="img/spotify-seeklogo.com 2.png" alt="Spotify" style="height: 30px;">
+        <img src="img/zoom-seeklogo.com-1.png" alt="Zoom" style="height: 30px;">
+      </div>
+    </section>
+
+    <section class="vb-container">
+      <h2 style="font-size: 36px; font-weight: 700;">Our Teaching Philosophy</h2>
+      <div class="vb-grid">
+        <article class="vb-card">
+          <h3>Real-World Context First</h3>
+          <p>Every module opens with authentic audio scenarios — ordering at cafés, interviewing, or pitching to international teams.</p>
+        </article>
+        <article class="vb-card">
+          <h3>Motivation Through Streaks</h3>
+          <p>Playful point milestones and gentle daily challenges help learners stay consistent week after week.</p>
+        </article>
+        <article class="vb-card">
+          <h3>Accredited Enterprise Programs</h3>
+          <p>Custom training tracks for distributed engineering, support, and hospitality teams across time zones.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="vb-container" style="align-items: center;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; width: 100%;">
+        <img src="img/Group 466 (1).png" alt="Progress app screen" style="max-width: 480px; width: 100%; height: auto;">
+        <img src="img/Group 467.png" alt="Lesson app screen" style="max-width: 480px; width: 100%; height: auto;">
+      </div>
+      <img src="img/Component 138 (1).png" alt="Global learning map" style="width: 100%; max-width: 960px; height: auto;">
+    </section>
+
+    <section class="section-4">
+      <h1>Want VerbalizeIt for your school or company?</h1>
+      <div>
+        <a href="contact.html" class="vb-btn-outline" style="background: #fff;">Partner With Us →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="main">
+      <div class="left">
+        <h3>VerbalizeIt</h3>
+        <p>Learning is a global training provider based across the UK that specialises in accredited and bespoke training courses.</p>
+      </div>
+      <div class="right">
+        <div>
+          <a href="about.html">About Us</a>
+          <a href="service.html">Service</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="register.html">Free Trial</a>
+          <a href="contact.html">Become a Partner</a>
+        </div>
+        <div>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <p class="bottom">Privacy Policy | Terms &amp; Conditions | Cookies Policy</p>
+  </footer>
+
+  <script>
+    document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+      document.getElementById("mobile-drawer").classList.toggle("open");
+    });
+  </script>
+</body>
+</html>

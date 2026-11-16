@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — VerbalizeIt</title>
+  <link rel="stylesheet" href="hw.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1><a href="hw.html">VerbalizeIt</a></h1>
+      <nav>
+        <a href="service.html">Service</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="register.html" class="nav-cta">Register</a>
+      <img id="mobile-menu-btn" src="img/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Menu" style="cursor: pointer;">
+    </div>
+  </header>
+  <div id="mobile-drawer" class="vb-mobile-drawer">
+    <a href="hw.html">Home</a>
+    <a href="service.html">Service</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register →</a>
+  </div>
+
+  <main class="vb-page-main">
+    <section class="vb-hero">
+      <div class="vb-hero-copy">
+        <span class="vb-badge">START LEARNING</span>
+        <h1>Create Your Free VerbalizeIt Account</h1>
+        <p>Choose your target language and daily pace. Unlock interactive micro-lessons immediately.</p>
+      </div>
+    </section>
+
+    <section class="vb-container" style="display: flex; align-items: center;">
+      <form id="reg-form" class="vb-form-card">
+        <div class="vb-field">
+          <label>Target Language</label>
+          <div class="vb-filters" id="lang-pills">
+            <button type="button" class="vb-pill active" data-lang="Spanish">Spanish</button>
+            <button type="button" class="vb-pill" data-lang="French">French</button>
+            <button type="button" class="vb-pill" data-lang="German">German</button>
+            <button type="button" class="vb-pill" data-lang="Japanese">Japanese</button>
+            <button type="button" class="vb-pill" data-lang="Italian">Italian</button>
+          </div>
+        </div>
+
+        <div class="vb-field">
+          <label for="r-pace">Daily Goal</label>
+          <select id="r-pace">
+            <option value="10 min/day (Casual)">10 min/day — Casual Habit</option>
+            <option value="20 min/day (Steady)">20 min/day — Steady Progress</option>
+            <option value="30 min/day (Intensive)">30 min/day — Intensive Fluency</option>
+          </select>
+        </div>
+
+        <div class="vb-field">
+          <label for="r-name">Your Name</label>
+          <input id="r-name" type="text" placeholder="Alex Mercer" required>
+        </div>
+
+        <div class="vb-field">
+          <label for="r-email">Email Address</label>
+          <input id="r-email" type="email" placeholder="alex@example.com" required>
+        </div>
+
+        <button type="submit">Start Free 14-Day Learning Plan →</button>
+        <div id="reg-toast" class="vb-toast"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="main">
+      <div class="left">
+        <h3>VerbalizeIt</h3>
+        <p>Learning is a global training provider based across the UK that specialises in accredited and bespoke training courses.</p>
+      </div>
+      <div class="right">
+        <div>
+          <a href="about.html">About Us</a>
+          <a href="service.html">Service</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="register.html">Free Trial</a>
+          <a href="contact.html">Become a Partner</a>
+        </div>
+        <div>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <p class="bottom">Privacy Policy | Terms &amp; Conditions | Cookies Policy</p>
+  </footer>
+
+  <script>
+    document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+      document.getElementById("mobile-drawer").classList.toggle("open");
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const preEmail = params.get("email");
+    if (preEmail) {
+      document.getElementById("r-email").value = preEmail;
+    }
+
+    let selectedLang = "Spanish";
+    document.querySelectorAll("#lang-pills .vb-pill").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectedLang = btn.dataset.lang;
+        document.querySelectorAll("#lang-pills .vb-pill").forEach((p) => p.classList.toggle("active", p === btn));
+      });
+    });
+
+    document.getElementById("reg-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("r-name").value.trim();
+      const pace = document.getElementById("r-pace").value;
+      const toast = document.getElementById("reg-toast");
+      toast.style.display = "block";
+      toast.innerHTML = `Welcome, ${name}! Your <strong>${selectedLang}</strong> track (${pace}) is ready. <a href="service.html" style="color:#1a2e05;text-decoration:underline;">Open your first mini-lesson →</a>`;
+    });
+  </script>
+</body>
+</html>

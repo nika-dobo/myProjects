@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service &amp; Courses — VerbalizeIt</title>
+  <link rel="stylesheet" href="hw.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1><a href="hw.html">VerbalizeIt</a></h1>
+      <nav>
+        <a href="service.html" class="active">Service</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="register.html" class="nav-cta">Register</a>
+      <img id="mobile-menu-btn" src="img/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Menu" style="cursor: pointer;">
+    </div>
+  </header>
+  <div id="mobile-drawer" class="vb-mobile-drawer">
+    <a href="hw.html">Home</a>
+    <a href="service.html">Service</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register →</a>
+  </div>
+
+  <main class="vb-page-main">
+    <section class="vb-hero">
+      <div class="vb-hero-copy">
+        <span class="vb-badge">COURSES &amp; SERVICES</span>
+        <h1>Structured Tracks Built for Real Conversation</h1>
+        <p>Pick a language track tailored to your daily schedule — micro-lessons, spaced-repetition flashcards, and live pronunciation feedback.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="register.html" class="nav-cta" style="display: inline-block;">Start Free Trial</a>
+          <a href="contact.html" class="vb-btn-outline">Team Training</a>
+        </div>
+      </div>
+      <img src="img/mobile.png" alt="VerbalizeIt mobile app" style="max-width: 340px; width: 100%; height: auto;">
+    </section>
+
+    <section class="vb-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <h2 style="font-size: 36px; font-weight: 700;">Explore Language Tracks</h2>
+        <div class="vb-filters" id="track-filters">
+          <button type="button" class="vb-pill active" data-filter="all">All Tracks</button>
+          <button type="button" class="vb-pill" data-filter="beginner">Beginner (A1–A2)</button>
+          <button type="button" class="vb-pill" data-filter="fluent">Conversational (B1–B2)</button>
+          <button type="button" class="vb-pill" data-filter="business">Business &amp; Pro</button>
+        </div>
+      </div>
+      <div class="vb-grid" id="tracks-grid"></div>
+    </section>
+
+    <section class="vb-container">
+      <div class="vb-card highlight" style="padding: 40px;">
+        <span style="font-size: 13px; font-weight: 700; text-transform: uppercase;">Interactive Mini Lesson</span>
+        <h2 style="font-size: 32px; font-weight: 700;">Try a 10-Second Phrase Card</h2>
+        <p style="max-width: 650px;">Flip between Everyday Phrases across languages or play spoken audio right in your browser.</p>
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; background: #fff; padding: 28px; border-radius: 20px;">
+          <div style="flex: 1; min-width: 240px;">
+            <span id="phrase-lang" style="font-size: 13px; font-weight: 700; color: #525252;">SPANISH · GREETING</span>
+            <h3 id="phrase-text" style="font-size: 28px; margin: 8px 0;">¿Cómo te ha ido hoy?</h3>
+            <p id="phrase-meaning" style="color: #404040;">"How has your day been going?"</p>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button type="button" id="speak-btn" class="vb-btn-outline">🔊 Listen</button>
+            <button type="button" id="next-phrase-btn">Next Phrase →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-4">
+      <h1>Start any course free for 14 days</h1>
+      <div>
+        <a href="register.html"><img src="img/Group 473.png" alt="App Store"></a>
+        <a href="register.html"><img src="img/Group 472.png" alt="Google Play"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="main">
+      <div class="left">
+        <h3>VerbalizeIt</h3>
+        <p>Learning is a global training provider based across the UK that specialises in accredited and bespoke training courses.</p>
+      </div>
+      <div class="right">
+        <div>
+          <a href="about.html">About Us</a>
+          <a href="service.html">Service</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="register.html">Free Trial</a>
+          <a href="contact.html">Become a Partner</a>
+        </div>
+        <div>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <p class="bottom">Privacy Policy | Terms &amp; Conditions | Cookies Policy</p>
+  </footer>
+
+  <script>
+    document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+      document.getElementById("mobile-drawer").classList.toggle("open");
+    });
+
+    const TRACKS = [
+      { level: "beginner", tag: "SPANISH · A1–A2", title: "Everyday Spanish Essentials", lessons: "45 micro-lessons · 10 min/day", desc: "Build confidence ordering food, navigating travel, and having warm everyday chats." },
+      { level: "fluent", tag: "FRENCH · B1–B2", title: "Fluent French Conversation", lessons: "60 dialogue drills · Audio feedback", desc: "Master natural idioms, liaison flow, and real-speed Parisian listening comprehension." },
+      { level: "business", tag: "GERMAN · B2–C1", title: "Executive & Tech German", lessons: "36 industry modules · Live Q&A", desc: "Lead product standups, client calls, and presentations with formal clarity." },
+      { level: "beginner", tag: "JAPANESE · A1", title: "Practical Japanese & Hiragana", lessons: "50 visual cards · Pitch guide", desc: "Learn Hiragana, polite greetings, and essential survival phrases with audio cues." },
+      { level: "fluent", tag: "ITALIAN · B1", title: "Italian Travel & Culture", lessons: "40 story episodes · Quizzes", desc: "Understand regional storytelling, cafe banter, and expressive gesture idioms." },
+      { level: "business", tag: "ENGLISH · C1", title: "Global Business Communication", lessons: "52 workshops · Accredited", desc: "Negotiation frameworks, crisp remote standup vocabulary, and presentation polish." }
+    ];
+
+    let activeFilter = "all";
+    function renderTracks() {
+      const grid = document.getElementById("tracks-grid");
+      document.querySelectorAll("#track-filters .vb-pill").forEach((b) => {
+        b.classList.toggle("active", b.dataset.filter === activeFilter);
+      });
+      const items = TRACKS.filter((t) => activeFilter === "all" || t.level === activeFilter);
+      grid.innerHTML = items.map((t) => `
+        <article class="vb-card">
+          <span style="font-size:12px;font-weight:700;color:#525252;">${t.tag}</span>
+          <h3>${t.title}</h3>
+          <p>${t.desc}</p>
+          <span style="font-size:14px;font-weight:700;">${t.lessons}</span>
+          <a href="register.html" class="vb-btn-outline" style="margin-top:auto;text-align:center;">Enroll Free →</a>
+        </article>
+      `).join("");
+    }
+
+    document.querySelectorAll("#track-filters .vb-pill").forEach((btn) => {
+      btn.addEventListener("click", () => { activeFilter = btn.dataset.filter; renderTracks(); });
+    });
+    renderTracks();
+
+    const PHRASES = [
+      { lang: "SPANISH · GREETING", code: "es-ES", text: "¿Cómo te ha ido hoy?", meaning: '"How has your day been going?"' },
+      { lang: "FRENCH · CAFE", code: "fr-FR", text: "Un café allongé, s'il vous plaît.", meaning: '"A long black coffee, please."' },
+      { lang: "GERMAN · WORK", code: "de-DE", text: "Können wir das kurz besprechen?", meaning: '"Can we discuss this briefly?"' },
+      { lang: "JAPANESE · TRAVEL", code: "ja-JP", text: "駅はどこにありますか？", meaning: '"Where is the train station?"' }
+    ];
+    let idx = 0;
+    function showPhrase() {
+      const p = PHRASES[idx];
+      document.getElementById("phrase-lang").textContent = p.lang;
+      document.getElementById("phrase-text").textContent = p.text;
+      document.getElementById("phrase-meaning").textContent = p.meaning;
+    }
+    document.getElementById("next-phrase-btn").addEventListener("click", () => {
+      idx = (idx + 1) % PHRASES.length;
+      showPhrase();
+    });
+    document.getElementById("speak-btn").addEventListener("click", () => {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(PHRASES[idx].text);
+        u.lang = PHRASES[idx].code;
+        window.speechSynthesis.speak(u);
+      }
+    });
+  </script>
+</body>
+</html>

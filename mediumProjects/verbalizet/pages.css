@@ -1,0 +1,224 @@
+.vb-page-main {
+  margin-top: 64px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+
+.vb-container {
+  width: 100%;
+  padding: 0 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.vb-hero {
+  width: 100%;
+  padding: 64px 120px;
+  background-color: #fffbeb;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.vb-hero-copy {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vb-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: #ffce31;
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 100px;
+  letter-spacing: 0.4px;
+}
+
+.vb-hero-copy h1 {
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.vb-hero-copy p {
+  font-size: 18px;
+  line-height: 30px;
+  color: #333;
+}
+
+.vb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  width: 100%;
+}
+
+.vb-card {
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.vb-card:hover {
+  transform: translateY(-3px);
+  border-color: #ffce31;
+}
+
+.vb-card.highlight {
+  background-color: #ffce31;
+  border-color: #000;
+}
+
+.vb-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.vb-card p {
+  font-size: 16px;
+  line-height: 26px;
+  color: #262626;
+}
+
+.vb-filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.vb-pill {
+  background-color: #f5f5f5;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid #d4d4d4;
+  cursor: pointer;
+}
+
+.vb-pill:hover {
+  background-color: #fef08a;
+  transform: none;
+}
+
+.vb-pill.active {
+  background-color: #ffce31;
+  border-color: #000;
+}
+
+.vb-btn-outline {
+  background-color: transparent;
+  border: 2px solid #000;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.vb-btn-outline:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.vb-form-card {
+  background-color: #f5f5f5;
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 720px;
+  width: 100%;
+}
+
+.vb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vb-field label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.vb-field input,
+.vb-field select,
+.vb-field textarea {
+  width: 100%;
+  padding: 16px 22px;
+  border: 1px solid #d4d4d4;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #fff;
+  font-family: "Raleway", sans-serif;
+}
+
+.vb-toast {
+  display: none;
+  background-color: #ecfccb;
+  border: 1px solid #65a30d;
+  color: #1a2e05;
+  padding: 16px 22px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.vb-mobile-drawer {
+  display: none;
+  width: 100%;
+  background-color: #fffbeb;
+  border-bottom: 1px solid #a8a8a8;
+  padding: 18px 20px;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vb-mobile-drawer.open {
+  display: flex;
+}
+
+.vb-mobile-drawer a {
+  color: #000;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .vb-container,
+  .vb-hero {
+    padding: 40px 20px;
+  }
+
+  .vb-hero-copy h1 {
+    font-size: 38px;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+}
