@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="All web projects organized by difficulty level — big, medium, and small projects.">
+    <meta name="description" content="All web projects organized by difficulty level — ultra, big, medium, and small projects.">
     <title>All Web Projects</title>
     <link rel="stylesheet" href="allWeb.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
@@ -27,6 +27,7 @@
                 <span class="logo-text">My<span class="logo-accent">Projects</span></span>
             </div>
             <nav>
+                <a href="#ultra" class="nav-link">Ultra</a>
                 <a href="#big" class="nav-link">Big Projects</a>
                 <a href="#medium" class="nav-link">Medium</a>
                 <a href="#small" class="nav-link">Small</a>
@@ -41,17 +42,22 @@
         <p class="hero-desc">ყველა პროექტი ერთ ადგილას — დონეების მიხედვით დაყოფილი.</p>
         <div class="hero-stats">
             <div class="stat">
-                <span class="stat-num">24</span>
+                <span class="stat-num" data-stat-level="ultra">0</span>
+                <span class="stat-label">Ultra Projects</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-num" data-stat-level="big">24</span>
                 <span class="stat-label">Big Projects</span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <span class="stat-num">9</span>
+                <span class="stat-num" data-stat-level="medium">9</span>
                 <span class="stat-label">Medium Projects</span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <span class="stat-num">24</span>
+                <span class="stat-num" data-stat-level="small">24</span>
                 <span class="stat-label">Small Projects</span>
             </div>
         </div>
@@ -65,10 +71,11 @@
                 <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
             </div>
             <div class="filter-pills" id="filter-pills">
-                <button type="button" class="filter-pill active" data-filter="all">ყველა (57)</button>
-                <button type="button" class="filter-pill" data-filter="big">🔥 Big (24)</button>
-                <button type="button" class="filter-pill" data-filter="medium">⚙️ Medium (9)</button>
-                <button type="button" class="filter-pill" data-filter="small">✨ Small (24)</button>
+                <button type="button" class="filter-pill active" data-filter="all">ყველა (<span class="pill-count">57</span>)</button>
+                <button type="button" class="filter-pill" data-filter="ultra">💎 Ultra (<span class="pill-count">0</span>)</button>
+                <button type="button" class="filter-pill" data-filter="big">🔥 Big (<span class="pill-count">24</span>)</button>
+                <button type="button" class="filter-pill" data-filter="medium">⚙️ Medium (<span class="pill-count">9</span>)</button>
+                <button type="button" class="filter-pill" data-filter="small">✨ Small (<span class="pill-count">24</span>)</button>
                 <button type="button" class="filter-pill" data-filter="multipage">📄 Multi-page</button>
                 <button type="button" class="filter-pill" data-filter="app">🚀 Open App / Live</button>
             </div>
@@ -81,6 +88,30 @@
         <p>სცადე სხვა საძიებო სიტყვა ან გაასუფთავე ფილტრი.</p>
         <button type="button" class="reset-search-btn" id="reset-search-btn">ფილტრის გასუფთავება</button>
     </div>
+
+    <!-- ========================================================
+         LEVEL 0: ULTRA PROJECTS
+    ========================================================= -->
+    <section class="level-section" id="ultra">
+        <div class="level-header">
+            <div class="level-badge ultra-badge">
+                <span>💎</span>
+            </div>
+            <div>
+                <h2>Ultra Projects</h2>
+                <p class="level-desc">Flagship engineering systems — advanced architecture, AI, real-time engines, and full-stack scale.</p>
+            </div>
+            <span class="level-count">0 projects</span>
+        </div>
+
+        <div class="projects-grid ultra-grid">
+            <div class="ultra-empty" id="ultra-empty">
+                <span class="ultra-empty-badge">🚀 Coming Soon</span>
+                <h3>ახალი Ultra პროექტები მზადდება</h3>
+                <p>ამ სექციაში დაემატება ყველაზე რთული, მასშტაბური და ფლაგმანური პროექტები.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- ========================================================
          LEVEL 1: BIG PROJECTS
@@ -1071,14 +1102,35 @@
         const resetBtn = document.getElementById('reset-search-btn');
         const filterBtns = document.querySelectorAll('#filter-pills .filter-pill');
         const sections = document.querySelectorAll('.level-section');
+        const ultraEmptyEl = document.getElementById('ultra-empty');
         let activeFilter = 'all';
 
-        sections.forEach(sec => {
-            const countEl = sec.querySelector('.level-count');
-            if (countEl && !sec.dataset.originalCount) {
-                sec.dataset.originalCount = countEl.textContent.trim();
-            }
-        });
+        function syncProjectCounts() {
+            let totalProjects = 0;
+            sections.forEach(sec => {
+                const count = sec.querySelectorAll('.project-card').length;
+                totalProjects += count;
+                const label = `${count} ${count === 1 ? 'project' : 'projects'}`;
+                sec.dataset.originalCount = label;
+                const countEl = sec.querySelector('.level-count');
+                if (countEl) countEl.textContent = label;
+
+                const statEl = document.querySelector(`.stat-num[data-stat-level="${sec.id}"]`);
+                if (statEl) statEl.textContent = count;
+
+                const pillCountEl = document.querySelector(`.filter-pill[data-filter="${sec.id}"] .pill-count`);
+                if (pillCountEl) pillCountEl.textContent = count;
+
+                if (sec.id === 'ultra' && ultraEmptyEl) {
+                    ultraEmptyEl.style.display = count === 0 ? '' : 'none';
+                }
+            });
+
+            const allPillCountEl = document.querySelector('.filter-pill[data-filter="all"] .pill-count');
+            if (allPillCountEl) allPillCountEl.textContent = totalProjects;
+        }
+
+        syncProjectCounts();
 
         function applySearchAndFilter() {
             const q = searchInput.value.trim().toLowerCase();
@@ -1104,7 +1156,7 @@
                         .join(' ');
 
                     let matchesFilter = true;
-                    if (activeFilter === 'big' || activeFilter === 'medium' || activeFilter === 'small') {
+                    if (activeFilter === 'ultra' || activeFilter === 'big' || activeFilter === 'medium' || activeFilter === 'small') {
                         matchesFilter = secId === activeFilter;
                     } else if (activeFilter === 'multipage') {
                         matchesFilter = text.includes('multi-page');
@@ -1123,20 +1175,33 @@
                     }
                 });
 
+                const isEmptyUltraPlaceholder = secId === 'ultra' && cards.length === 0 && !q && (activeFilter === 'all' || activeFilter === 'ultra');
+                if (ultraEmptyEl && secId === 'ultra') {
+                    ultraEmptyEl.style.display = isEmptyUltraPlaceholder ? '' : 'none';
+                }
+
                 const countEl = sec.querySelector('.level-count');
                 if (countEl) {
                     countEl.textContent = isFiltering ? `${secShown} shown` : sec.dataset.originalCount;
                 }
-                sec.style.display = secShown > 0 ? '' : 'none';
-                if (secShown > 0) sec.classList.add('visible');
+                const showSection = isEmptyUltraPlaceholder || secShown > 0;
+                sec.style.display = showSection ? '' : 'none';
+                if (showSection) sec.classList.add('visible');
             });
 
-            if (isFiltering) {
+            const ultraSec = document.getElementById('ultra');
+            const isUltraOnlyComingSoon = activeFilter === 'ultra' && !q && ultraSec && ultraSec.querySelectorAll('.project-card').length === 0;
+
+            if (isUltraOnlyComingSoon) {
+                statusEl.textContent = 'Ultra სექცია მზადაა — პროექტები მალე დაემატება';
+                emptyEl.style.display = 'none';
+            } else if (isFiltering) {
                 statusEl.textContent = `ნაპოვნია: ${totalShown} პროექტი`;
+                emptyEl.style.display = totalShown === 0 ? 'block' : 'none';
             } else {
                 statusEl.textContent = '';
+                emptyEl.style.display = 'none';
             }
-            emptyEl.style.display = totalShown === 0 ? 'block' : 'none';
         }
 
         filterBtns.forEach(btn => {

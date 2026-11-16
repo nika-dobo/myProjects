@@ -293,6 +293,12 @@ nav {
     flex-shrink: 0;
 }
 
+.ultra-badge {
+    background: linear-gradient(135deg, #4c1d95, #1e1b4b);
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    box-shadow: 0 0 34px rgba(168, 85, 247, 0.18);
+}
+
 .big-badge {
     background: linear-gradient(135deg, #7f1d1d, #450a0a);
     border: 1px solid rgba(239, 68, 68, 0.3);
@@ -343,6 +349,10 @@ nav {
 .projects-grid {
     display: grid;
     gap: 20px;
+}
+
+.ultra-grid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 }
 
 .big-grid {
@@ -588,6 +598,44 @@ footer p {
     font-weight: 500;
 }
 
+.ultra-empty {
+    grid-column: 1 / -1;
+    padding: 44px 28px;
+    border-radius: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(88, 28, 135, 0.14), rgba(30, 27, 75, 0.24));
+    border: 1px dashed rgba(167, 139, 250, 0.32);
+    backdrop-filter: blur(12px);
+}
+
+.ultra-empty-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.14);
+    border: 1px solid rgba(167, 139, 250, 0.28);
+    margin-bottom: 14px;
+}
+
+.ultra-empty h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f0f4f8;
+    margin-bottom: 8px;
+}
+
+.ultra-empty p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
 /* ============================================================
    Responsive
    ============================================================ */
@@ -621,6 +669,7 @@ footer p {
         margin-left: 0;
     }
 
+    .ultra-grid,
     .big-grid,
     .medium-grid,
     .small-grid {
