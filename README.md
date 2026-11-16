@@ -1,5 +1,7 @@
 # ⚡ MyProjects — Web Portfolio Hub
 
+🌐 **Live Site:** https://nika-dobo.github.io/myProjects/
+
 A curated portfolio index of **57 completed web projects** organized by scope (**24 Big · 9 Medium · 24 Small**), with live search and category filters (`Big`, `Medium`, `Small`, `Multi-page`, `Open App / Live`). Spans Next.js 15, TypeScript, React + Tailwind CSS applications, Python FastAPI backends, Three.js / Web Audio experiences, hackathon builds, and multi-page sites.
 
 Open [`allWeb.html`](./allWeb.html) (or [`index.html`](./index.html)) in a browser to search and launch every project.
