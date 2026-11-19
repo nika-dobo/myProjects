@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B0C10">
+  <title>POF Bank — Python Bank &amp; Modules (Browser App)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+Georgian:wght@400;600;700;800&family=Permanent+Marker&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0C10;
+      --surface: #14161E;
+      --card: #101218;
+      --lime: #CCFF00;
+      --purple: #7C3AED;
+      --blue: #47B8FF;
+      --coral: #FF5E3A;
+      --text: #FFFFFF;
+      --muted: #A4AABF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Rubik', 'Noto Sans Georgian', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.55;
+      overflow-x: clip;
+    }
+    .wrap {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 24px clamp(16px, 4vw, 48px) 48px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .back-link:hover { border-color: var(--lime); color: var(--lime); }
+    .meta-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      padding: 6px 13px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(124, 58, 237, 0.16);
+      border: 1px solid rgba(124, 58, 237, 0.5);
+      color: #E2D5FF;
+    }
+    .pill-lime {
+      background: rgba(204, 255, 0, 0.12);
+      border-color: rgba(204, 255, 0, 0.45);
+      color: var(--lime);
+    }
+    .hero-banner {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 26px;
+      padding: clamp(20px, 3vw, 34px);
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+    }
+    h1 span { color: var(--lime); }
+    .subtitle { color: var(--muted); font-size: 0.94rem; margin-top: 8px; max-width: 60ch; }
+    .balances {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(115px, 1fr));
+      gap: 10px;
+      width: 100%;
+      max-width: 560px;
+    }
+    .bal-box {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    .bal-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+    .bal-val { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--lime); margin-top: 3px; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 24px;
+      padding: 22px;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .tab-btn {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--card);
+      color: var(--muted);
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tab-btn:hover { color: #FFFFFF; border-color: var(--purple); }
+    .tab-btn.active { background: var(--lime); border-color: var(--lime); color: #0B0C10; }
+    .form-grid { display: grid; gap: 14px; }
+    label { display: block; font-size: 0.78rem; font-weight: 600; color: #D4D8E8; margin-bottom: 6px; }
+    input, select {
+      width: 100%;
+      background: var(--card);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      border-radius: 12px;
+      padding: 11px 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: var(--lime); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .btn-primary {
+      background: var(--lime);
+      color: #0B0C10;
+      border: none;
+      border-radius: 999px;
+      padding: 11px 22px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
+    }
+    .btn-primary:hover { background: #D9FF33; transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--card);
+      color: #FFFFFF;
+      border: 1.5px solid var(--purple);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: rgba(124, 58, 237, 0.2); }
+    .card-visual {
+      background: linear-gradient(135deg, #2E1065, #0F172A 60%, #14532D);
+      border: 1.5px solid rgba(204, 255, 0, 0.4);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .card-num { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; letter-spacing: 0.12em; margin: 14px 0 10px; color: #FFFFFF; }
+    .card-foot { display: flex; justify-content: space-between; font-size: 0.78rem; color: #D4D8E8; }
+    .terminal {
+      background: #08090D;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #D4D8E8;
+      min-height: 210px;
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+    .terminal .ok { color: var(--lime); }
+    .terminal .err { color: var(--coral); }
+    .history-list {
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+    }
+    .code-box {
+      background: #08090D;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: #C7D2FE;
+      overflow-x: auto;
+      white-space: pre;
+      margin-top: 12px;
+    }
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+      .balances { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a href="../../allWeb.html#big" class="back-link">← Back to MyProjects</a>
+      <div class="meta-pills">
+        <span class="pill">Python · 52 Functions</span>
+        <span class="pill">83,589 Characters</span>
+        <span class="pill pill-lime">Interactive Browser Port</span>
+      </div>
+    </header>
+
+    <section class="hero-banner">
+      <div>
+        <h1>POF BANK <span>SIMULATOR</span></h1>
+        <p class="subtitle">
+          <strong>Power Of Friendship Bank</strong> — interactive browser port of Nika Dobo's Python project
+          (<code>main.py</code>, <code>bank.py</code>, <code>mymodule.py</code>, <code>cards.csv</code>).
+        </p>
+      </div>
+      <div class="balances">
+        <div class="bal-box"><div class="bal-label">GEL</div><div class="bal-val" id="bal-gel">2,450.00</div></div>
+        <div class="bal-box"><div class="bal-label">USD</div><div class="bal-val" id="bal-usd">320.00</div></div>
+        <div class="bal-box"><div class="bal-label">EUR</div><div class="bal-val" id="bal-eur">180.00</div></div>
+        <div class="bal-box"><div class="bal-label">BTC</div><div class="bal-val" id="bal-btc">0.0150</div></div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- Left Interactive Banking Console -->
+      <section class="panel">
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab-btn active" data-tab="wallet">Wallet &amp; Transfer</button>
+          <button type="button" class="tab-btn" data-tab="bills">Bills &amp; Mobile</button>
+          <button type="button" class="tab-btn" data-tab="fx">FX &amp; Bitcoin</button>
+          <button type="button" class="tab-btn" data-tab="cards">Cards Vault</button>
+          <button type="button" class="tab-btn" data-tab="source">Python Source</button>
+        </div>
+
+        <!-- Tab 1: Wallet -->
+        <div id="tab-wallet" class="tab-pane form-grid">
+          <div>
+            <label for="op-type">Operation (from <code>mymodule.bank_func</code>)</label>
+            <select id="op-type">
+              <option value="deposit">1 - Deposit (GEL)</option>
+              <option value="withdraw">2 - Withdraw (GEL)</option>
+              <option value="transfer">3 - Transfer to IBAN / User</option>
+            </select>
+          </div>
+          <div>
+            <label for="op-amount">Amount (GEL)</label>
+            <input id="op-amount" type="number" min="1" step="1" value="150">
+          </div>
+          <div id="transfer-target-wrap" style="display:none;">
+            <label for="op-target">Recipient</label>
+            <input id="op-target" type="text" value="GE29POF0000123456789">
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn-primary" id="run-wallet-btn">Execute &amp; Print Receipt</button>
+          </div>
+        </div>
+
+        <!-- Tab 2: Bills -->
+        <div id="tab-bills" class="tab-pane form-grid" style="display:none;">
+          <div>
+            <label for="bill-type">Service (from <code>mymodule.bill</code>)</label>
+            <select id="bill-type">
+              <option value="Electricity">1 - Electricity</option>
+              <option value="Gas">2 - Gas</option>
+              <option value="Water">3 - Water</option>
+              <option value="Sewage">4 - Sewage</option>
+              <option value="Internet">5 - Internet</option>
+              <option value="Television">6 - Television</option>
+              <option value="Mobile Top-up">Mobile Top-up (+995)</option>
+            </select>
+          </div>
+          <div>
+            <label for="bill-amount">Payment Amount (GEL)</label>
+            <input id="bill-amount" type="number" min="1" step="1" value="45">
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn-primary" id="run-bill-btn">Pay Bill</button>
+          </div>
+        </div>
+
+        <!-- Tab 3: FX & Bitcoin -->
+        <div id="tab-fx" class="tab-pane form-grid" style="display:none;">
+          <div>
+            <label for="fx-pair">Exchange Pair (from <code>mymodule.bank_func</code>)</label>
+            <select id="fx-pair">
+              <option value="GEL_USD">GEL → USD (1 USD = 2.72 GEL)</option>
+              <option value="USD_GEL">USD → GEL (1 USD = 2.72 GEL)</option>
+              <option value="GEL_EUR">GEL → EUR (1 EUR = 2.95 GEL)</option>
+              <option value="GEL_BTC">GEL → BTC (Buy Crypto)</option>
+            </select>
+          </div>
+          <div>
+            <label for="fx-amount">Source Amount</label>
+            <input id="fx-amount" type="number" min="1" step="1" value="272">
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn-primary" id="run-fx-btn">Convert Currency</button>
+          </div>
+        </div>
+
+        <!-- Tab 4: Cards Vault -->
+        <div id="tab-cards" class="tab-pane" style="display:none;">
+          <div class="card-visual">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="pill pill-lime" id="card-tier">Mastercard · Platinum</span>
+              <span style="font-size:0.78rem;color:#A4AABF;">POF BANK</span>
+            </div>
+            <div class="card-num" id="card-number">8356 6972 4003 6960</div>
+            <div class="card-foot">
+              <span>NIKA DOBO</span>
+              <span id="card-exp">EXP 12/2035</span>
+            </div>
+          </div>
+          <p style="font-size:0.82rem;color:#A4AABF;margin-bottom:14px;">
+            Loaded from <code>cards.csv</code>: Exclusive airport lounge access and concierge service.
+          </p>
+          <button type="button" class="btn-secondary" id="gen-card-btn">Generate New Virtual Card</button>
+        </div>
+
+        <!-- Tab 5: Python Source -->
+        <div id="tab-source" class="tab-pane" style="display:none;">
+          <p style="font-size:0.84rem;color:#A4AABF;">
+            Entry point <code>bank.py</code> imports <code>main.py</code> (2,145 lines) and helper dictionaries from <code>mymodule.py</code>:
+          </p>
+          <pre class="code-box"># bank.py
+import main
+
+# სიბლოლოების რაოდენობა 83 589
+# ფუნქციების რაოდენობა 52
+
+main.bank()
+
+# cards.csv
+First Name,Last Name,Age,Card Type,Category,Card Number,Expiration,Benefits
+nika,dobo,18,Mastercard,Platinum,8356697240036960,12/2035,Exclusive airport lounge access and concierge service.</pre>
+        </div>
+      </section>
+
+      <!-- Right Live Receipt Terminal & History -->
+      <aside class="panel">
+        <h2 style="font-family:'Permanent Marker',cursive;font-size:1.3rem;margin-bottom:12px;">
+          PYTHON RECEIPT <span style="color:var(--lime);">CONSOLE</span>
+        </h2>
+        <div class="terminal" id="terminal"></div>
+
+        <h3 style="font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-top:16px;">
+          Transaction History
+        </h3>
+        <div class="history-list" id="history-list"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      gel: 2450,
+      usd: 320,
+      eur: 180,
+      btc: 0.015,
+      history: [],
+    };
+
+    const terminal = document.getElementById('terminal');
+    const historyList = document.getElementById('history-list');
+
+    function syncBalances() {
+      document.getElementById('bal-gel').textContent = state.gel.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('bal-usd').textContent = state.usd.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('bal-eur').textContent = state.eur.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('bal-btc').textContent = state.btc.toFixed(4);
+    }
+
+    function printReceipt(info, isError = false) {
+      const now = new Date().toLocaleString();
+      const block = `${now}\n---------------------------\n${info}\n- your balance - ${state.gel.toFixed(2)} gel -\n\n`;
+      const span = document.createElement('span');
+      span.className = isError ? 'err' : 'ok';
+      span.textContent = block;
+      terminal.prepend(span);
+
+      if (!isError) {
+        state.history.unshift({ info, time: new Date().toLocaleTimeString() });
+        historyList.innerHTML = state.history.slice(0, 8).map(item =>
+          `<div class="history-item"><span>${item.info}</span><span style="color:#A4AABF;">${item.time}</span></div>`
+        ).join('');
+      }
+      syncBalances();
+    }
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+        btn.classList.add('active');
+        document.getElementById(`tab-${btn.dataset.tab}`).style.display = '';
+      });
+    });
+
+    document.getElementById('op-type').addEventListener('change', (e) => {
+      document.getElementById('transfer-target-wrap').style.display = e.target.value === 'transfer' ? '' : 'none';
+    });
+
+    document.getElementById('run-wallet-btn').addEventListener('click', () => {
+      const op = document.getElementById('op-type').value;
+      const amt = Number(document.getElementById('op-amount').value);
+      if (!amt || amt <= 0) return printReceipt('Error: enter a positive amount.', true);
+
+      if (op === 'deposit') {
+        state.gel += amt;
+        printReceipt(`Deposited +${amt.toFixed(2)} GEL`);
+      } else if (op === 'withdraw') {
+        if (amt > state.gel) return printReceipt('Insufficient GEL balance!', true);
+        state.gel -= amt;
+        printReceipt(`Withdrew -${amt.toFixed(2)} GEL`);
+      } else {
+        if (amt > state.gel) return printReceipt('Insufficient GEL balance for transfer!', true);
+        const target = document.getElementById('op-target').value.trim() || 'Account';
+        state.gel -= amt;
+        printReceipt(`Transferred ${amt.toFixed(2)} GEL -> ${target}`);
+      }
+    });
+
+    document.getElementById('run-bill-btn').addEventListener('click', () => {
+      const bill = document.getElementById('bill-type').value;
+      const amt = Number(document.getElementById('bill-amount').value);
+      if (!amt || amt <= 0) return printReceipt('Error: invalid bill amount.', true);
+      if (amt > state.gel) return printReceipt('Insufficient GEL balance for bill payment!', true);
+      state.gel -= amt;
+      printReceipt(`Paid ${bill} bill: -${amt.toFixed(2)} GEL`);
+    });
+
+    document.getElementById('run-fx-btn').addEventListener('click', () => {
+      const pair = document.getElementById('fx-pair').value;
+      const amt = Number(document.getElementById('fx-amount').value);
+      if (!amt || amt <= 0) return printReceipt('Error: invalid FX amount.', true);
+
+      if (pair === 'GEL_USD') {
+        if (amt > state.gel) return printReceipt('Insufficient GEL!', true);
+        const got = amt / 2.72;
+        state.gel -= amt;
+        state.usd += got;
+        printReceipt(`FX: ${amt.toFixed(2)} GEL -> +${got.toFixed(2)} USD`);
+      } else if (pair === 'USD_GEL') {
+        if (amt > state.usd) return printReceipt('Insufficient USD!', true);
+        const got = amt * 2.72;
+        state.usd -= amt;
+        state.gel += got;
+        printReceipt(`FX: ${amt.toFixed(2)} USD -> +${got.toFixed(2)} GEL`);
+      } else if (pair === 'GEL_EUR') {
+        if (amt > state.gel) return printReceipt('Insufficient GEL!', true);
+        const got = amt / 2.95;
+        state.gel -= amt;
+        state.eur += got;
+        printReceipt(`FX: ${amt.toFixed(2)} GEL -> +${got.toFixed(2)} EUR`);
+      } else {
+        if (amt > state.gel) return printReceipt('Insufficient GEL for BTC!', true);
+        const got = amt / 245000;
+        state.gel -= amt;
+        state.btc += got;
+        printReceipt(`Crypto: ${amt.toFixed(2)} GEL -> +${got.toFixed(5)} BTC`);
+      }
+    });
+
+    document.getElementById('gen-card-btn').addEventListener('click', () => {
+      const rand4 = () => String(Math.floor(1000 + Math.random() * 9000));
+      const num = `${rand4()} ${rand4()} ${rand4()} ${rand4()}`;
+      document.getElementById('card-number').textContent = num;
+      document.getElementById('card-tier').textContent = 'Visa · Virtual Neon';
+      document.getElementById('card-exp').textContent = 'EXP 11/2036';
+      printReceipt(`Generated new virtual card: ${num}`);
+    });
+
+    // Boot greeting from main.bank()
+    printReceipt('hello best bank in world | POF (Power Of Friendship) ready.');
+  </script>
+</body>
+</html>
