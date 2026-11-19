@@ -563,16 +563,37 @@ nav {
     position: relative;
     z-index: 10;
     width: calc(100% - clamp(24px, 6vw, 96px));
-    margin: 24px auto;
+    margin: 26px auto;
     padding: clamp(24px, 3vw, 44px);
     border-radius: 28px;
     background: var(--bg-section);
     border: 1px solid rgba(255, 255, 255, 0.06);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     scroll-margin-top: 84px;
+    overflow: hidden;
+}
+
+.section-doodle {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.9;
+    z-index: 0;
+}
+
+.section-doodle-tr {
+    top: 10px;
+    right: 140px;
+}
+
+.section-doodle-bl {
+    bottom: 14px;
+    left: 20px;
 }
 
 .level-header {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     gap: 18px;
@@ -616,17 +637,31 @@ nav {
     box-shadow: 0 0 24px rgba(71, 184, 255, 0.18);
 }
 
+.level-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 .level-header h2 {
     font-family: 'Permanent Marker', 'Noto Sans Georgian', cursive;
-    font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+    font-size: clamp(1.45rem, 2.5vw, 2.15rem);
     font-weight: 400;
     color: #FFFFFF;
-    letter-spacing: 0.01em;
-    line-height: 1.15;
-    margin-bottom: 4px;
+    letter-spacing: 0.015em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.level-squiggle {
+    width: 76px;
+    height: 22px;
+    flex-shrink: 0;
 }
 
 .level-desc {
+    margin-top: 4px;
     font-size: 0.9rem;
     color: var(--text-muted);
     line-height: 1.55;
@@ -640,143 +675,249 @@ nav {
     font-weight: 700;
     color: var(--accent-lime);
     background: rgba(204, 255, 0, 0.08);
-    border: 1px solid rgba(204, 255, 0, 0.3);
+    border: 1px solid rgba(204, 255, 0, 0.35);
     white-space: nowrap;
 }
 
 /* ============================================================
-   Projects Grid & Cards
+   Projects Grid & Visual Comic Cards
    ============================================================ */
 .projects-grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     gap: 18px;
 }
 
-.ultra-grid {
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-}
-
-.big-grid {
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-}
-
-.medium-grid {
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-}
-
+.ultra-grid,
+.big-grid,
+.medium-grid,
 .small-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .project-card {
     position: relative;
-    border-radius: 20px;
+    border-radius: 22px;
     overflow: hidden;
     background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    border: 1.5px solid rgba(255, 255, 255, 0.07);
     transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     display: flex;
     flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(124, 58, 237, 0.75);
-    box-shadow: 0 16px 38px rgba(124, 58, 237, 0.18);
+    transform: translateY(-5px);
+    border-color: rgba(124, 58, 237, 0.85);
+    box-shadow: 0 18px 40px rgba(124, 58, 237, 0.22);
 }
 
+/* Visual 16:10 Comic Cover Header */
+.card-cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0B0C10;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.project-card:hover .card-cover-img {
+    transform: scale(1.05);
+}
+
+/* Halftone Comic Pattern Cover for cards without custom illustration */
+.card-cover--pattern {
+    background-image:
+        radial-gradient(rgba(11, 12, 16, 0.35) 1.5px, transparent 1.5px),
+        linear-gradient(135deg, var(--c1, #7C3AED), var(--c2, #1E1B4B));
+    background-size: 14px 14px, 100% 100%;
+}
+
+.card-cover--pattern::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.16), transparent 55%);
+    pointer-events: none;
+}
+
+.card-cover-emoji {
+    position: relative;
+    z-index: 2;
+    font-size: 3.1rem;
+    filter: drop-shadow(0 8px 18px rgba(11, 12, 16, 0.55));
+    transition: transform 0.25s ease;
+}
+
+.project-card:hover .card-cover-emoji {
+    transform: scale(1.12) rotate(-4deg);
+}
+
+.card-cover-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent-lime);
+    background: rgba(11, 12, 16, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(6px);
+    max-width: calc(100% - 20px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Theme palettes matching .card-accent-* */
+.theme-cyan   { --c1: #0EA5E9; --c2: #164E63; }
+.theme-purple { --c1: #7C3AED; --c2: #2E1065; }
+.theme-green  { --c1: #10B981; --c2: #064E3B; }
+.theme-amber  { --c1: #F59E0B; --c2: #78350F; }
+.theme-pink   { --c1: #EC4899; --c2: #701A75; }
+.theme-teal   { --c1: #14B8A6; --c2: #134E4A; }
+.theme-blue   { --c1: #3B82F6; --c2: #1E3A8A; }
+.theme-red    { --c1: #FF5E3A; --c2: #7F1D1D; }
+.theme-orange { --c1: #F97316; --c2: #7C2D12; }
+.theme-yellow { --c1: #EAB308; --c2: #713F12; }
+
+/* Featured Horizontal Showcase Card */
 .project-card.featured {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), #101218 55%);
-    border-color: rgba(124, 58, 237, 0.45);
+    display: grid;
+    grid-template-columns: minmax(280px, 1.15fr) 1.35fr;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.14), #101218 58%);
+    border-color: rgba(124, 58, 237, 0.5);
 }
 
 .project-card.featured:hover {
     border-color: var(--accent-lime);
-    box-shadow: 0 16px 42px rgba(204, 255, 0, 0.12);
+    box-shadow: 0 20px 48px rgba(204, 255, 0, 0.14);
 }
 
-/* Top Accent Stripe */
-.card-accent {
-    height: 4px;
-    width: 100%;
+.project-card.featured .card-cover {
+    height: 100%;
+    aspect-ratio: 16 / 10;
+    border-bottom: none;
+    border-right: 1.5px solid rgba(255, 255, 255, 0.08);
 }
 
-.accent-cyan    { background: linear-gradient(90deg, #47B8FF, #22D3EE); }
-.accent-purple  { background: linear-gradient(90deg, #8B3DFF, #CCFF00); }
-.accent-green   { background: linear-gradient(90deg, #CCFF00, #22C55E); }
-.accent-amber   { background: linear-gradient(90deg, #FFD426, #FF5E3A); }
-.accent-pink    { background: linear-gradient(90deg, #EC4899, #8B3DFF); }
-.accent-teal    { background: linear-gradient(90deg, #2DD4BF, #47B8FF); }
-.accent-blue    { background: linear-gradient(90deg, #47B8FF, #7C3AED); }
-.accent-red     { background: linear-gradient(90deg, #FF5E3A, #F43F5E); }
-.accent-orange  { background: linear-gradient(90deg, #FF5E3A, #FFD426); }
-.accent-yellow  { background: linear-gradient(90deg, #FFD426, #CCFF00); }
+.project-card.featured .card-body {
+    padding: clamp(20px, 2.8vw, 34px);
+    justify-content: center;
+}
+
+.project-card.featured .card-body h3 {
+    font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+}
+
+.project-card.featured .card-body > p {
+    font-size: 0.95rem;
+    max-width: 62ch;
+}
+
+/* Hide legacy accent bar & duplicate card-top since cover replaces them */
+.card-accent,
+.card-top {
+    display: none;
+}
 
 .card-body {
-    padding: 20px 22px 22px;
+    padding: 16px 18px 18px;
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
-.card-top {
+.card-title-row {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
     gap: 10px;
-    margin-bottom: 12px;
-}
-
-.card-emoji {
-    font-size: 1.55rem;
-}
-
-.card-type {
-    padding: 4px 11px;
-    border-radius: 999px;
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent-lime);
-    background: rgba(204, 255, 0, 0.08);
-    border: 1px solid rgba(204, 255, 0, 0.24);
+    margin-bottom: 6px;
 }
 
 .card-body h3 {
-    font-size: 1.15rem;
+    font-family: 'Permanent Marker', 'Noto Sans Georgian', cursive;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: 0.015em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.card-arrow-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.95rem;
     font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition: all 0.18s ease;
+}
+
+.project-card:hover .card-arrow-btn,
+.card-arrow-btn:hover {
+    background: var(--accent-lime);
+    border-color: var(--accent-lime);
+    color: #0B0C10;
+    transform: translate(1px, -1px);
 }
 
 .card-body > p {
-    font-size: 0.86rem;
+    font-size: 0.84rem;
     color: var(--text-muted);
-    line-height: 1.65;
-    margin-bottom: 18px;
+    line-height: 1.55;
+    margin-bottom: 14px;
 }
 
 .card-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 6px;
     margin-top: auto;
 }
 
 .card-links a {
     display: inline-flex;
     align-items: center;
-    padding: 6px 14px;
+    padding: 6px 13px;
     border-radius: 999px;
-    font-size: 0.77rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.18s ease;
+}
+
+.card-links a:first-child {
+    background: rgba(204, 255, 0, 0.12);
+    border-color: rgba(204, 255, 0, 0.45);
+    color: var(--accent-lime);
 }
 
 .card-links a:hover {
@@ -789,9 +930,9 @@ nav {
 .no-link {
     display: inline-flex;
     align-items: center;
-    padding: 6px 14px;
+    padding: 6px 13px;
     border-radius: 999px;
-    font-size: 0.76rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--text-muted);
     background: rgba(255, 255, 255, 0.03);
@@ -800,15 +941,15 @@ nav {
 
 /* Details / More Links */
 .more-links {
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 .more-links summary {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     color: var(--accent-lime);
     cursor: pointer;
-    padding: 6px 0;
+    padding: 5px 0;
     list-style: none;
     transition: opacity 0.15s ease;
 }
@@ -822,29 +963,31 @@ nav {
 }
 
 .expanded-links {
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 8px;
+    padding-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .expanded-links a {
-    min-width: 36px;
+    min-width: 34px;
     justify-content: center;
 }
 
 /* Small Cards */
+.small-card .card-cover {
+    aspect-ratio: 16 / 8.5;
+}
+
+.small-card .card-cover-emoji {
+    font-size: 2.3rem;
+}
+
 .small-card .card-body {
-    padding: 18px 20px 20px;
-    gap: 10px;
+    padding: 14px 16px 16px;
 }
 
-.small-card .card-emoji {
-    font-size: 1.35rem;
-}
-
-.small-card h3 {
-    font-size: 1.02rem;
-    margin-bottom: 2px;
+.small-card .card-body h3 {
+    font-size: 0.98rem;
 }
 
 /* Ultra Empty Placeholder */
@@ -978,10 +1121,29 @@ footer {
 /* ============================================================
    Responsive
    ============================================================ */
+@media (max-width: 1200px) {
+    .ultra-grid,
+    .big-grid,
+    .medium-grid,
+    .small-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-card.featured {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card.featured .card-cover {
+        border-right: none;
+        border-bottom: 1.5px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
 @media (max-width: 900px) {
     .doodle-star,
     .doodle-smiley,
-    .doodle-bolt {
+    .doodle-bolt,
+    .section-doodle {
         display: none;
     }
 

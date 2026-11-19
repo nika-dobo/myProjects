@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Rubik:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="allWeb.css?v=20261119">
+    <link rel="stylesheet" href="allWeb.css?v=20261119-2">
 </head>
 
 <body>
@@ -1150,6 +1150,105 @@
 
     <!-- ===== Script ===== -->
     <script>
+        // Comic-doodle card & section enhancement (runs immediately before paint)
+        (function enhancePortfolioCards() {
+            const COVER_ART = {
+                aethermind: './assets/covers/proj-aethermind.jpg',
+                'cipher//50': './assets/covers/proj-cipher50.jpg',
+                'python learn': './assets/covers/proj-pythonlearn.jpg',
+                boholvista: './assets/covers/proj-boholvista.svg',
+                'salt restaurant': './assets/covers/proj-salt.jpg',
+                flowforge: './assets/covers/proj-flowforge.jpg',
+                'soundforge daw': './assets/covers/proj-soundforge.jpg',
+                soundshift: './assets/covers/proj-soundshift.jpg',
+            };
+
+            // Add squiggles + decorative doodles to every level section
+            const sectionDoodles = {
+                ultra: '<svg class="section-doodle section-doodle-tr" width="60" height="60" viewBox="0 0 74 74" fill="none" aria-hidden="true"><path d="M21 26C19 15 24 8 29 18L36 22L43 16C48 7 53 15 51 27C58 33 59 49 50 56C41 62 27 61 20 54C13 47 14 33 21 26Z" stroke="#FF5E3A" stroke-width="3.2" stroke-linejoin="round"/><circle cx="30" cy="36" r="2.2" fill="#FF5E3A"/><circle cx="42" cy="36" r="2.2" fill="#FF5E3A"/><path d="M32 45C35 48 38 48 41 45" stroke="#FF5E3A" stroke-width="2.8" stroke-linecap="round"/></svg>',
+                big: '<svg class="section-doodle section-doodle-tr" width="90" height="90" viewBox="0 0 120 120" fill="none" aria-hidden="true"><path d="M18 32C42 12 72 22 68 48C64 70 36 66 42 46C48 28 84 36 92 66C98 88 74 106 54 96C38 88 46 66 72 74C92 80 106 96 112 108" stroke="#7C3AED" stroke-width="4" stroke-linecap="round"/></svg>',
+                medium: '<svg class="section-doodle section-doodle-tr" width="64" height="54" viewBox="0 0 68 58" fill="none" aria-hidden="true"><path d="M8 46L14 26L26 42L36 16L48 38L62 12" stroke="#CCFF00" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                small: '<svg class="section-doodle section-doodle-tr" width="60" height="52" viewBox="0 0 64 56" fill="none" aria-hidden="true"><path d="M14 40C10 32 16 24 22 30C26 34 22 44 14 40Z" stroke="#47B8FF" stroke-width="2.8"/><path d="M30 24C28 16 36 10 40 18C42 23 36 28 30 24Z" stroke="#47B8FF" stroke-width="2.8"/><circle cx="48" cy="36" r="4.5" stroke="#47B8FF" stroke-width="2.6"/></svg>',
+            };
+
+            document.querySelectorAll('.level-section').forEach(sec => {
+                if (sectionDoodles[sec.id]) {
+                    sec.insertAdjacentHTML('afterbegin', sectionDoodles[sec.id]);
+                }
+                const h2 = sec.querySelector('.level-header h2');
+                if (h2 && !h2.parentElement.classList.contains('level-title-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'level-title-row';
+                    h2.parentNode.insertBefore(row, h2);
+                    row.appendChild(h2);
+                    row.insertAdjacentHTML(
+                        'beforeend',
+                        '<svg class="level-squiggle" width="76" height="22" viewBox="0 0 92 26" fill="none" aria-hidden="true"><path d="M4 16C14 5 24 23 36 13C48 3 58 22 70 11C78 4 84 9 88 14" stroke="#8B3DFF" stroke-width="3.4" stroke-linecap="round"/></svg>',
+                    );
+                }
+            });
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                if (card.querySelector('.card-cover')) return;
+                const body = card.querySelector('.card-body');
+                const h3 = body?.querySelector('h3');
+                if (!body || !h3) return;
+
+                const titleLower = h3.textContent.toLowerCase();
+                const emoji = card.querySelector('.card-emoji')?.textContent?.trim() || '⚡';
+                const badgeText = card.querySelector('.card-type')?.textContent?.trim() || (card.closest('.small-grid') ? 'Small UI' : 'Web App');
+                const accentEl = card.querySelector('.card-accent');
+                const accentMatch = accentEl?.className.match(/accent-([a-z]+)/);
+                const theme = accentMatch ? `theme-${accentMatch[1]}` : 'theme-purple';
+
+                const matchedKey = Object.keys(COVER_ART).find(k => titleLower.includes(k));
+                const cover = document.createElement('div');
+                cover.className = matchedKey ? 'card-cover' : `card-cover card-cover--pattern ${theme}`;
+
+                if (matchedKey) {
+                    const img = document.createElement('img');
+                    img.src = COVER_ART[matchedKey];
+                    img.alt = h3.textContent.trim();
+                    img.loading = 'lazy';
+                    img.className = 'card-cover-img';
+                    cover.appendChild(img);
+                } else {
+                    const iconSpan = document.createElement('span');
+                    iconSpan.className = 'card-cover-emoji';
+                    iconSpan.textContent = emoji;
+                    iconSpan.setAttribute('aria-hidden', 'true');
+                    cover.appendChild(iconSpan);
+                }
+
+                const badge = document.createElement('span');
+                badge.className = 'card-cover-badge';
+                badge.textContent = badgeText;
+                cover.appendChild(badge);
+
+                card.insertBefore(cover, body);
+
+                // Wrap h3 with circular arrow button linking to the primary project link
+                const firstLink = card.querySelector('.card-links a');
+                const titleRow = document.createElement('div');
+                titleRow.className = 'card-title-row';
+                h3.parentNode.insertBefore(titleRow, h3);
+                titleRow.appendChild(h3);
+
+                if (firstLink) {
+                    const arrowBtn = document.createElement('a');
+                    arrowBtn.href = firstLink.getAttribute('href');
+                    if (firstLink.target) {
+                        arrowBtn.target = firstLink.target;
+                        arrowBtn.rel = firstLink.rel || 'noopener noreferrer';
+                    }
+                    arrowBtn.className = 'card-arrow-btn';
+                    arrowBtn.setAttribute('aria-label', `Open ${h3.textContent.trim()}`);
+                    arrowBtn.textContent = '↗';
+                    titleRow.appendChild(arrowBtn);
+                }
+            });
+        })();
+
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

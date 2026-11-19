@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2D1B69"/>
+      <stop offset="48%" stop-color="#FF5E3A"/>
+      <stop offset="100%" stop-color="#FFD426"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF080"/>
+      <stop offset="100%" stop-color="#FF7A3D"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="55%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#0B3B66"/>
+    </linearGradient>
+    <linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#15803D"/>
+    </linearGradient>
+    <linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#86EFAC"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="800" height="500" fill="url(#sky)"/>
+
+  <!-- Stylized Comic Clouds -->
+  <path d="M90 105C110 82 155 82 178 102C205 92 245 104 252 126H76C72 118 78 109 90 105Z" fill="#FFD1B3" fill-opacity="0.45"/>
+  <path d="M530 88C552 64 600 66 624 88C648 76 690 88 702 114H516C514 102 520 93 530 88Z" fill="#FFD1B3" fill-opacity="0.45"/>
+
+  <!-- Big Sunset Sun -->
+  <circle cx="430" cy="240" r="108" fill="url(#sun)" stroke="#0B0C10" stroke-width="5"/>
+
+  <!-- Distant Purple Mountains -->
+  <path d="M0 295C85 245 170 250 240 295C315 245 410 260 495 295C590 250 695 255 800 295V340H0V295Z" fill="#4C1D95" stroke="#0B0C10" stroke-width="4"/>
+
+  <!-- Iconic Bohol Chocolate Hills -->
+  <path d="M-20 330C45 205 145 205 210 330Z" fill="url(#hill1)" stroke="#0B0C10" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M135 330C205 190 315 190 385 330Z" fill="url(#hill2)" stroke="#0B0C10" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M320 330C380 220 465 220 525 330Z" fill="url(#hill1)" stroke="#0B0C10" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M470 330C545 180 675 180 750 330Z" fill="url(#hill2)" stroke="#0B0C10" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M655 330C710 225 785 225 835 330Z" fill="url(#hill1)" stroke="#0B0C10" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- Lagoon Water -->
+  <rect x="0" y="325" width="800" height="175" fill="url(#water)"/>
+  <line x1="0" y1="325" x2="800" y2="325" stroke="#0B0C10" stroke-width="5"/>
+
+  <!-- Sun Reflection Ripples -->
+  <rect x="355" y="346" width="150" height="10" rx="5" fill="#FFE885" fill-opacity="0.85"/>
+  <rect x="380" y="368" width="100" height="8" rx="4" fill="#FFE885" fill-opacity="0.7"/>
+  <rect x="402" y="388" width="60" height="7" rx="3.5" fill="#FFE885" fill-opacity="0.55"/>
+
+  <!-- Stylized Cartoon Bangka Boat -->
+  <path d="M235 410L265 445H405L440 408C375 418 295 418 235 410Z" fill="#FFD426" stroke="#0B0C10" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M205 426C275 436 390 436 468 426" stroke="#0B0C10" stroke-width="4" stroke-linecap="round"/>
+  <path d="M332 414V348L392 396H332Z" fill="#FFFFFF" stroke="#0B0C10" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M270 462C310 455 360 455 405 462" stroke="#E0F2FE" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Foreground Left Palm Tree -->
+  <path d="M55 500C68 380 86 270 112 165" stroke="#0B0C10" stroke-width="18" stroke-linecap="round"/>
+  <path d="M55 500C68 380 86 270 112 165" stroke="#3B2028" stroke-width="10" stroke-linecap="round"/>
+  <path d="M112 165C72 130 22 140 -8 175C38 164 80 170 112 165Z" fill="#0B0C10"/>
+  <path d="M112 165C95 105 48 84 10 98C56 105 88 128 112 165Z" fill="#0B0C10"/>
+  <path d="M112 165C142 104 200 100 236 128C190 128 148 142 112 165Z" fill="#0B0C10"/>
+  <path d="M112 165C168 148 214 176 238 216C194 192 152 178 112 165Z" fill="#0B0C10"/>
+
+  <!-- Foreground Right Palm Fronds -->
+  <path d="M740 500C728 388 712 288 688 188" stroke="#0B0C10" stroke-width="16" stroke-linecap="round"/>
+  <path d="M688 188C640 156 592 166 560 198C604 188 648 190 688 188Z" fill="#0B0C10"/>
+  <path d="M688 188C680 132 640 108 600 118C642 128 668 152 688 188Z" fill="#0B0C10"/>
+  <path d="M688 188C728 134 780 134 816 164C770 162 730 172 688 188Z" fill="#0B0C10"/>
+
+  <!-- Sparkle stars -->
+  <path d="M270 110L275 124L289 129L275 134L270 148L265 134L251 129L265 124L270 110Z" fill="#CCFF00"/>
+  <circle cx="510" cy="148" r="5" fill="#FFF080"/>
+</svg>
