@@ -4,84 +4,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="All web projects organized by difficulty level — ultra, big, medium, and small projects.">
-    <title>All Web Projects</title>
-    <link rel="stylesheet" href="allWeb.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <meta name="description" content="Nika Dobo — All Web Projects Hub organized by difficulty level: Ultra, Big, Medium, and Small projects.">
+    <meta name="theme-color" content="#0B0C10">
+    <title>MyProjects — Nika Dobo Portfolio Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Rubik:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="allWeb.css">
 </head>
 
 <body>
 
-    <!-- ===== Ambient Background ===== -->
-    <div class="bg-grid"></div>
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
-    <div class="bg-glow glow-3"></div>
+    <!-- ===== Full-Screen First Stage (Header + Hero + Paint Splashes) ===== -->
+    <div class="hero-stage">
+        <!-- Organic Paint Splashes matching Nika Dobo Portfolio -->
+        <svg class="splash splash-purple" viewBox="0 0 420 260" fill="none" aria-hidden="true">
+            <path d="M-30 -20H395C375 35 330 72 260 85C205 95 162 118 118 158C82 190 42 225 -30 232V-20Z" fill="#7C3AED"/>
+            <circle cx="298" cy="112" r="10" fill="#7C3AED"/>
+            <circle cx="256" cy="134" r="6" fill="#8B3DFF"/>
+            <ellipse cx="145" cy="176" rx="18" ry="8" transform="rotate(-18 145 176)" fill="#7C3AED"/>
+            <circle cx="62" cy="212" r="5" fill="#8B3DFF"/>
+        </svg>
 
-    <!-- ===== Header ===== -->
-    <header>
-        <div class="header-inner">
-            <div class="logo">
-                <span class="logo-icon">⚡</span>
-                <span class="logo-text">My<span class="logo-accent">Projects</span></span>
-            </div>
-            <nav>
-                <a href="#ultra" class="nav-link">Ultra</a>
-                <a href="#big" class="nav-link">Big Projects</a>
-                <a href="#medium" class="nav-link">Medium</a>
-                <a href="#small" class="nav-link">Small</a>
-            </nav>
-        </div>
-    </header>
+        <svg class="splash splash-blue" viewBox="0 0 280 220" fill="none" aria-hidden="true">
+            <path d="M-25 45C28 32 76 58 112 96C144 128 192 128 228 156C252 175 236 218 175 218C96 218 22 222 -25 220V45Z" fill="#47B8FF"/>
+            <circle cx="145" cy="64" r="7" fill="#47B8FF"/>
+            <circle cx="212" cy="112" r="5" fill="#47B8FF"/>
+            <circle cx="94" cy="36" r="4" fill="#47B8FF"/>
+        </svg>
 
-    <!-- ===== Hero ===== -->
-    <section class="hero">
-        <span class="hero-badge">🗂️ Portfolio Hub</span>
-        <h1>All Web <span class="text-gradient">Projects</span></h1>
-        <p class="hero-desc">ყველა პროექტი ერთ ადგილას — დონეების მიხედვით დაყოფილი.</p>
-        <div class="hero-stats">
-            <div class="stat">
-                <span class="stat-num" data-stat-level="ultra">0</span>
-                <span class="stat-label">Ultra Projects</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-                <span class="stat-num" data-stat-level="big">24</span>
-                <span class="stat-label">Big Projects</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-                <span class="stat-num" data-stat-level="medium">9</span>
-                <span class="stat-label">Medium Projects</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-                <span class="stat-num" data-stat-level="small">24</span>
-                <span class="stat-label">Small Projects</span>
-            </div>
-        </div>
+        <svg class="splash splash-coral" viewBox="0 0 260 380" fill="none" aria-hidden="true">
+            <path d="M270 10C188 22 148 76 132 142C118 202 82 232 108 292C132 346 212 365 270 356V10Z" fill="#FF5E3A"/>
+            <circle cx="88" cy="164" r="8" fill="#FF5E3A"/>
+            <circle cx="72" cy="238" r="5" fill="#FF5E3A"/>
+            <circle cx="118" cy="68" r="6" fill="#FF5E3A"/>
+        </svg>
 
-        <!-- Search & Filter -->
-        <div class="search-hub">
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="project-search" placeholder="მოძებნე პროექტი ან ტექნოლოგია (React, Next.js, Multi-page, Game...)" autocomplete="off">
-                <span class="search-kbd" id="search-kbd">/</span>
-                <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+        <!-- ===== Header ===== -->
+        <header>
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <span class="logo-text">MYPROJECTS<span class="logo-dot">.</span></span>
+                </a>
+                <nav>
+                    <a href="#ultra" class="nav-link">Ultra</a>
+                    <a href="#big" class="nav-link">Big Projects</a>
+                    <a href="#medium" class="nav-link">Medium</a>
+                    <a href="#small" class="nav-link">Small</a>
+                    <a href="https://github.com/nika-dobo" target="_blank" rel="noopener noreferrer" class="nav-github">GitHub ↗</a>
+                </nav>
             </div>
-            <div class="filter-pills" id="filter-pills">
-                <button type="button" class="filter-pill active" data-filter="all">ყველა (<span class="pill-count">57</span>)</button>
-                <button type="button" class="filter-pill" data-filter="ultra">💎 Ultra (<span class="pill-count">0</span>)</button>
-                <button type="button" class="filter-pill" data-filter="big">🔥 Big (<span class="pill-count">24</span>)</button>
-                <button type="button" class="filter-pill" data-filter="medium">⚙️ Medium (<span class="pill-count">9</span>)</button>
-                <button type="button" class="filter-pill" data-filter="small">✨ Small (<span class="pill-count">24</span>)</button>
-                <button type="button" class="filter-pill" data-filter="multipage">📄 Multi-page</button>
-                <button type="button" class="filter-pill" data-filter="app">🚀 Open App / Live</button>
+        </header>
+
+        <!-- ===== Hero ===== -->
+        <section class="hero visible">
+            <!-- Floating Doodles -->
+            <svg class="doodle doodle-star" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                <path d="M28 4L34.2 19.6L51 20.6L38 31.2L42.2 47.6L28 38.4L13.8 47.6L18 31.2L5 20.6L21.8 19.6L28 4Z" fill="#FFD426" stroke="#0B0C10" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <svg class="doodle doodle-smiley" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <circle cx="32" cy="32" r="24" stroke="#CCFF00" stroke-width="3.2"/>
+                <circle cx="24" cy="25" r="2.6" fill="#CCFF00"/>
+                <circle cx="40" cy="25" r="2.6" fill="#CCFF00"/>
+                <path d="M21 36C24.5 43 39.5 43 43 36" stroke="#CCFF00" stroke-width="3.2" stroke-linecap="round"/>
+            </svg>
+            <svg class="doodle doodle-bolt" viewBox="0 0 54 72" fill="none" aria-hidden="true">
+                <path d="M34 4L10 38H27L18 68L46 31H29L34 4Z" fill="#CCFF00"/>
+            </svg>
+
+            <div class="hero-content">
+                <div class="hero-eyebrow-row">
+                    <span class="hero-badge">NIKA DOBO · PORTFOLIO HUB</span>
+                    <svg class="hero-crown" viewBox="0 0 74 48" fill="none" aria-hidden="true">
+                        <path d="M8 38L4 13L22 25L37 6L52 25L70 13L64 38H8Z" stroke="#CCFF00" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 44H62" stroke="#CCFF00" stroke-width="3.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div class="hero-title-wrap">
+                    <h1>ALL WEB <span class="text-lime">PROJECTS</span></h1>
+                    <svg class="hero-underline" viewBox="0 0 440 34" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M6 23C105 11 268 4 434 11C318 17 174 22 22 29" stroke="#CCFF00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M150 26C245 20 335 17 412 19" stroke="#CCFF00" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <p class="hero-desc">ყველა პროექტი ერთ ადგილას — დონეების მიხედვით დაყოფილი.</p>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-num" data-stat-level="ultra">0</span>
+                        <span class="stat-label">Ultra Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num" data-stat-level="big">24</span>
+                        <span class="stat-label">Big Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num" data-stat-level="medium">9</span>
+                        <span class="stat-label">Medium Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num" data-stat-level="small">24</span>
+                        <span class="stat-label">Small Projects</span>
+                    </div>
+                </div>
+
+                <!-- Search & Filter -->
+                <div class="search-hub">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="project-search" placeholder="მოძებნე პროექტი ან ტექნოლოგია (React, Next.js, Multi-page, Game...)" autocomplete="off">
+                        <span class="search-kbd" id="search-kbd">/</span>
+                        <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+                    </div>
+                    <div class="filter-pills" id="filter-pills">
+                        <button type="button" class="filter-pill active" data-filter="all">ყველა (<span class="pill-count">57</span>)</button>
+                        <button type="button" class="filter-pill" data-filter="ultra">💎 Ultra (<span class="pill-count">0</span>)</button>
+                        <button type="button" class="filter-pill" data-filter="big">🔥 Big (<span class="pill-count">24</span>)</button>
+                        <button type="button" class="filter-pill" data-filter="medium">⚙️ Medium (<span class="pill-count">9</span>)</button>
+                        <button type="button" class="filter-pill" data-filter="small">✨ Small (<span class="pill-count">24</span>)</button>
+                        <button type="button" class="filter-pill" data-filter="multipage">📄 Multi-page</button>
+                        <button type="button" class="filter-pill" data-filter="app">🚀 Open App / Live</button>
+                    </div>
+                    <p class="search-status" id="search-status"></p>
+                </div>
             </div>
-            <p class="search-status" id="search-status"></p>
-        </div>
-    </section>
+
+            <a href="#ultra" class="scroll-cue">
+                <span class="scroll-mouse"><span class="scroll-dot"></span></span>
+                <span>Scroll Down</span>
+            </a>
+        </section>
+    </div>
 
     <div class="search-empty" id="search-empty">
         <h3>პროექტი ვერ მოიძებნა</h3>
@@ -1075,7 +1131,21 @@
 
     <!-- ===== Footer ===== -->
     <footer>
-        <p>nika dobo &copy; 2025–2026 — All Projects</p>
+        <div class="footer-inner">
+            <div class="footer-cta">
+                <span class="footer-title">NIKA DOBO · ALL</span>
+                <span class="footer-epic">
+                    PROJECTS!
+                    <svg class="footer-oval" viewBox="0 0 180 76" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M16 40C10 18 46 8 92 8C144 8 172 20 170 42C168 62 128 69 86 68C42 67 8 56 14 34C18 19 52 14 96 14" stroke="#8B3DFF" stroke-width="3.6" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="footer-meta">
+                <p>nika dobo &copy; 2025–2026 · Tbilisi, Georgia (UTC+4)</p>
+                <a href="https://github.com/nika-dobo" target="_blank" rel="noopener noreferrer" class="footer-link">github.com/nika-dobo ↗</a>
+            </div>
+        </div>
     </footer>
 
     <!-- ===== Script ===== -->
