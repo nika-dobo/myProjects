@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Rubik:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="allWeb.css?v=20261119-4">
+    <link rel="stylesheet" href="allWeb.css?v=20261119-5">
 </head>
 
 <body>
@@ -60,8 +60,22 @@
         <!-- ===== Hero ===== -->
         <section class="hero visible">
             <!-- Floating Doodles -->
+            <svg class="doodle doodle-swirl" width="76" height="76" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <path d="M18 32C42 12 72 22 68 48C64 70 36 66 42 46C48 28 84 36 92 66C98 88 74 106 54 96C38 88 46 66 72 74C92 80 106 96 112 108" stroke="#7C3AED" stroke-width="4.2" stroke-linecap="round"/>
+            </svg>
+            <svg class="doodle doodle-sparkles" width="52" height="52" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <path d="M24 8L27.5 19.5L39 23L27.5 26.5L24 38L20.5 26.5L9 23L20.5 19.5L24 8Z" stroke="#47B8FF" stroke-width="2.6" stroke-linejoin="round"/>
+                <path d="M48 34L50 40L56 42L50 44L48 50L46 44L40 42L46 40L48 34Z" fill="#FFD426"/>
+            </svg>
             <svg class="doodle doodle-star" width="48" height="48" viewBox="0 0 56 56" fill="none" aria-hidden="true">
                 <path d="M28 4L34.2 19.6L51 20.6L38 31.2L42.2 47.6L28 38.4L13.8 47.6L18 31.2L5 20.6L21.8 19.6L28 4Z" fill="#FFD426" stroke="#0B0C10" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <svg class="doodle doodle-zigzag" width="60" height="48" viewBox="0 0 68 58" fill="none" aria-hidden="true">
+                <path d="M8 46L14 26L26 42L36 16L48 38L62 12" stroke="#CCFF00" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="doodle doodle-heart" width="50" height="44" viewBox="0 0 64 56" fill="none" aria-hidden="true">
+                <path d="M36 22C36 16 44 13 48 18C52 13 60 16 60 22C60 30 48 38 48 38C48 38 36 30 36 22Z" stroke="#FF5E3A" stroke-width="2.8" stroke-linejoin="round"/>
+                <path d="M12 18L18 24M24 10L22 18M4 28L12 28" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
             </svg>
             <svg class="doodle doodle-smiley" width="54" height="54" viewBox="0 0 64 64" fill="none" aria-hidden="true">
                 <circle cx="32" cy="32" r="24" stroke="#CCFF00" stroke-width="3.2"/>
@@ -1194,10 +1208,18 @@
 
             // Add squiggles + decorative doodles to every level section
             const sectionDoodles = {
-                ultra: '<svg class="section-doodle section-doodle-tr" width="60" height="60" viewBox="0 0 74 74" fill="none" aria-hidden="true"><path d="M21 26C19 15 24 8 29 18L36 22L43 16C48 7 53 15 51 27C58 33 59 49 50 56C41 62 27 61 20 54C13 47 14 33 21 26Z" stroke="#FF5E3A" stroke-width="3.2" stroke-linejoin="round"/><circle cx="30" cy="36" r="2.2" fill="#FF5E3A"/><circle cx="42" cy="36" r="2.2" fill="#FF5E3A"/><path d="M32 45C35 48 38 48 41 45" stroke="#FF5E3A" stroke-width="2.8" stroke-linecap="round"/></svg>',
-                big: '<svg class="section-doodle section-doodle-tr" width="90" height="90" viewBox="0 0 120 120" fill="none" aria-hidden="true"><path d="M18 32C42 12 72 22 68 48C64 70 36 66 42 46C48 28 84 36 92 66C98 88 74 106 54 96C38 88 46 66 72 74C92 80 106 96 112 108" stroke="#7C3AED" stroke-width="4" stroke-linecap="round"/></svg>',
-                medium: '<svg class="section-doodle section-doodle-tr" width="64" height="54" viewBox="0 0 68 58" fill="none" aria-hidden="true"><path d="M8 46L14 26L26 42L36 16L48 38L62 12" stroke="#CCFF00" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                small: '<svg class="section-doodle section-doodle-tr" width="60" height="52" viewBox="0 0 64 56" fill="none" aria-hidden="true"><path d="M14 40C10 32 16 24 22 30C26 34 22 44 14 40Z" stroke="#47B8FF" stroke-width="2.8"/><path d="M30 24C28 16 36 10 40 18C42 23 36 28 30 24Z" stroke="#47B8FF" stroke-width="2.8"/><circle cx="48" cy="36" r="4.5" stroke="#47B8FF" stroke-width="2.6"/></svg>',
+                ultra:
+                    '<svg class="section-doodle section-doodle-tr" width="60" height="60" viewBox="0 0 74 74" fill="none" aria-hidden="true"><path d="M21 26C19 15 24 8 29 18L36 22L43 16C48 7 53 15 51 27C58 33 59 49 50 56C41 62 27 61 20 54C13 47 14 33 21 26Z" stroke="#FF5E3A" stroke-width="3.2" stroke-linejoin="round"/><circle cx="30" cy="36" r="2.2" fill="#FF5E3A"/><circle cx="42" cy="36" r="2.2" fill="#FF5E3A"/><path d="M32 45C35 48 38 48 41 45" stroke="#FF5E3A" stroke-width="2.8" stroke-linecap="round"/></svg>' +
+                    '<svg class="section-doodle section-doodle-bl" width="52" height="46" viewBox="0 0 64 56" fill="none" aria-hidden="true"><path d="M14 40C10 32 16 24 22 30C26 34 22 44 14 40Z" stroke="#47B8FF" stroke-width="2.8"/><path d="M30 24C28 16 36 10 40 18C42 23 36 28 30 24Z" stroke="#47B8FF" stroke-width="2.8"/><circle cx="48" cy="36" r="4.5" stroke="#47B8FF" stroke-width="2.6"/></svg>',
+                big:
+                    '<svg class="section-doodle section-doodle-tr" width="90" height="90" viewBox="0 0 120 120" fill="none" aria-hidden="true"><path d="M18 32C42 12 72 22 68 48C64 70 36 66 42 46C48 28 84 36 92 66C98 88 74 106 54 96C38 88 46 66 72 74C92 80 106 96 112 108" stroke="#7C3AED" stroke-width="4" stroke-linecap="round"/></svg>' +
+                    '<svg class="section-doodle section-doodle-bl" width="54" height="46" viewBox="0 0 68 58" fill="none" aria-hidden="true"><path d="M8 46L14 26L26 42L36 16L48 38L62 12" stroke="#CCFF00" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                medium:
+                    '<svg class="section-doodle section-doodle-tr" width="64" height="54" viewBox="0 0 68 58" fill="none" aria-hidden="true"><path d="M8 46L14 26L26 42L36 16L48 38L62 12" stroke="#CCFF00" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+                    '<svg class="section-doodle section-doodle-bl" width="44" height="44" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4L24.2 14.2L35 15L26.8 22L29.5 33L20 27L10.5 33L13.2 22L5 15L15.8 14.2L20 4Z" stroke="#8B3DFF" stroke-width="2.8" stroke-linejoin="round"/></svg>',
+                small:
+                    '<svg class="section-doodle section-doodle-tr" width="60" height="52" viewBox="0 0 64 56" fill="none" aria-hidden="true"><path d="M14 40C10 32 16 24 22 30C26 34 22 44 14 40Z" stroke="#47B8FF" stroke-width="2.8"/><path d="M30 24C28 16 36 10 40 18C42 23 36 28 30 24Z" stroke="#47B8FF" stroke-width="2.8"/><circle cx="48" cy="36" r="4.5" stroke="#47B8FF" stroke-width="2.6"/></svg>' +
+                    '<svg class="section-doodle section-doodle-bl" width="48" height="48" viewBox="0 0 54 72" fill="none" aria-hidden="true"><path d="M34 4L10 38H27L18 68L46 31H29L34 4Z" fill="#CCFF00" fill-opacity="0.7"/></svg>',
             };
 
             document.querySelectorAll('.level-section').forEach(sec => {

@@ -233,15 +233,48 @@ nav {
 }
 
 .doodle-star {
-    top: 10%;
+    top: 8%;
     right: clamp(24px, 10vw, 150px);
     width: 48px;
     height: 48px;
     animation: floatGentle 4.8s ease-in-out infinite;
 }
 
+.doodle-swirl {
+    top: 14%;
+    left: clamp(18px, 6vw, 90px);
+    width: 72px;
+    height: 72px;
+    opacity: 0.85;
+    animation: floatSlow 6.2s ease-in-out infinite;
+}
+
+.doodle-sparkles {
+    top: 46%;
+    left: clamp(24px, 7vw, 110px);
+    width: 52px;
+    height: 52px;
+    animation: floatGentle 5.1s ease-in-out infinite;
+}
+
+.doodle-zigzag {
+    top: 30%;
+    right: clamp(28px, 9vw, 130px);
+    width: 58px;
+    height: 46px;
+    animation: floatSlow 5.4s ease-in-out infinite;
+}
+
+.doodle-heart {
+    top: 58%;
+    right: clamp(60px, 14vw, 220px);
+    width: 48px;
+    height: 42px;
+    animation: floatGentle 4.9s ease-in-out infinite;
+}
+
 .doodle-smiley {
-    bottom: 18%;
+    bottom: 16%;
     left: clamp(24px, 8vw, 120px);
     width: 54px;
     height: 54px;
@@ -249,7 +282,7 @@ nav {
 }
 
 .doodle-bolt {
-    bottom: 14%;
+    bottom: 13%;
     right: clamp(28px, 11vw, 160px);
     width: 40px;
     height: 54px;
@@ -1105,6 +1138,10 @@ footer {
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .doodle-star,
+    .doodle-swirl,
+    .doodle-sparkles,
+    .doodle-zigzag,
+    .doodle-heart,
     .doodle-smiley,
     .doodle-bolt,
     .hero-crown {
@@ -1135,6 +1172,10 @@ footer {
 
 @media (max-width: 900px) {
     .doodle-star,
+    .doodle-swirl,
+    .doodle-sparkles,
+    .doodle-zigzag,
+    .doodle-heart,
     .doodle-smiley,
     .doodle-bolt,
     .section-doodle {
