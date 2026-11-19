@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Rubik:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="allWeb.css?v=20261119-2">
+    <link rel="stylesheet" href="allWeb.css?v=20261119-3">
 </head>
 
 <body>
@@ -75,7 +75,12 @@
 
             <div class="hero-content">
                 <div class="hero-eyebrow-row">
-                    <span class="hero-badge">NIKA DOBO · PORTFOLIO HUB</span>
+                    <span class="hero-hand-note">Nika Dobo's</span>
+                    <svg class="hero-hand-arrow" width="38" height="32" viewBox="0 0 42 36" fill="none" aria-hidden="true">
+                        <path d="M5 6C12 16 20 24 35 26" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+                        <path d="M27 19L37 26L28 32" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="hero-sub-display">My Projects</span>
                     <svg class="hero-crown" width="46" height="32" viewBox="0 0 74 48" fill="none" aria-hidden="true">
                         <path d="M8 38L4 13L22 25L37 6L52 25L70 13L64 38H8Z" stroke="#CCFF00" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M12 44H62" stroke="#CCFF00" stroke-width="3.5" stroke-linecap="round"/>
@@ -1156,11 +1161,35 @@
                 aethermind: './assets/covers/proj-aethermind.jpg',
                 'cipher//50': './assets/covers/proj-cipher50.jpg',
                 'python learn': './assets/covers/proj-pythonlearn.jpg',
+                'weather dashboard': './assets/covers/proj-weather-react.jpg',
+                'product store crud': './assets/covers/proj-react-store.jpg',
                 boholvista: './assets/covers/proj-boholvista.svg',
                 'salt restaurant': './assets/covers/proj-salt.jpg',
                 flowforge: './assets/covers/proj-flowforge.jpg',
                 'soundforge daw': './assets/covers/proj-soundforge.jpg',
                 soundshift: './assets/covers/proj-soundshift.jpg',
+                'escape room v1': './assets/covers/proj-escape-v1.jpg',
+                'programming learn': './assets/covers/proj-prog-learn.jpg',
+                'space explorer': './assets/covers/proj-cosmos.jpg',
+                yourbank: './assets/covers/proj-yourbank.jpg',
+                'althistory museum': './assets/covers/proj-history.jpg',
+                'digital love': './assets/covers/proj-romance.jpg',
+                'goa website': './assets/covers/proj-goa-web.jpg',
+                'goa project': './assets/covers/proj-goa-first.jpg',
+                'goa history': './assets/covers/proj-goa-history.jpg',
+                'product list + cart': './assets/covers/proj-product-cart.jpg',
+                'car (ford lineup)': './assets/covers/proj-car-ford.svg',
+                cexcent: './assets/covers/proj-cexcent.svg',
+                coinfusion: './assets/covers/proj-coinfusion.svg',
+                thalby: './assets/covers/proj-thalby.svg',
+                'python project': './assets/covers/proj-py-scripts.svg',
+            };
+
+            const levelIcons = {
+                ultra: '<svg class="level-doodle-icon" width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4L24.2 14.2L35 15L26.8 22L29.5 33L20 27L10.5 33L13.2 22L5 15L15.8 14.2L20 4Z" stroke="#8B3DFF" stroke-width="2.8" stroke-linejoin="round"/></svg>',
+                big: '<svg class="level-doodle-icon" width="36" height="36" viewBox="0 0 54 72" fill="none" aria-hidden="true"><path d="M34 4L10 38H27L18 68L46 31H29L34 4Z" fill="#CCFF00"/></svg>',
+                medium: '<svg class="level-doodle-icon" width="36" height="36" viewBox="0 0 74 48" fill="none" aria-hidden="true"><path d="M8 38L4 13L22 25L37 6L52 25L70 13L64 38H8Z" stroke="#FFD426" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 44H62" stroke="#FFD426" stroke-width="3.5" stroke-linecap="round"/></svg>',
+                small: '<svg class="level-doodle-icon" width="36" height="36" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="24" stroke="#47B8FF" stroke-width="3.2"/><circle cx="24" cy="25" r="2.6" fill="#47B8FF"/><circle cx="40" cy="25" r="2.6" fill="#47B8FF"/><path d="M21 36C24.5 43 39.5 43 43 36" stroke="#47B8FF" stroke-width="3.2" stroke-linecap="round"/></svg>',
             };
 
             // Add squiggles + decorative doodles to every level section
@@ -1174,6 +1203,10 @@
             document.querySelectorAll('.level-section').forEach(sec => {
                 if (sectionDoodles[sec.id]) {
                     sec.insertAdjacentHTML('afterbegin', sectionDoodles[sec.id]);
+                }
+                const header = sec.querySelector('.level-header');
+                if (header && levelIcons[sec.id] && !header.querySelector('.level-doodle-icon')) {
+                    header.insertAdjacentHTML('afterbegin', levelIcons[sec.id]);
                 }
                 const h2 = sec.querySelector('.level-header h2');
                 if (h2 && !h2.parentElement.classList.contains('level-title-row')) {
@@ -1189,11 +1222,14 @@
             });
 
             document.querySelectorAll('.project-card').forEach(card => {
-                if (card.querySelector('.card-cover')) return;
+                if (card.dataset.enhanced === '1') return;
+                card.dataset.enhanced = '1';
+
                 const body = card.querySelector('.card-body');
                 const h3 = body?.querySelector('h3');
                 if (!body || !h3) return;
 
+                const isVisualTier = Boolean(card.closest('#ultra, #big'));
                 const titleLower = h3.textContent.toLowerCase();
                 const emoji = card.querySelector('.card-emoji')?.textContent?.trim() || '⚡';
                 const badgeText = card.querySelector('.card-type')?.textContent?.trim() || (card.closest('.small-grid') ? 'Small UI' : 'Web App');
@@ -1201,31 +1237,38 @@
                 const accentMatch = accentEl?.className.match(/accent-([a-z]+)/);
                 const theme = accentMatch ? `theme-${accentMatch[1]}` : 'theme-purple';
 
-                const matchedKey = Object.keys(COVER_ART).find(k => titleLower.includes(k));
-                const cover = document.createElement('div');
-                cover.className = matchedKey ? 'card-cover' : `card-cover card-cover--pattern ${theme}`;
+                if (isVisualTier) {
+                    const matchedKey = Object.keys(COVER_ART).find(k => titleLower.includes(k));
+                    const cover = document.createElement('div');
+                    cover.className = matchedKey ? 'card-cover' : `card-cover card-cover--pattern ${theme}`;
 
-                if (matchedKey) {
-                    const img = document.createElement('img');
-                    img.src = COVER_ART[matchedKey];
-                    img.alt = h3.textContent.trim();
-                    img.loading = 'lazy';
-                    img.className = 'card-cover-img';
-                    cover.appendChild(img);
+                    if (matchedKey) {
+                        const img = document.createElement('img');
+                        img.src = COVER_ART[matchedKey];
+                        img.alt = h3.textContent.trim();
+                        img.loading = 'lazy';
+                        img.className = 'card-cover-img';
+                        cover.appendChild(img);
+                    } else {
+                        const iconSpan = document.createElement('span');
+                        iconSpan.className = 'card-cover-emoji';
+                        iconSpan.textContent = emoji;
+                        iconSpan.setAttribute('aria-hidden', 'true');
+                        cover.appendChild(iconSpan);
+                    }
+
+                    const badge = document.createElement('span');
+                    badge.className = 'card-cover-badge';
+                    badge.textContent = badgeText;
+                    cover.appendChild(badge);
+
+                    card.insertBefore(cover, body);
                 } else {
-                    const iconSpan = document.createElement('span');
-                    iconSpan.className = 'card-cover-emoji';
-                    iconSpan.textContent = emoji;
-                    iconSpan.setAttribute('aria-hidden', 'true');
-                    cover.appendChild(iconSpan);
+                    const tag = document.createElement('span');
+                    tag.className = 'card-tag-inline';
+                    tag.textContent = `${emoji} ${badgeText}`;
+                    body.insertBefore(tag, h3);
                 }
-
-                const badge = document.createElement('span');
-                badge.className = 'card-cover-badge';
-                badge.textContent = badgeText;
-                cover.appendChild(badge);
-
-                card.insertBefore(cover, body);
 
                 // Wrap h3 with circular arrow button linking to the primary project link
                 const firstLink = card.querySelector('.card-links a');

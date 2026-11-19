@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="cfBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#052E16"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#3B0764"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cfBg)"/>
+
+  <!-- Orbit Rings -->
+  <ellipse cx="400" cy="250" rx="250" ry="95" transform="rotate(-14 400 250)" stroke="#22C55E" stroke-width="4" stroke-dasharray="12 10"/>
+  <ellipse cx="400" cy="250" rx="250" ry="95" transform="rotate(14 400 250)" stroke="#8B3DFF" stroke-width="4"/>
+
+  <!-- Central Blockchain Reactor Core -->
+  <polygon points="400,115 505,175 505,295 400,355 295,295 295,175" fill="#10B981" stroke="#0B0C10" stroke-width="6" stroke-linejoin="round"/>
+  <polygon points="400,152 472,193 472,277 400,318 328,277 328,193" fill="#0B0C10"/>
+  <path d="M400 185L438 235L400 285L362 235L400 185Z" fill="#CCFF00"/>
+
+  <!-- Floating Gold Coin Left -->
+  <circle cx="170" cy="195" r="56" fill="#FFD426" stroke="#0B0C10" stroke-width="6"/>
+  <circle cx="170" cy="195" r="38" fill="#F59E0B" stroke="#0B0C10" stroke-width="4"/>
+  <path d="M170 172V218M156 184H180C186 184 186 195 178 195H158H182C189 195 189 208 180 208H156" stroke="#0B0C10" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Floating Purple Crystal Right -->
+  <polygon points="635,175 685,220 662,295 608,295 585,220" fill="#8B3DFF" stroke="#0B0C10" stroke-width="6" stroke-linejoin="round"/>
+  <polygon points="635,175 660,225 635,295 610,225" fill="#A78BFA" fill-opacity="0.55"/>
+
+  <!-- Energy Bolts -->
+  <path d="M125 350L148 318H132L142 292L116 326H132L125 350Z" fill="#CCFF00"/>
+  <path d="M675 375L698 343H682L692 317L666 351H682L675 375Z" fill="#47B8FF"/>
+</svg>

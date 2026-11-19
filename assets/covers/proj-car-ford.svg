@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="carSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="55%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#FF5E3A"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#181A24"/>
+      <stop offset="100%" stop-color="#0B0C10"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#carSky)"/>
+  <circle cx="620" cy="180" r="88" fill="#FFD426" stroke="#0B0C10" stroke-width="5"/>
+  <path d="M0 310L150 205L310 295L460 190L640 285L800 220V350H0V310Z" fill="#2E1065" stroke="#0B0C10" stroke-width="4.5"/>
+  <rect x="0" y="340" width="800" height="160" fill="url(#road)"/>
+  <line x1="0" y1="340" x2="800" y2="340" stroke="#0B0C10" stroke-width="5"/>
+  <line x1="60" y1="422" x2="170" y2="422" stroke="#CCFF00" stroke-width="8" stroke-linecap="round"/>
+  <line x1="250" y1="422" x2="360" y2="422" stroke="#CCFF00" stroke-width="8" stroke-linecap="round"/>
+  <line x1="440" y1="422" x2="550" y2="422" stroke="#CCFF00" stroke-width="8" stroke-linecap="round"/>
+  <line x1="630" y1="422" x2="740" y2="422" stroke="#CCFF00" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- EV Charging Station -->
+  <rect x="655" y="215" width="66" height="135" rx="14" fill="#14161E" stroke="#0B0C10" stroke-width="5"/>
+  <rect x="669" y="232" width="38" height="44" rx="7" fill="#22D3EE" stroke="#0B0C10" stroke-width="3.5"/>
+  <path d="M690 241L680 256H689L687 268L698 252H689L690 241Z" fill="#0B0C10"/>
+  <path d="M655 290C610 290 605 330 578 335" stroke="#CCFF00" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Stylized Cartoon SUV / Pickup -->
+  <path d="M120 355L145 275C154 252 175 240 205 240H395C428 240 448 254 468 282L575 295C598 298 612 314 612 336V365C612 375 604 382 592 382H132C118 382 110 370 120 355Z" fill="#47B8FF" stroke="#0B0C10" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M178 292L198 256H315V292H178Z" fill="#0B0C10"/>
+  <path d="M332 256H394C414 256 428 267 440 292H332V256Z" fill="#0B0C10"/>
+  <rect x="568" y="316" width="34" height="18" rx="6" fill="#CCFF00" stroke="#0B0C10" stroke-width="3.5"/>
+  <rect x="122" y="314" width="24" height="22" rx="6" fill="#FF5E3A" stroke="#0B0C10" stroke-width="3.5"/>
+  <!-- Wheels -->
+  <circle cx="225" cy="382" r="44" fill="#181A24" stroke="#0B0C10" stroke-width="6"/>
+  <circle cx="225" cy="382" r="21" fill="#A4AABF" stroke="#0B0C10" stroke-width="4"/>
+  <circle cx="510" cy="382" r="44" fill="#181A24" stroke="#0B0C10" stroke-width="6"/>
+  <circle cx="510" cy="382" r="21" fill="#A4AABF" stroke="#0B0C10" stroke-width="4"/>
+</svg>

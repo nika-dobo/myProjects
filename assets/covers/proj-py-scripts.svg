@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="pyBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="55%" stop-color="#312E81"/>
+      <stop offset="100%" stop-color="#0B0C10"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#pyBg)"/>
+
+  <!-- 3 Glowing Module Cubes -->
+  <rect x="115" y="135" width="130" height="130" rx="24" fill="#3776AB" stroke="#0B0C10" stroke-width="6"/>
+  <rect x="145" y="165" width="70" height="18" rx="9" fill="#FFD43B"/>
+  <rect x="145" y="198" width="48" height="18" rx="9" fill="#FFFFFF"/>
+
+  <rect x="335" y="105" width="130" height="130" rx="24" fill="#7C3AED" stroke="#0B0C10" stroke-width="6"/>
+  <circle cx="400" cy="170" r="30" fill="#CCFF00" stroke="#0B0C10" stroke-width="5"/>
+
+  <rect x="555" y="135" width="130" height="130" rx="24" fill="#10B981" stroke="#0B0C10" stroke-width="6"/>
+  <path d="M595 200L616 178L646 218" stroke="#0B0C10" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Coiled Friendly Cartoon Snake Weaving Under -->
+  <path d="M90 360C180 285 260 415 360 340C450 272 520 400 620 330C660 302 688 290 708 296" stroke="#0B0C10" stroke-width="46" stroke-linecap="round"/>
+  <path d="M90 360C180 285 260 415 360 340C450 272 520 400 620 330C660 302 688 290 708 296" stroke="#FFD43B" stroke-width="32" stroke-linecap="round"/>
+  <circle cx="712" cy="296" r="26" fill="#FFD43B" stroke="#0B0C10" stroke-width="6"/>
+  <circle cx="718" cy="288" r="5" fill="#0B0C10"/>
+  <path d="M736 300L754 294M736 300L754 308" stroke="#FF5E3A" stroke-width="4" stroke-linecap="round"/>
+</svg>

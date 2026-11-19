@@ -258,22 +258,32 @@ nav {
 
 .hero-eyebrow-row {
     display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 7px 18px;
-    border-radius: 999px;
-    font-size: 0.78rem;
+.hero-hand-note {
+    font-family: 'Caveat', 'Rubik', cursive;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
     font-weight: 700;
-    letter-spacing: 0.08em;
-    background: rgba(124, 58, 237, 0.18);
-    color: #E2D5FF;
-    border: 1px solid rgba(124, 58, 237, 0.55);
+    color: #FFFFFF;
+    line-height: 1;
+}
+
+.hero-hand-arrow {
+    width: 34px;
+    height: 28px;
+    margin-bottom: -4px;
+    flex-shrink: 0;
+}
+
+.hero-sub-display {
+    font-family: 'Permanent Marker', 'Rubik', cursive;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    color: #CCFF00;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
 }
 
 .hero-crown {
@@ -596,45 +606,20 @@ nav {
     z-index: 1;
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 28px;
-    padding-bottom: 20px;
+    gap: 14px;
+    margin-bottom: 26px;
+    padding-bottom: 18px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .level-badge {
-    width: 56px;
-    height: 56px;
-    border-radius: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6rem;
+    display: none;
+}
+
+.level-doodle-icon {
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
-}
-
-.ultra-badge {
-    background: linear-gradient(135deg, #5B21B6, #1E1B4B);
-    border: 1.5px solid rgba(139, 61, 255, 0.65);
-    box-shadow: 0 0 28px rgba(124, 58, 237, 0.28);
-}
-
-.big-badge {
-    background: linear-gradient(135deg, #9A3412, #431407);
-    border: 1.5px solid rgba(255, 94, 58, 0.55);
-    box-shadow: 0 0 24px rgba(255, 94, 58, 0.2);
-}
-
-.medium-badge {
-    background: linear-gradient(135deg, #854D0E, #422006);
-    border: 1.5px solid rgba(255, 212, 38, 0.5);
-    box-shadow: 0 0 24px rgba(255, 212, 38, 0.16);
-}
-
-.small-badge {
-    background: linear-gradient(135deg, #075985, #0C2538);
-    border: 1.5px solid rgba(71, 184, 255, 0.55);
-    box-shadow: 0 0 24px rgba(71, 184, 255, 0.18);
 }
 
 .level-title-row {
@@ -973,21 +958,29 @@ nav {
     justify-content: center;
 }
 
-/* Small Cards */
-.small-card .card-cover {
-    aspect-ratio: 16 / 8.5;
-}
-
-.small-card .card-cover-emoji {
-    font-size: 2.3rem;
+/* Medium & Small Cards — Clean Text-First Doodle Cards (No Cover Image) */
+.card-tag-inline {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent-lime);
+    background: rgba(204, 255, 0, 0.08);
+    border: 1px solid rgba(204, 255, 0, 0.28);
+    align-self: flex-start;
 }
 
 .small-card .card-body {
-    padding: 14px 16px 16px;
+    padding: 16px 18px 18px;
+    gap: 6px;
 }
 
 .small-card .card-body h3 {
-    font-size: 0.98rem;
+    font-size: 1rem;
 }
 
 /* Ultra Empty Placeholder */
