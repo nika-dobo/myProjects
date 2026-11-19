@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Rubik:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="allWeb.css?v=20261119-3">
+    <link rel="stylesheet" href="allWeb.css?v=20261119-4">
 </head>
 
 <body>
@@ -1288,6 +1288,43 @@
                     arrowBtn.setAttribute('aria-label', `Open ${h3.textContent.trim()}`);
                     arrowBtn.textContent = '↗';
                     titleRow.appendChild(arrowBtn);
+                }
+
+                // Keep every card compact & uniform: collapse >2 sub-page links into <details class="more-links">
+                const primaryLinksContainer = body.querySelector(':scope > .card-links');
+                if (primaryLinksContainer) {
+                    const links = Array.from(primaryLinksContainer.querySelectorAll('a'));
+                    let details = body.querySelector(':scope > details.more-links');
+                    let expandedBox = details?.querySelector('.expanded-links');
+
+                    if (links.length > 2) {
+                        const keepCount = links[1]?.textContent.toLowerCase().includes('github') ? 2 : 1;
+                        const extraLinks = links.slice(keepCount);
+
+                        if (!details) {
+                            details = document.createElement('details');
+                            details.className = 'more-links';
+                            const summary = document.createElement('summary');
+                            details.appendChild(summary);
+                            expandedBox = document.createElement('div');
+                            expandedBox.className = 'card-links expanded-links';
+                            details.appendChild(expandedBox);
+                            primaryLinksContainer.insertAdjacentElement('afterend', details);
+                        }
+
+                        // Prepend extraLinks before any existing links in expandedBox
+                        extraLinks.reverse().forEach(link => {
+                            expandedBox.insertBefore(link, expandedBox.firstChild);
+                        });
+                    }
+
+                    if (details && expandedBox) {
+                        const totalExtra = expandedBox.querySelectorAll('a').length;
+                        const summary = details.querySelector('summary');
+                        if (summary) {
+                            summary.textContent = `All Pages (${totalExtra}) ▾`;
+                        }
+                    }
                 }
             });
         })();
